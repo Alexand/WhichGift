@@ -1,26 +1,26 @@
 <!DOCTYPE html><html>
 
-<head>	
+WhichGift
+
+<head>
 	<meta charset="utf-8">
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
 
+
 	<title>WhichGift</title>
 
 	<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="lib/jquery-mobile/css/jquery.mobile-1.4.0.min.css" />
-	
-	<script type="text/javascript" src="lib/jquery-mobile/js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
-	<script type="text/javascript" src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<!-- <link rel="stylesheet" href="lib/jquery-mobile/css/jquery.mobile-1.4.0.min.css" /> -->
+	<link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
+	<link rel="stylesheet" href="css/jTinder.css">
 </head>
 
 
 
 <body>
 <!-- ===== MAIN PAGE ===== -->
-<div data-role="page" id="home" class="ui-page ui-page-theme-a">
+<div data-role="page" id="home" class="ui-page ui-page-theme-b">
 	<div data-role="header" data-position="fixed">
 		<h1>Especificações</h1><a href="#settings" data-icon="gear" data-transition="slideup" class="ui-btn-right">Settings</a>
 	</div>
@@ -29,7 +29,7 @@
 		<h2>Especificações</h2>
 		    <div data-demo-html="true">
 				<form>
-                    <div data-role="rangeslider">
+                    <div data-role="rangeslider" class="ed-rangeslider">
                         <label for="range-1a">Faixa de Preço (em Reais):</label>
                         <input type="range" name="range-1a" id="range-1a" min="0" max="500" value="50">
                         <label for="range-1b">Rangeslider:</label>
@@ -41,7 +41,7 @@
 					<div class="ui-field-contain">
 					<label for="select-native-1">Faixa de Idade:</label>
 					<select name="select-native-1" id="select-native-1">
-						<option value="1">De 0 à Highlander</option>
+						<option value="1">De Bebê à Highlander</option>
 					    <option value="2">Primeira Infância (até 3 anos)</option>
 					    <option value="3">Segunda Infância (de 4 à 7 anos)</option>
 					    <option value="4">Crianças (de 8 à 12 anos)</option>
@@ -65,15 +65,16 @@
 				</form>
 
     </div>
-
-		<p><a href="#cat" data-transition="slide">Continuar</a></p>
-
+    <div role="footer" class="ui-content" id="home-content">
+		<p><a href="#cat" data-transition="slide" class="ui-btn ui-corner-all">Continuar</a></p>
+	</div>
 	</div>
 </div>
 
 
+
 <!-- ===== CATEGORIAS ===== -->
-<div data-role="page" id="cat">
+<div data-role="page" id="cat" class="ui-page ui-page-theme-b">
 	<div data-role="header" data-position="fixed">
 		<h1>Categorias</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
 	</div>
@@ -81,10 +82,10 @@
 	<div role="main" class="ui-content">
 	    <h2>O que esta pessoa anda curtindo?</h2>
 
-	    		<div data-demo-html="true">
+	    <div data-demo-html="true" class="ed-categories">
 			<form>
 				<fieldset data-role="controlgroup" data-type="horizontal">
-					<legend>--</legend>
+					<legend></legend>
 					<input type="checkbox" name="checkbox-h-2a" id="checkbox-h-2a">
 					<label for="checkbox-h-2a">Esportes</label>
 					<input type="checkbox" name="checkbox-h-2b" id="checkbox-h-2b">
@@ -94,22 +95,68 @@
 				</fieldset>
 			</form>
 		</div>
-
-	    <p><a href="#gift" data-transition="slide">Encontrar Presente!</a></p>
+	</div>
+	<div role="footer" class="ui-content" id="home-content">
+	    <a href="#gift" data-transition="slide" class="ui-btn ui-corner-all">Encontrar Presente!</a></div>
 	</div>
 </div>
 
 <!-- ===== PRESENTE ===== -->
-<div data-role="page" id="gift">
+<div data-role="page" id="gift" class="ui-page ui-page-theme-b">
 	<div data-role="header" data-position="fixed">
-		<h1>Presente</h1><a href="#cat" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Categorias</a>
-		<a href="#home" data-icon="arrow-r" data-transition="slideup" class="ui-btn-right">Começar de Novo</a>
+		<h1>Presente</h1><a href="#cat" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
+		<a href="#home" data-icon="recycle" data-transition="slideup" class="ui-btn-right">Recomeçar</a>
 	</div>
 
 	<div role="main" class="ui-content">
-	    <h2>Aspirador de Pó Nasal!</h2>
-		<p>Que tal algo bárbaro e super da moda em Hollywood?</p>
+	    <h2>Que tal algo bárbaro e super da moda em Hollywood?</h2>
 	</div>
+
+	<div  class="wrap">
+        <!-- start jtinder container -->
+        <div id="tinderslide">
+            <ul>
+                <li class="pane1">
+                    <div class="img"></div>
+                    <div>Miami Beach</div>
+                    <div class="like"></div>
+                    <div class="dislike"></div>
+                </li>
+                <li class="pane2">
+                    <div class="img"></div>
+                    <div>San Francisco</div>
+                    <div class="like"></div>
+                    <div class="dislike"></div>
+                </li>
+                <li class="pane3">
+                    <div class="img"></div>
+                    <div>Chicago</div>
+                    <div class="like"></div>
+                    <div class="dislike"></div>
+                </li>
+                <li class="pane4">
+                    <div class="img"></div>
+                    <div>New York</div>
+                    <div class="like"></div>
+                    <div class="dislike"></div>
+                </li>
+                <li class="pane5">
+                    <div class="img"></div>
+                    <div>Beach</div>
+                    <div class="like"></div>
+                    <div class="dislike"></div>
+                </li>
+            </ul>
+        </div>
+        <!-- end jtinder container -->
+    </div>
+    <!-- end padding container -->
+
+    <!-- jTinder trigger by buttons  -->
+    <div class="actions">
+        <a href="#" class="dislike"><i></i></a>
+        <a href="#" class="like"><i></i></a>
+    </div>
 </div>
 
 
@@ -124,10 +171,26 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="lib/fastclick/js/fastclick.js"></script>
-<script type="text/javascript" src="lib/handlebars/js/handlebars-v1.3.0.js"></script>
+	<script src="cordova.js"></script>
+	<script src="lib/fastclick/js/fastclick.js"></script>
+	<script src="lib/handlebars/js/handlebars-v1.3.0.js"></script>
+	<script src="lib/jquery-mobile/js/jquery-1.11.0.min.js"></script>
+	<script src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
+	<script src="js/index.js"></script>
+	
+	<!-- esse que quebra o jTinder -->
+	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
 
+
+
+	    <!-- jQuery lib -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- transform2d lib -->
+    <script type="text/javascript" src="js/jquery.transform2d.js"></script>
+    <!-- jTinder lib -->
+    <script type="text/javascript" src="js/jquery.jTinder.js"></script>
+    <!-- jTinder initialization script -->
+    <script type="text/javascript" src="js/main.js"></script>
 
 <!--<script type="text/javascript">
 appomat.app.initialize();

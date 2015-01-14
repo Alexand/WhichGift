@@ -1,0 +1,148 @@
+.  Artes
+	.  Artesanato
+	.  Escultura
+	.  Grafitti
+	.  Pintura
+		.  Abstrata
+		.  Barroca
+		.  Contemporânea
+		.  Modernismo
+	.  Tricot/Crochet
+.  Animais
+	.  Cachorros
+	.  Gatos
+.  Automóveis
+	.  Carros
+	.  Jetski
+	.  Lanchas
+	.  Moto
+.  Bebidas
+	.  Café
+	.  Cervejas
+	.  Whisky
+	.  Vinhos
+		.  Espumantes
+.  Brinquedos
+	.  Bonecos
+	.  Lego
+.  Casa e Decoração
+	.  Banho
+	.  Cozinha
+	.  Eletrodomésticos
+		.  Fogão
+		.  Geladeira
+		.  Máquina de Lavar
+	.  Jardinagem
+	.  Quarto
+	.  Sala
+.  Ciências
+	.  Astronomia
+	.  Biologia
+	.  Física
+	.  Matemática
+	.  Médicas
+	.  Odontologia
+	.  Química
+.  Culinária
+	.  Chocolate
+	.  Natural
+.  Cultura
+	.  Egípcia
+	.  Greco-Romana
+	.  Nórdica
+	.  Chinesa
+.  Esportes
+	.  Academia
+	.  Aquáticos
+		.  Natação
+		.  Surf
+	.  Artes Marciais
+		.  Boxe
+		.  Capoeira
+		.  Jiu-jitsu
+		.  Judô
+		.  UFC
+	.  Velocidade
+		.  Automobilismo
+		.  Ciclismo
+		.  Corrida
+			.  Maratona
+		.  Motocross
+	.  Quadra
+		.  Basquete
+		.  Futebol
+		.  Tênis
+		.  Vôlei
+	.  Radicais
+		.  Escalada
+.  Estudos
+.  Filosofia
+.  Finanças
+	.  Bolsa de Valores
+	.  
+.  Joias
+.  Jogos
+	.  Cartas
+	.  Tabuleiro
+	.  Videogames
+.  Linguagem
+	.  Línguas Estrangeiras
+	.  Livros*
+	.  Livros Digitais*
+	.  Poesia
+.  Mídia
+	.  Filmes*
+		.  Animação
+	.  Música
+		.  Clássica
+   		.  Pop
+  		.  Rock
+		.  Samba
+	.  Seriados*
+		.  Animação
+			.  Animes
+	.  Teatro*
+.  Moda
+	.  Cosméticos
+		.  Creme
+.  Ocultismo
+	.  Astrologia
+	.  Esoterismo
+		.  Tarot
+.  Parques
+	.  de Diversões
+		.  Montanha-Russa
+.  Performance
+	.  Dança
+		.  Ballet
+	.  Mágica
+.  Perfumes
+	.  Maquiagem
+	.  
+.  Vestuário
+		.  Bolsas
+		.  Calçados
+		.  Chapéus
+		.  Roupas
+.  Natureza
+	.  Acampar
+	.  Viajar
+.  Política
+.  Religiosidade
+	.  Budismo
+		.  Meditação
+	.  Catolicismo
+	.  Espírita
+	.  Judismo
+	.  Protestantismo
+		.  Evangelismo
+.  Tecnologia
+	.  Câmeras
+		.  Fotográficas
+		.  Filmadoras
+	.  Telefonia
+		.  Celulares
+	.  Computadores
+		.  Apple
+	.  Tablets
+	.  Televisão
