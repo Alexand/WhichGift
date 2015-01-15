@@ -21,24 +21,29 @@ WhichGift
 <body>
 <!-- ===== MAIN PAGE ===== -->
 <div data-role="page" id="home" class="ui-page ui-page-theme-b">
+
+<!-- Header -->
 	<div data-role="header" data-position="fixed">
-		<h1>Especificações</h1><a href="#settings" data-icon="gear" data-transition="slideup" class="ui-btn-right">Settings</a>
+		<h1>WhichGift</h1>
 	</div>
 
-	<div role="main" class="ui-content" id="home-content">
+	<div data-role="main" class="ui-content" id="home-content" >
 		<h2>Especificações</h2>
-		    <div data-demo-html="true">
-				<form>
-                    <div data-role="rangeslider" class="ed-rangeslider">
-                        <label for="range-1a">Faixa de Preço (em Reais):</label>
-                        <input type="range" name="range-1a" id="range-1a" min="0" max="500" value="50">
-                        <label for="range-1b">Rangeslider:</label>
-                        <input type="range" name="range-1b" id="range-1b" min="0" max="500" value="250">
-                    </div>
-				</form>
+		<div data-demo-html="true" id="ed-pageAlignVert">
 
-				<form>
-					<div class="ui-field-contain">
+<!-- Faixa de Preço -->
+			<form>
+                <div data-role="rangeslider" class="ed-rangeSlider">
+                    <label for="range-1a">Faixa de Preço (em Reais):</label>
+                    <input type="range" name="range-1a" id="range-1a" min="0" max="300" value="50" step="10">
+                    <label for="range-1b">Rangeslider:</label>
+                    <input type="range" name="range-1b" id="range-1b" min="0" max="300" value="150" step="10">
+                </div>
+			</form>
+
+<!-- Faixa de Idade -->
+			<form>
+				<div class="ui-field-contain">
 					<label for="select-native-1">Faixa de Idade:</label>
 					<select name="select-native-1" id="select-native-1">
 						<option value="1">De Bebê à Highlander</option>
@@ -50,24 +55,32 @@ WhichGift
 						<option value="7">Adulto (de 31 à 59 anos)</option>
 						<option value="8">Terceira Idade (acima de 60 anos)</option>
 					</select>
-					</div>
-				</form>
+				</div>
+			</form>
 
-				<form>
-					<div class="ui-field-contain">
-					<label for="select-native-2">Gênero:</label>
-					<select name="select-native-2" id="select-native-2">
-						<option value="1">Misto</option>
-					    <option value="2">Feminino</option>
-					    <option value="3">Masculino</option>
-					</select>
-					</div>
-				</form>
+<!-- Gênero -->
+			<form>
+				<fieldset data-role="controlgroup" data-type="horizontal" id="fullwidth">
+					<legend>Gênero:</legend>
+					<input type="checkbox" name="checkbox-h-2a" id="feminino" >
+					<label for="feminino">Feminino</label>
+					<input type="checkbox" name="checkbox-h-2b" id="masculino" >
+					<label for="masculino">Masculino</label>
+					<input type="checkbox" name="checkbox-h-2c" id="unissex" >
+					<label for="unissex">Unissex</label>
+				</fieldset>
+			</form>
+    	</div>
 
+<!-- Botão Continuar -->
+		<div id="ed-mainButton">
+			<a href="#cat" data-transition="slide" class="ui-btn ui-corner-all" >Continuar</a>
+		</div>
     </div>
-    <div role="footer" class="ui-content" id="home-content">
-		<p><a href="#cat" data-transition="slide" class="ui-btn ui-corner-all">Continuar</a></p>
-	</div>
+
+<!-- Feedback -->
+	<div id="ed-lowInfo">
+		<a href="" data-transition="pop" class="ui-btn-right">Feedback</a>
 	</div>
 </div>
 
@@ -76,13 +89,12 @@ WhichGift
 <!-- ===== CATEGORIAS ===== -->
 <div data-role="page" id="cat" class="ui-page ui-page-theme-b">
 	<div data-role="header" data-position="fixed">
-		<h1>Categorias</h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
+		<h1></h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
 	</div>
 
 	<div role="main" class="ui-content">
 	    <h2>O que esta pessoa anda curtindo?</h2>
-
-	    <div data-demo-html="true" class="ed-categories">
+	    <div data-demo-html="true" id="ed-categories">
 			<form>
 				<fieldset data-role="controlgroup" data-type="horizontal">
 					<legend></legend>
@@ -96,24 +108,27 @@ WhichGift
 			</form>
 		</div>
 	</div>
-	<div role="footer" class="ui-content" id="home-content">
-	    <a href="#gift" data-transition="slide" class="ui-btn ui-corner-all">Encontrar Presente!</a></div>
+	<div role="footer" class="ui-content" id="ed-mainButton">
+	    <a href="#gift" data-transition="slide" class="ui-btn ui-corner-all">Encontrar Presentes!</a></div>
 	</div>
 </div>
 
+
 <!-- ===== PRESENTE ===== -->
 <div data-role="page" id="gift" class="ui-page ui-page-theme-b">
+<!-- Header -->
 	<div data-role="header" data-position="fixed">
-		<h1>Presente</h1><a href="#cat" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
-		<a href="#home" data-icon="recycle" data-transition="slideup" class="ui-btn-right">Recomeçar</a>
+		<h1></h1><a href="#cat" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
+		<a href="#home" data-icon="recycle" data-transition="pop" data-iconpos="right" class="ui-btn-right">Recomeçar</a>
 	</div>
 
+<!-- Frase de Venda -->
 	<div role="main" class="ui-content">
 	    <h2>Que tal algo bárbaro e super da moda em Hollywood?</h2>
 	</div>
 
+<!-- Cards -->
 	<div  class="wrap">
-        <!-- start jtinder container -->
         <div id="tinderslide">
             <ul>
                 <li class="pane1">
@@ -148,28 +163,16 @@ WhichGift
                 </li>
             </ul>
         </div>
-        <!-- end jtinder container -->
     </div>
-    <!-- end padding container -->
 
-    <!-- jTinder trigger by buttons  -->
-    <div class="actions">
+<!-- jTinder trigger by buttons
+	<div class="actions">
         <a href="#" class="dislike"><i></i></a>
         <a href="#" class="like"><i></i></a>
-    </div>
+    </div> -->
 </div>
 
 
-<!-- ===== SETTINGS ===== -->
-<div data-role="page" id="settings">
-	<div data-role="header" data-position="fixed">
-		<h1>Settings</h1><a href="#home" data-transition="slideup" data-direction="reverse" data-icon="check" class="ui-btn-right">Done</a>
-	</div>
-
-	<div role="main" class="ui-content">
-		<h2>Settings</h2>
-	</div>
-</div>
 
 	<script src="cordova.js"></script>
 	<script src="lib/fastclick/js/fastclick.js"></script>
@@ -178,22 +181,20 @@ WhichGift
 	<script src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
 	<script src="js/index.js"></script>
 	
-	<!-- esse que quebra o jTinder -->
+<!-- esse que quebra o jTinder -->
 	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
-
-
-
-	    <!-- jQuery lib -->
+<!-- jQuery lib -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <!-- transform2d lib -->
+<!-- transform2d lib -->
     <script type="text/javascript" src="js/jquery.transform2d.js"></script>
-    <!-- jTinder lib -->
+<!-- jTinder lib -->
     <script type="text/javascript" src="js/jquery.jTinder.js"></script>
-    <!-- jTinder initialization script -->
+<!-- jTinder initialization script -->
     <script type="text/javascript" src="js/main.js"></script>
 
-<!--<script type="text/javascript">
-appomat.app.initialize();
-</script>-->
+<!-- Precisa disso?
+	<script type="text/javascript">
+	appomat.app.initialize();
+	</script>-->
 
 </body></html>
