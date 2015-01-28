@@ -38,6 +38,7 @@ ActiveAdmin.register Gift do
     inputs 'Details' do
       input :name
       input :price
+      input :site
       input :description
       input :categories, 
         :as => :select, 
