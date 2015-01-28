@@ -39,16 +39,12 @@ ActiveAdmin.register Gift do
       input :name
       input :price
       input :description
+      input :categories, 
+        :as => :select, 
+        :collection => Category.order(:name), :input_html => { :size => 50 }
       li "Created at #{f.object.created_at}" unless f.object.new_record?
       #input :category
     end
-    panel 'Markup' do
-      "The following can be used in the content below..."
-    end
-    inputs 'Content', :categories, 
-        :as => :select, 
-        :collection => Category.where(name:'Teatro'), 
-        :prompt => 'N/A'
     para "Press cancel to return to the list without saving."
     actions
   end
