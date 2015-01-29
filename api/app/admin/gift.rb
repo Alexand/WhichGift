@@ -4,7 +4,7 @@ ActiveAdmin.register Gift do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :price, :site, :description, category_ids: []
+  permit_params :name, :price, :site, :description, :photo, category_ids: []
 
   index do
     column :name
@@ -14,6 +14,9 @@ ActiveAdmin.register Gift do
     column :price
     column :site
     column :description
+    column "Image" do |gift|
+      link_to(image_tag(gift.photo.url(:thumb), :height => '100'), admin_gift_path(gift))
+    end
     column :created_at
     column :updated_at
     actions
@@ -30,12 +33,15 @@ ActiveAdmin.register Gift do
       row :description
       row :created_at
       row :updated_at
+      row "Image" do |gift|
+        link_to(image_tag(gift.photo.url(:medium)), admin_gift_path(gift))
+      end
     end
   end
 
-  form do |f|
+  form :html => { :enctype => "multipart/form-data" } do |f|
     f.semantic_errors *f.object.errors.keys
-    inputs 'Details' do
+    inputs 'Details', :multipart => true do
       input :name
       input :price
       input :site
@@ -43,6 +49,7 @@ ActiveAdmin.register Gift do
       input :categories, 
         :as => :select, 
         :collection => Category.order(:name), :input_html => { :size => 50 }
+      f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:medium))
       li "Created at #{f.object.created_at}" unless f.object.new_record?
       #input :category
     end
