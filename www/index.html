@@ -1,18 +1,15 @@
 <!DOCTYPE html><html>
 
-WhichGift
-
 <head>
+<!-- Metas -->
 	<meta charset="utf-8">
 	<meta name="format-detection" content="telephone=no" />
-	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-
-
+	<meta name="viewport" content="width=device-width user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+<!-- Title -->
 	<title>WhichGift</title>
+<!-- Links -->
 
-	<link rel="stylesheet" href="css/index.css">
-	<!-- <link rel="stylesheet" href="lib/jquery-mobile/css/jquery.mobile-1.4.0.min.css" /> -->
-	<link rel="stylesheet" href="css/jquery.mobile.flatui.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.flatui.css"> <!-- quebra o jTinder -->
 	<link rel="stylesheet" href="css/jTinder.css">
 </head>
 
@@ -29,7 +26,7 @@ WhichGift
 
 	<div data-role="main" class="ui-content" id="home-content" >
 		<h2>Especificações</h2>
-		<div data-demo-html="true" id="ed-pageAlignVert">
+		<div  id="ed-pageAlignVert">
 
 <!-- Faixa de Preço -->
 			<form>
@@ -43,7 +40,7 @@ WhichGift
 
 <!-- Faixa de Idade -->
 			<form>
-				<div class="ui-field-contain">
+				<div class="ui-field-contain ui-shadow" >
 					<label for="select-native-1">Faixa de Idade:</label>
 					<select name="select-native-1" id="select-native-1">
 						<option value="1">De Bebê à Highlander</option>
@@ -59,28 +56,39 @@ WhichGift
 			</form>
 
 <!-- Gênero -->
-			<form>
-				<fieldset data-role="controlgroup" data-type="horizontal" id="fullwidth">
-					<legend>Gênero:</legend>
-					<input type="checkbox" name="checkbox-h-2a" id="feminino" >
-					<label for="feminino">Feminino</label>
-					<input type="checkbox" name="checkbox-h-2b" id="masculino" >
-					<label for="masculino">Masculino</label>
-					<input type="checkbox" name="checkbox-h-2c" id="unissex" >
-					<label for="unissex">Unissex</label>
-				</fieldset>
-			</form>
-    	</div>
+			<div data-demo-html="true" id="fullWidth">
+				<form>
+					<fieldset data-role="controlgroup" data-type="horizontal" class="ui-controlgroup ui-controlgroup-horizontal ui-corner-all">
+						<div role="heading" class="ui-controlgroup-label">
+							<legend>Gênero:</legend>
+						</div>
+						<div class="ui-controlgroup-controls">
+							<label for="radio-choice-h-2a" class="ui-btn ui-corner-all ui-btn-inherit ui-first-child ui-radio-off">Misto</label>
+							<input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked" data-cacheval="true">
+							<label for="radio-choice-h-2b" class="ui-btn ui-corner-all ui-btn-inherit ui-radio-off">Feminino</label>
+							<input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off" data-cacheval="false">
+							<label for="radio-choice-h-2c" class="ui-btn ui-corner-all ui-btn-inherit ui-last-child ui-btn-active ui-radio-on">Masculino</label>
+							<input type="radio" name="radio-choice-h-2" id="radio-choice-h-2c" value="other" data-cacheval="false">
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut urna nunc, vestibulum quis dolor nec, semper convallis urna. Ut bibendum vel orci vel placerat. Sed pulvinar feugiat neque sit amet volutpat. Curabitur condimentum faucibus sapien, eget mattis lectus luctus sit amet. Sed sed neque vel felis ultrices aliquet. Phasellus eget ante at justo commodo accumsan. Nam suscipit sagittis lobortis. Maecenas a euismod nisl. <br>
 
-<!-- Botão Continuar -->
-		<div id="ed-mainButton">
-			<a href="#cat" data-transition="slide" class="ui-btn ui-corner-all" >Continuar</a>
-		</div>
+	Donec rhoncus magna a ex varius, nec laoreet sem fringilla. Maecenas eget nisl porttitor lorem accumsan ornare. Sed volutpat diam et urna feugiat molestie. In hac habitasse platea dictumst. Nunc porttitor vitae est eget tristique. Suspendisse lacinia imperdiet turpis. Nulla mollis tempor est sit amet faucibus. Ut sit amet mauris vitae metus dictum fringilla a et risus. Morbi eu orci ac orci tempus bibendum. Suspendisse placerat magna at mi molestie sagittis.</p>
+    	</div>
     </div>
+<!-- Botão Continuar -->
+	<div data-role="main" class="ui-content" id="ed-mainButton" >
+		<a data-role="button" href="#cat" data-transition="slide" class="ui-btn ui-corner-all">Continuar</a>
+	</div>
+
+
+
 
 <!-- Feedback -->
 	<div id="ed-lowInfo">
-		<a href="" data-transition="pop" class="ui-btn-right">Feedback</a>
+		<a href="#feedback" data-transition="slide" data-direction="reverse" class="ui-btn-right">Feedback</a>
 	</div>
 </div>
 
@@ -89,7 +97,8 @@ WhichGift
 <!-- ===== CATEGORIAS ===== -->
 <div data-role="page" id="cat" class="ui-page ui-page-theme-b">
 	<div data-role="header" data-position="fixed">
-		<h1></h1><a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
+		<h1></h1>
+		<a href="#home" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
 	</div>
 
 	<div role="main" class="ui-content">
@@ -98,24 +107,26 @@ WhichGift
 			<form>
 				<fieldset data-role="controlgroup" data-type="horizontal">
 					<legend></legend>
-					<input type="checkbox" name="checkbox-h-2a" id="checkbox-h-2a">
-					<label for="checkbox-h-2a">Esportes</label>
-					<input type="checkbox" name="checkbox-h-2b" id="checkbox-h-2b">
-					<label for="checkbox-h-2b">Futebol</label>
-					<input type="checkbox" name="checkbox-h-2c" id="checkbox-h-2c">
-					<label for="checkbox-h-2c">Vôlei</label>
+					<input type="checkbox" name="checkbox-h-2a" id="checkbox-h-2a">		<label for="checkbox-h-2a">Esportes</label>
+					<input type="checkbox" name="checkbox-h-2b" id="checkbox-h-2b">		<label for="checkbox-h-2b">Futebol</label>
+					<input type="checkbox" name="checkbox-h-2c" id="checkbox-h-2c">		<label for="checkbox-h-2c">Vôlei</label>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend></legend>
+					<input type="checkbox" name="checkbox-h-2a" id="checkbox-h-2a">		<label for="checkbox-h-2a">Culinária</label>
+					<input type="checkbox" name="checkbox-h-2b" id="checkbox-h-2b">		<label for="checkbox-h-2b">Árabe</label>
+					<input type="checkbox" name="checkbox-h-2c" id="checkbox-h-2c">		<label for="checkbox-h-2c">Japonesa</label>
 				</fieldset>
 			</form>
 		</div>
 	</div>
-	<div role="footer" class="ui-content" id="ed-mainButton">
-	    <a href="#gift" data-transition="slide" class="ui-btn ui-corner-all">Encontrar Presentes!</a></div>
+	<div class="ui-content" id="ed-mainButton">
+	    <a href="#gift" data-transition="slide" class="ui-btn ui-corner-all">Encontrar Presentes!</a>
 	</div>
 </div>
 
-
 <!-- ===== PRESENTE ===== -->
-<div data-role="page" id="gift" class="ui-page ui-page-theme-b">
+<div data-role="page" id="gift" class="ui-page ui-page-theme-b giftPage">
 <!-- Header -->
 	<div data-role="header" data-position="fixed">
 		<h1></h1><a href="#cat" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
@@ -123,46 +134,46 @@ WhichGift
 	</div>
 
 <!-- Frase de Venda -->
-	<div role="main" class="ui-content">
+	<div data-role="main" class="ui-content">
 	    <h2>Que tal algo bárbaro e super da moda em Hollywood?</h2>
-	</div>
 
 <!-- Cards -->
-	<div  class="wrap">
-        <div id="tinderslide">
-            <ul>
-                <li class="pane1">
-                    <div class="img"></div>
-                    <div>Miami Beach</div>
-                    <div class="like"></div>
-                    <div class="dislike"></div>
-                </li>
-                <li class="pane2">
-                    <div class="img"></div>
-                    <div>San Francisco</div>
-                    <div class="like"></div>
-                    <div class="dislike"></div>
-                </li>
-                <li class="pane3">
-                    <div class="img"></div>
-                    <div>Chicago</div>
-                    <div class="like"></div>
-                    <div class="dislike"></div>
-                </li>
-                <li class="pane4">
-                    <div class="img"></div>
-                    <div>New York</div>
-                    <div class="like"></div>
-                    <div class="dislike"></div>
-                </li>
-                <li class="pane5">
-                    <div class="img"></div>
-                    <div>Beach</div>
-                    <div class="like"></div>
-                    <div class="dislike"></div>
-                </li>
-            </ul>
-        </div>
+		<div  class="tinderWrap">
+	        <div data-demo-html="true" id="tinderslide">
+	            <ul>
+	                <li class="pane1">
+	                    <div class="tImg"></div>
+	                    <div>Miami Beach</div>
+	                    <div class="like"></div>
+	                    <div class="dislike"></div>
+	                </li>
+	                <li class="pane2">
+	                    <div class="tImg"></div>
+	                    <div>San Francisco</div>
+	                    <div class="like"></div>
+	                    <div class="dislike"></div>
+	                </li>
+	                <li class="pane3">
+	                    <div class="tImg"></div>
+	                    <div>Chicago</div>
+	                    <div class="like"></div>
+	                    <div class="dislike"></div>
+	                </li>
+	                <li class="pane4">
+	                    <div class="tImg"></div>
+	                    <div>New York</div>
+	                    <div class="like"></div>
+	                    <div class="dislike"></div>
+	                </li>
+	                <li class="pane5">
+	                    <div class="tImg"></div>
+	                    <div>Pêndulo Dinamarquês</div>
+	                    <div class="like"></div>
+	                    <div class="dislike"></div>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
     </div>
 
 <!-- jTinder trigger by buttons
@@ -173,28 +184,55 @@ WhichGift
 </div>
 
 
+<!-- ===== FEEDBACK ===== -->
+<div data-role="page" id="feedback" class="ui-page ui-page-theme-b">
+	<div data-role="header" data-position="fixed">
+		<h1></h1>
+		<a href="#home" data-transition="slide" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right">Voltar</a>
+	</div>
 
+	<div data-role="main" class="ui-content">
+	    <h2>Feedback</h2>
+	    <div >
+			<form>
+				<div class="ui-field-contain">
+					<label for="motivo">Motivo:</label>
+					<select name="motivo" id="motivo">
+						<option value="1">Bug</option>
+					    <option value="2">Crítica</option>
+					    <option value="3">Sugestão</option>
+					</select>
+				</div>
+				<label for="nome-1">Nome (opcional):<label>
+				<input type="text" name="nome-1" id="nome-1" value="">
+				<label for="email-1">Email (opcional):</label>
+				<input type="email" data-clear-btn="false" name="email-1" id="email-1" placeholder="">
+				<label for="comentarios">Comentários:</label>
+				<textarea name="comentarios" id="comentarios" cols="30" rows="8" value=""></textarea>
+				<a href="#" class="ui-shadow ui-btn ui-corner-all" >Enviar</a>
+			</form>
+	</div>
+</div>
+
+
+
+<!-- Cordova -->
 	<script src="cordova.js"></script>
+	<script src="js/index.js"></script>
+<!-- jQuery lib -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+<!-- jQuery Mobile -->
+	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
+<!-- transform2d lib -->
+    <script src="js/jquery.transform2d.js"></script>
+<!-- jTinder lib -->
+    <script src="js/jTinder.js"></script>
+<!-- jTinder initialization script -->
+    <script src="js/jTinderInit.js"></script>
+<!-- App-o-Matic Plugins -->
 	<script src="lib/fastclick/js/fastclick.js"></script>
 	<script src="lib/handlebars/js/handlebars-v1.3.0.js"></script>
-	<script src="lib/jquery-mobile/js/jquery-1.11.0.min.js"></script>
 	<script src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
-	<script src="js/index.js"></script>
-	
-<!-- esse que quebra o jTinder -->
-	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
-<!-- jQuery lib -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-<!-- transform2d lib -->
-    <script type="text/javascript" src="js/jquery.transform2d.js"></script>
-<!-- jTinder lib -->
-    <script type="text/javascript" src="js/jquery.jTinder.js"></script>
-<!-- jTinder initialization script -->
-    <script type="text/javascript" src="js/main.js"></script>
 
-<!-- Precisa disso?
-	<script type="text/javascript">
-	appomat.app.initialize();
-	</script>-->
 
 </body></html>

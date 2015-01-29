@@ -434,7 +434,7 @@ div.ui-mobile-viewport {
 .ui-mobile .ui-page-active {
 	display: block;
 	overflow: visible;
-	overflow-x: hidden;
+	overflow-x: auto;
 }
 @media screen and (orientation: portrait) {
 	.ui-mobile .ui-page {
@@ -3252,6 +3252,7 @@ textarea.ui-input-text {
 	overflow: auto;
 	resize: vertical;
 }
+
 .ui-mini .ui-input-text input,
 .ui-mini .ui-input-search input,
 .ui-input-text.ui-mini input,
@@ -3878,6 +3879,23 @@ for Android 4.1 */
 html {
 	font-size: 100%;
 }
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+
+
+    /* please use this in the body tag of your HTML...i have fixed the bouncing and rubber band effects.
+    http://stackoverflow.com/questions/15126629/prevent-scrolling-out-of-cordovaview-in-cordova-for-windows-phone-8 */
+	backface-visibility:hidden;
+	-webkit-backface-visibility:hidden;
+ 	overflow: hidden;
+	-ms-content-zooming: none;
+	-ms-touch-action:none;
+}
+
+
 body,
 input,
 select,
@@ -4131,13 +4149,13 @@ html .ui-page-theme-a .ui-radio-on:after,html .ui-bar-a .ui-radio-on:after,html 
 
 
 
-
+html .ui-overlay-a,html .ui-page-theme-a,html .ui-page-theme-a .ui-panel-wrapper{background:#f9f9f9;border-color:#bbb;color:#89dbd7}
 
 
 
 
 /* ==================================  THEME B  ================================== */
-html .ui-overlay-a,html .ui-page-theme-a,html .ui-page-theme-a .ui-panel-wrapper{background:#f9f9f9;border-color:#bbb;color:#89dbd7}
+
 html .ui-bar-b,html .ui-bar-b .ui-bar-inherit,html .ui-body-b .ui-bar-inherit,html body .ui-group-theme-b .ui-bar-inherit{background:#16a085;border-color:#16a085;color:#fff;font-weight:bold}
 html .ui-page-theme-b .ui-bar-inherit {background:#16a085;border-color:#16a085;color:#fff;font-weight:bold}
 html .ui-bar-b{border-width:1px;border-style:solid}
@@ -4145,13 +4163,13 @@ html .ui-bar-b{border-width:1px;border-style:solid}
 /* ===== ED'S BACKGROUND ===== */
 html .ui-overlay-b,html .ui-page-theme-b,html .ui-page-theme-b .ui-panel-wrapper{background: url(../img/bg-icons.jpg) no-repeat center center fixed;border-color:#bbb; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
 
-html .ui-body-b,html .ui-page-theme-b .ui-body-inherit,html .ui-bar-b .ui-body-inherit,html .ui-body-b .ui-body-inherit,html body .ui-group-theme-b .ui-body-inherit,html .ui-panel-page-container-b{background:#16a085;border:0px;color:#fff}
+html .ui-body-b,html .ui-page-theme-b .ui-body-inherit,html .ui-bar-b .ui-body-inherit,html .ui-body-b .ui-body-inherit,html body .ui-group-theme-b .ui-body-inherit,html .ui-panel-page-container-b{background:#16a085;border:0px;color:#fff;	box-shadow: 0 2px 0 darkslategray;}
 html .ui-body-b{border-width:1px;border-style:solid}
 html .ui-page-theme-b a,html .ui-bar-b a,html .ui-body-b a,html body .ui-group-theme-b a{color:#1abc9c;font-weight:bold}
 html .ui-page-theme-b a:visited,html .ui-bar-b a:visited,html .ui-body-b a:visited,html body .ui-group-theme-b a:visited{color:#1abc9c}
 html .ui-page-theme-b a:hover,html .ui-bar-b a:hover,html .ui-body-b a:hover,html body .ui-group-theme-b a:hover{color:#1abc9c}
 html .ui-page-theme-b a:active,html .ui-bar-b a:active,html .ui-body-b a:active,html body .ui-group-theme-b a:active{color:#1abc9c}
-html .ui-page-theme-b .ui-btn,html .ui-bar-b .ui-btn,html .ui-body-b .ui-btn,html body .ui-group-theme-b .ui-btn,html body .ui-btn.ui-btn-b,html .ui-page-theme-b .ui-btn:visited,html .ui-bar-b .ui-btn:visited,html .ui-body-b .ui-btn:visited,html body .ui-group-theme-b .ui-btn:visited,html body .ui-btn.ui-btn-b:visited{background:#16a085;border-color:#16a085;color:#fff}
+html .ui-page-theme-b .ui-btn,html .ui-bar-b .ui-btn,html .ui-body-b .ui-btn,html body .ui-group-theme-b .ui-btn,html body .ui-btn.ui-btn-b,html .ui-page-theme-b .ui-btn:visited,html .ui-bar-b .ui-btn:visited,html .ui-body-b .ui-btn:visited,html body .ui-group-theme-b .ui-btn:visited,html body .ui-btn.ui-btn-b:visited{background:#16a085;border-color:#16a085;color:#fff;}
 html .ui-page-theme-b .ui-btn:hover,html .ui-bar-b .ui-btn:hover,html .ui-body-b .ui-btn:hover,html body .ui-group-theme-b .ui-btn:hover,html body .ui-btn.ui-btn-b:hover{background:#1abc9c;border-color:#1abc9c;color:#fff}
 html .ui-page-theme-b .ui-btn:active,html .ui-bar-b .ui-btn:active,html .ui-body-b .ui-btn:active,html body .ui-group-theme-b .ui-btn:active,html body .ui-btn.ui-btn-b:active{background:#1abc9c;border-color:#1abc9c;color:#fff}
 html .ui-page-theme-b .ui-btn.ui-btn-active,html .ui-bar-b .ui-btn.ui-btn-active,html .ui-body-b .ui-btn.ui-btn-active,html body .ui-group-theme-b .ui-btn.ui-btn-active,html body .ui-btn.ui-btn-b.ui-btn-active,html .ui-page-theme-b .ui-flipswitch-active,html .ui-bar-b .ui-flipswitch-active,html .ui-body-b .ui-flipswitch-active,html body .ui-group-theme-b .ui-flipswitch-active,html body .ui-flipswitch.ui-bar-b.ui-flipswitch-active{background-color:#1abc9c;border-color:#1abc9c;color:#fff}
@@ -4161,30 +4179,47 @@ html .ui-page-theme-b .ui-radio-on:after,html .ui-bar-b .ui-radio-on:after,html 
 /* Ed's Rangeslider */
 html .ui-page-theme-b .ed-rangeSlider .ui-slider-track .ui-btn-active,html .ui-bar-b .ui-slider-track .ui-btn-active,html .ui-body-b .ui-slider-track .ui-btn-active,html body .ui-group-theme-b .ui-slider-track .ui-btn-active,html body div.ui-slider-track.ui-body-b .ui-btn-active{background-color:#16a085;border-color:red;color:#fff}
 html .ui-page-theme-b .ed-rangeSlider .ui-bar-inherit .ui-slider-track{background:blue;border-color:#16a085;color:#fff;font-weight:bold}
-html .ui-page-theme-b .ed-rangeSlider .ui-bar-inherit {background:#bbb;border-color:#16a085;color:#fff;font-weight:bold}
+html .ui-page-theme-b .ed-rangeSlider .ui-bar-inherit {background:#bbb;border-color:#16a085;color:#fff;font-weight:bold;}
 
 /* Ed's Categories */
-#ed-categories form {width:2000px;}
-#ed-categories .ui-btn, #ed-categories label.ui-btn{font-family: Lato; font-weight: 900; font-size: 40px; text-transform: uppercase;border:0px;margin:0px;padding: 8px;background:transparent;color:#16a085;}
+#ed-categories form { width:1000px;}
+#ed-categories input[type=checkbox] {position: absolute; top:-9999px; left:-9999px;}
+#ed-categories .ui-btn, #ed-categories label.ui-btn{font-family: Lato; font-weight: 900; font-size: 40px; text-transform: uppercase;border:0px;margin:0px;padding: 0px 8px;background:transparent;color:#16a085;}
 #ed-categories .ui-btn:hover,#ed-categories .ui-bar-b .ui-btn:hover,#ed-categories .ui-body-b .ui-btn:hover,#ed-categories body .ui-group-theme-b .ui-btn:hover,#ed-categories body .ui-btn.ui-btn-b:hover{color:#16a085;background:transparent}
 #ed-categories .ui-btn:active,#ed-categories .ui-bar-b .ui-btn:active,#ed-categories .ui-body-b .ui-btn:active,#ed-categories body .ui-group-theme-b .ui-btn:active,#ed-categories body .ui-btn.ui-btn-b:active{color:#16a085;background:transparent}
 #ed-categories .ui-btn.ui-btn-active,#ed-categories .ui-bar-b .ui-btn.ui-btn-active,#ed-categories .ui-body-b .ui-btn.ui-btn-active,#ed-categories body .ui-group-theme-b .ui-btn.ui-btn-active,#ed-categories body .ui-btn.ui-btn-b.ui-btn-active,#ed-categories .ui-page-theme-b .ui-flipswitch-active,#ed-categories .ui-bar-b .ui-flipswitch-active,#ed-categories .ui-body-b .ui-flipswitch-active,#ed-categories body .ui-group-theme-b .ui-flipswitch-active,#ed-categories body .ui-flipswitch.ui-bar-b.ui-flipswitch-active{color:#b6e8b5; background: transparent;}
 #ed-categories .ui-checkbox-on:after,#ed-categories .ui-bar-b .ui-checkbox-on:after,#ed-categories .ui-body-b .ui-checkbox-on:after,#ed-categories body .ui-group-theme-b .ui-checkbox-on:after,#ed-categories .ui-btn.ui-checkbox-on.ui-btn-b:after,#ed-categories background-color: primary_color{color:pink}
+#ed-categories fieldset, #ed-categories .ui-controlgroup-horizontal{margin:0px;height:52px;overflow-y: hidden}
+#ed-categories input, #ed-categories select, #ed-categories textarea{font-size: 1em;line-height: 1.3;margin: 0px}
 
-html .ui-content h2 {text-align: center;margin-top:0px;margin-bottom: 40px}
-html .ui-page-theme-b .ui-body-b .ui-btn{background-color: red}
-html .ui-page-theme-b .ui-btn .ed-button{background-color: red}
+/* para jTinder funcionar:  #gift.ui-page {display: inline;}    */
+#gift.tinderWrap{display: inline;}
 
-/*#ed-mainButton {
-    position:absolute;
-    bottom:20px;
-}*/
+
+html .ui-content h2 {text-align: center;margin-top:0px;margin-bottom: 10px}
+
+#ed-mainButton {
+	position: fixed;
+	bottom:30px;
+	padding: 16px;
+	box-sizing: border-box;
+	width: 100%;
+	margin-left: auto;
+	z-index: 2;
+}
 
 #ed-mainButton a{
+	text-align: center;
 	background-color: #31609f;
 	border:0px;
-	margin-top: 35px;
-	margin-bottom: 30px;
+	box-shadow: 0 2px 0 #214071;
+}
+
+input #ed-mainButton {
+	text-align: center;
+	background-color: #31609f;
+	border:0px;
+	box-shadow: 0 2px 0 #214071;
 }
 
 html .ui-page-theme-b #ed-lowInfo {
@@ -4198,15 +4233,39 @@ html .ui-page-theme-b #ed-lowInfo {
 	color:#31609f;
 	text-decoration: none;
 	font-size: 12px;
-	margin-right:16px;
+	margin-right:26px;
 }
 
-#fullwidth .ui-controlgroup-controls {width: 100%;}
-#fullwidth .ui-checkbox {width: 33.3333%;}
-#fullwidth .ui-btn {padding-left: auto;padding-right: auto}
+#fullWidth .ui-controlgroup-controls {width: 100%;}
+#fullWidth .ui-radio {width: 33.3333%;}
+#fullWidth label {
+	text-align: center; 
+	padding-left:5px;
+	padding-right: 5px;
+	box-shadow: 0 2px 0 darkslategray;}
 
-#ed-pageAlignVert{margin-top: auto;margin-bottom: auto}
 
+#ed-pageAlignVert{
+	border:1px solid rgba(100,200,150,0.65);
+	border-radius: 10px;
+	padding:10px;
+}
+
+#select-native-1 ui-btn{
+	box-shadow: 0 2px 0 pink;
+}
+
+#cat, #ed-categories{
+	overflow: auto; /*visible, hidden, scroll or auto */
+}
+
+#feedback.ui-body-b,html #feedback.ui-page-theme-b .ui-body-inherit,html #feedback.ui-bar-b .ui-body-inherit,html #feedback.ui-body-b .ui-body-inherit,html body #feedback.ui-group-theme-b .ui-body-inherit,html #feedback.ui-panel-page-container-b{background:##1abc9c;border:0px;color:#fff; box-shadow: 0 2px 0 darkslategray;}
+#feedback .ui-input-text {border:1px solid #3AE4C2 !important;}
+
+
+#feedback textarea {
+	height: auto !important;
+}
 
 
 
