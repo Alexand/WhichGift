@@ -1,17 +1,6 @@
-html, body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    position: relative;
-}
-
-body {
-    overflow: hidden;
-}
-
 /* Wrapper with padding */
-.wrap  {
-    height: 300px;
+.tinderWrap  {
+    height: 350px;
     padding: 5%;
 }
 
@@ -20,6 +9,8 @@ body {
     background: #fff;
     width: 95%;
     height: 100%;
+
+
 }
 
 #tinderslide ul {
@@ -27,6 +18,7 @@ body {
     position: relative;
     display: block;
     height: 100%;
+
 }
 
 #tinderslide li {
@@ -55,6 +47,7 @@ body {
     transform: translate3d(0%,0,0) scale3d(1,1,1);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+
 }
 
 /* Image text */
@@ -114,7 +107,7 @@ body {
 }
 
 /* Image container */
-#tinderslide .img {
+#tinderslide .tImg {
     height: 90%;
     width: 100%;
     margin-bottom: 5px;
@@ -137,6 +130,7 @@ body {
     width: 304px;
     margin: 0 auto;
     overflow: hidden;
+
 }
 
 .actions div {
@@ -178,6 +172,7 @@ body {
     border-radius: 50%;
     outline: none;
     box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+
 }
 
 .actions a:hover{
@@ -187,23 +182,23 @@ body {
 }
 
 /* jTinder images */
-#tinderslide .pane5 .img {
+#tinderslide .pane5 .tImg {
     background: url("../img/pane/pane5.jpg") no-repeat scroll center center;
     background-size: cover;
 }
-#tinderslide .pane4 .img {
+#tinderslide .pane4 .tImg {
     background: url("../img/pane/pane4.jpg") no-repeat scroll center center;
     background-size: cover;
 }
-#tinderslide .pane3 .img {
+#tinderslide .pane3 .tImg {
     background: url("../img/pane/pane3.jpg") no-repeat scroll center center;
     background-size: cover;
 }
-#tinderslide .pane2 .img {
+#tinderslide .pane2 .tImg {
     background: url("../img/pane/pane2.jpg") no-repeat scroll center center;
     background-size: cover;
 }
-#tinderslide .pane1 .img {
+#tinderslide .pane1 .tImg {
     background: url("../img/pane/pane1.jpg") no-repeat scroll center center;
     background-size: cover;
 }
@@ -216,3 +211,5 @@ body {
     margin-top: 30px;
     font-weight: bold;
 }
+
+

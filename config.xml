@@ -11,17 +11,21 @@
     <access origin="*" />
 
 
-    <!-- LINHAS ADICIONADAS -->  
+<!-- LINHAS ADICIONADAS -->  
     <icon src="res/icon.png" />
 
-    <!-- IOS 7 STATUS BAR -->
+<!-- IOS 7 STATUS BAR -->
     <preference name="StatusBarOverlaysWebview" value="false" />
     <preference name="StatusBarBackgroundColor" value="#23c7d2" />
 
-    <!-- ANDROID SPLASHSCREEN -->
+<!-- Android SplashScreen -->
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="10000" />
+
+<!-- ANDROID SPLASHSCREEN -->
     <platform name="android">
     <splash src="res/screen/android/splash-port-hdpi.png" />
-    <!--
+<!--
     density="port-hdpi"
     <splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi"/>
     <splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi"/>
@@ -30,7 +34,7 @@
     <splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
     <splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
     <splash src="res/screen/android/splash-land-xhdpi.png" density="land-xhdpi"/>
-    -->
+-->
     </platform>
 
     <platform name="ios">
