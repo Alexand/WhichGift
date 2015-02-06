@@ -1,4 +1,5 @@
 class Gift < ActiveRecord::Base
+	belongs_to :ageGroup
 	has_and_belongs_to_many :categories, join_table: :gifts_categories
 	accepts_nested_attributes_for :categories, allow_destroy: true
 

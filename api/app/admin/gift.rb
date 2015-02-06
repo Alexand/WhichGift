@@ -4,16 +4,21 @@ ActiveAdmin.register Gift do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :price, :site, :description, :photo, category_ids: []
+
+  permit_params :name, :gender, :price, :site, :description, :photo, :ageGroup_id, category_ids: []
 
   index do
     column :name
         column "Categories" do |gift|
       (gift.categories.map{ |p| p.name }).join(', ').html_safe
     end
+    column :gender
     column :price
     column :site
     column :description
+    column "Age Group" do |gift|
+      gift.ageGroup.description unless gift.ageGroup.nil?  
+    end
     column "Image" do |gift|
       link_to(image_tag(gift.photo.url(:thumb), :height => '100'), admin_gift_path(gift))
     end
@@ -25,12 +30,16 @@ ActiveAdmin.register Gift do
   show do |ad|
     attributes_table do
       row :name
+      row :gender
       row "Categories" do |gift|
         (gift.categories.map{ |p| p.name }).join(', ').html_safe
       end
       row :price
       row :site
       row :description
+      row "Age Group" do |gift|
+        gift.ageGroup.description unless gift.ageGroup.nil?  
+      end
       row :created_at
       row :updated_at
       row "Image" do |gift|
@@ -43,9 +52,13 @@ ActiveAdmin.register Gift do
     f.semantic_errors *f.object.errors.keys
     inputs 'Details', :multipart => true do
       input :name
+      input :gender,
+        :as => :select,
+        :collection => ['M', 'F', 'U']
       input :price
-      input :site
+      input :site, :input_html => { :rows => 1 }
       input :description
+      input :ageGroup, :as => :select, :collection => AgeGroup.all.map {|u| [u.description, u.id]}, :include_blank => false
       input :categories, 
         :as => :select, 
         :collection => Category.order(:name), :input_html => { :size => 50 }

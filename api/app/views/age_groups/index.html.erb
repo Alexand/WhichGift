@@ -1,0 +1,23 @@
+<h1>Listing age_groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @age_groups.each do |age_group| %>
+      <tr>
+        <td><%= link_to 'Show', age_group %></td>
+        <td><%= link_to 'Edit', edit_age_group_path(age_group) %></td>
+        <td><%= link_to 'Destroy', age_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Age group', new_age_group_path %>

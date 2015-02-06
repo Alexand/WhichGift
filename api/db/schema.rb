@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129005348) do
+ActiveRecord::Schema.define(version: 20150206020039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(version: 20150129005348) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "age_groups", force: true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.integer  "father_id"
@@ -67,7 +73,11 @@ ActiveRecord::Schema.define(version: 20150129005348) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "ageGroup_id"
+    t.string   "gender",             limit: 1
   end
+
+  add_index "gifts", ["ageGroup_id"], name: "index_gifts_on_ageGroup_id", using: :btree
 
   create_table "gifts_categories", id: false, force: true do |t|
     t.integer "gift_id"
