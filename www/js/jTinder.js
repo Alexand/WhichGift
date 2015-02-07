@@ -7,6 +7,7 @@
  * Licensed under GPL Version 2.
  * https://github.com/do-web/jTinder/blob/master/LICENSE
  */
+
 ;(function ($, window, document, undefined) {
 	var pluginName = "jTinder",
 		defaults = {
@@ -26,6 +27,35 @@
 	var yStart = 0;
 	var touchStart = false;
 	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, pane_count = 0, current_pane = 0;
+
+	var gifts;
+	var giftsTmp;
+	var totalImgDescartadas = 0;
+	var incImgDescartadas = function () {
+	    totalImgDescartadas++;
+	};
+
+	var getGifts = function(){
+	    var httpResponse = $.getJson('http://whichgift.herokuapp.com/gifts.json');    
+	    gifts = httpResponse.responseJSON;
+	    giftsTmp = gifts;
+	    loadGiftsInHTML();   
+	}
+
+	var loadGiftsInHTML = function (){
+	    var count = 0;
+	    giftsTmp.forEach(function(gift){
+	        count++;
+	    //     //cria classe
+	    //     //adiciona classe no elemento
+	    //     $('#gifts').append("<li>" <img src="gift.url" >+ gift.name + "</p>")
+	         if(count === 5)
+	         {   
+	    //         //excluir 5 primeiros giftTmp
+	             return;
+	         }
+	    });
+	};
 
 	function Plugin(element, options) {
 		this.element = element;
@@ -54,10 +84,25 @@
 
 		showPane: function (index) {
 			panes.eq(current_pane).hide();
-			current_pane = index;
+			if(index === 0){
+				panes.eq(5).show();
+				panes.eq(4).show();
+				panes.eq(3).show();
+				panes.eq(2).show();
+				panes.eq(1).show();
+				current_pane = 5;
+			}
+			else
+				current_pane = index;
+
 		},
 
 		next: function () {
+			incImgDescartadas();
+			if (totalImgDescartadas === 0){
+				totalImgDescartadas = 0;
+				loadGiftsInHTML();
+			}
 			return this.showPane(current_pane - 1);
 		},
 
@@ -124,6 +169,10 @@
 					break;
 				case 'mouseup':
 				case 'touchend':
+					// incImgPassada();
+					// if (totalImgDescartadas = 4){
+					//     loadGiftsInHTML();
+					// }
 					touchStart = false;
 					var pageX = (typeof ev.pageX == 'undefined') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX;
 					var pageY = (typeof ev.pageY == 'undefined') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY;
