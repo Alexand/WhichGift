@@ -8,6 +8,21 @@
  * https://github.com/do-web/jTinder/blob/master/LICENSE
  */
 
+// resetando Especificações
+$("#giftsHeader").on("click", "#resetButton", function(){
+    $("#especificacoes").find("form").trigger("reset");
+});
+
+$("#giftsHeader").on("click","a" , function(){
+	//alert("voltando")
+	//$(".ui-page").css("display", "block");
+});
+
+$("#home").find("#home-content").on("click", "#ed-mainButton", function(){
+	//alert("indo")
+	//$(".ui-page").css("display", "inline");
+});
+
 ;(function ($, window, document, undefined) {
 	var pluginName = "jTinder",
 		defaults = {
@@ -28,32 +43,33 @@
 	var touchStart = false;
 	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, pane_count = 0, current_pane = 0;
 
-	var gifts;
-	var giftsTmp;
-	var totalImgDescartadas = 0;
-	var incImgDescartadas = function () {
-	    totalImgDescartadas++;
-	};
+	var allGifts;
+	var giftsLeft;
+	var imgCount = 0;
 
 	var getGifts = function(){
-	    var httpResponse = $.getJson('http://whichgift.herokuapp.com/gifts.json');    
-	    gifts = httpResponse.responseJSON;
-	    giftsTmp = gifts;
+		//alert("getGifts triggered");
+	    var httpResponse = $.getJSON('https://whichgift.herokuapp.com/gifts.json');    
+	    allGifts = httpResponse.responseJSON;
+	    giftsLeft = ["O Pequeno Príncipe", "Kit de Pimentas", "Churrasqueira", "Abridor de Cerveja"]
 	    loadGiftsInHTML();   
 	}
 
 	var loadGiftsInHTML = function (){
-	    var count = 0;
-	    giftsTmp.forEach(function(gift){
+		//alert("loadGiftsInHTML triggered");
+	    var count = 2;
+	    giftsLeft.forEach(function(gift){
+	    	gClass = $('#tinderslide').find("ul").append(
+	    		"<li class=pane"+count+">" 			+
+	    			"<div class='tImg'></div>" 		+
+	    			"<div>"+gift+"</div>" 			+
+	    			"<div class='like'></div>" 		+
+	    			"<div class='dislike'></div>" 	+
+	    		"</li>");
+	    	$(".pane"+count).find(".tImg").css({
+	    		"background": "url('../www/img/pane/pane"+count+".jpg') no-repeat scroll center center",
+	    		"background-size": "cover"});
 	        count++;
-	    //     //cria classe
-	    //     //adiciona classe no elemento
-	    //     $('#gifts').append("<li>" <img src="gift.url" >+ gift.name + "</p>")
-	         if(count === 5)
-	         {   
-	    //         //excluir 5 primeiros giftTmp
-	             return;
-	         }
 	    });
 	};
 
@@ -69,7 +85,7 @@
 
 
 		init: function (element) {
-
+			getGifts();
 			container = $(">ul", element);
 			panes = $(">ul>li", element);
 			pane_width = container.width();
@@ -80,16 +96,19 @@
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
+			
+
 		},
 
 		showPane: function (index) {
 			panes.eq(current_pane).hide();
+
 			if(index === 0){
-				panes.eq(5).show();
-				panes.eq(4).show();
-				panes.eq(3).show();
-				panes.eq(2).show();
-				panes.eq(1).show();
+				// panes.eq(5).show();
+				// panes.eq(4).show();
+				// panes.eq(3).show();
+				// panes.eq(2).show();
+				// panes.eq(1).show();
 				current_pane = 5;
 			}
 			else
@@ -98,9 +117,9 @@
 		},
 
 		next: function () {
-			incImgDescartadas();
-			if (totalImgDescartadas === 0){
-				totalImgDescartadas = 0;
+			imgCount++;
+			if (imgCount === 0){
+				imgCount = 0;
 				loadGiftsInHTML();
 			}
 			return this.showPane(current_pane - 1);
@@ -170,7 +189,7 @@
 				case 'mouseup':
 				case 'touchend':
 					// incImgPassada();
-					// if (totalImgDescartadas = 4){
+					// if (imgCount = 4){
 					//     loadGiftsInHTML();
 					// }
 					touchStart = false;
