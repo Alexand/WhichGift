@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 var app = {
     // Application Constructor
     initialize: function() {
