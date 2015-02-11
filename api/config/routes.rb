@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'admin/dashboard#index'
 
+  get '/admin/gifts/new/quick_add' => 'admin/gifts#quick_add', as: :admin_gift_quick_add
+  post '/admin/gifts/quick_create' => 'admin/gifts#quick_create', as: :admin_gift_quick_create
+
+ 
+  # controller :whatever, path: '/whatever' do
+  #   match 'post_action', via: [ :post, :options]
+  # end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

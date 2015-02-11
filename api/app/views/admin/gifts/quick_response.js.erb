@@ -1,0 +1,6 @@
+<% if @admin.errors.any? %>
+  var html = "<%= escape_javascript(render 'error_messages', object: @admin) %>";
+  $('#quick-add-errors').html(html);
+<% else %>
+  window.location.reload();
+<% end %>

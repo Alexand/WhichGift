@@ -7,25 +7,42 @@ ActiveAdmin.register Gift do
 
   permit_params :name, :gender, :price, :site, :description, :photo, :ageGroup_id, category_ids: []
 
-  index do
-    column :name
-        column "Categories" do |gift|
-      (gift.categories.map{ |p| p.name }).join(', ').html_safe
-    end
-    column :gender
-    column :price
-    column :site
-    column :description
-    column "Age Group" do |gift|
-      gift.ageGroup.description unless gift.ageGroup.nil?  
-    end
-    column "Image" do |gift|
-      link_to(image_tag(gift.photo.url(:thumb), :height => '100'), admin_gift_path(gift))
-    end
-    column :created_at
-    column :updated_at
-    actions
+  action_item only: :index do
+    link_to 'Quick add', admin_gift_quick_add_path, class: 'fancybox', data: { 'fancybox-type' => 'ajax' }
   end
+
+  controller do
+    def quick_add
+      @gift = Gift.new
+      render layout: false
+    end
+
+    def quick_create
+      @gift = Gift.new(permitted_params[:gift])
+      @gift.save
+      render 'quick_response', layout: false
+    end
+  end
+
+  # index do
+  #   column :name
+  #       column "Categories" do |gift|
+  #     (gift.categories.map{ |p| p.name }).join(', ').html_safe
+  #   end
+  #   column :gender
+  #   column :price
+  #   column :site
+  #   column :description
+  #   column "Age Group" do |gift|
+  #     gift.ageGroup.description unless gift.ageGroup.nil?  
+  #   end
+  #   column "Image" do |gift|
+  #     link_to(image_tag(gift.photo.url(:thumb), :height => '100'), admin_gift_path(gift))
+  #   end
+  #   column :created_at
+  #   column :updated_at
+  #   actions
+  # end
 
   show do |ad|
     attributes_table do
