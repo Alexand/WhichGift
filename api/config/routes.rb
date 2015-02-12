@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   post '/admin/gifts/quick_create' => 'admin/gifts#quick_create', as: :admin_gift_quick_create
 
  
-  # controller :whatever, path: '/whatever' do
-  #   match 'post_action', via: [ :post, :options]
-  # end
+  controller :gifts, path: 'api' do
+    match 'find_my_gifts', via: [ :post, :options]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

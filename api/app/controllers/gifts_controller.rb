@@ -7,6 +7,10 @@ class GiftsController < ApplicationController
     @gifts = Gift.all
   end
 
+  def find_my_gifts
+    @gifts = Gift.all
+  end
+
   # GET /gifts/1
   # GET /gifts/1.json
   def show
@@ -60,6 +64,8 @@ class GiftsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
