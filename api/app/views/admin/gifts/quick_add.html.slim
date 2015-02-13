@@ -1,0 +1,15 @@
+#modal
+	h2 New Gift
+	p.modal-description Gift Quick Add.
+
+	section#quick-errors
+     = render 'error_messages', object: @gift
+ 
+   section.form-fluid
+     = simple_form_for(@gift, url: admin_gift_quick_create_path, remote: true) do |f|
+       .form-inputs
+         = f.input :name
+         = f.input :price
+       ul.form-actions
+         li
+           = f.submit 'Save'
