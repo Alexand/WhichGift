@@ -23,6 +23,7 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 	//$(".ui-page").css("display", "inline");
 });
 
+
 ;(function ($, window, document, undefined) {
 	var pluginName = "jTinder",
 		defaults = {
@@ -43,17 +44,47 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 	var touchStart = false;
 	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, pane_count = 0, current_pane = 0;
 
-	var allGifts;
+	var allGifts = null;
 	var giftsLeft;
 	var imgCount = 0;
 
+
 	var getGifts = function(){
-		//alert("getGifts triggered");
-	    var httpResponse = $.getJSON('https://whichgift.herokuapp.com/gifts.json');    
-	    allGifts = httpResponse.responseJSON;
-	    giftsLeft = ["O Pequeno Príncipe", "Kit de Pimentas", "Churrasqueira", "Abridor de Cerveja"]
-	    loadGiftsInHTML();   
+		var responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", function(data) {
+ 			//alert( "success" );
+ 		})
+ 			.done(function() {
+ 				//alert( "second success" )
+ 			})
+ 			.fail(function() {
+ 				//alert( "error" )
+ 			})
+ 			.always(function() {
+    			//alert( "finished" )
+    		});
+    		allGifts = responseGifts.responseText;
+ 			console.log(responseGifts);
+ 			console.log(allGifts);
+
+ 			giftsLeft = ["O Pequeno Príncipe", "Kit de Pimentas", "Churrasqueira", "Lego® Star Wars™ Snowspeeder™"];
+	 		loadLoopingGift();
+	 		loadGiftsInHTML();
+	};
+	
+
+	var loadLoopingGift = function(){
+		$('#tinderslide').find("ul").append(
+			"<li class=pane0>" 				+
+				"<div>Looping</div>" 			+
+				"<div class='tImg'></div>" 		+
+				"<div class='like'></div>" 		+
+				"<div class='dislike'></div>" 	+
+			"</li>");
+		$(".pane0").find(".tImg").css({
+			    		"background": "url('../www/img/gifts/looping.jpg') no-repeat scroll center center",
+			    		"background-size": "cover"});
 	}
+
 
 	var loadGiftsInHTML = function (){
 		//alert("loadGiftsInHTML triggered");
@@ -61,8 +92,10 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 	    giftsLeft.forEach(function(gift){
 	    	gClass = $('#tinderslide').find("ul").append(
 	    		"<li class=pane"+count+">" 			+
-	    			"<div class='tImg'></div>" 		+
 	    			"<div>"+gift+"</div>" 			+
+	    			"<div class='tImg'></div>" 		+
+	    			"<div>"+"preco"+"</div>"			+
+	    			"<div>"+"loja"+"</div>"			+
 	    			"<div class='like'></div>" 		+
 	    			"<div class='dislike'></div>" 	+
 	    		"</li>");
@@ -72,6 +105,7 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 	        count++;
 	    });
 	};
+
 
 	function Plugin(element, options) {
 		this.element = element;
