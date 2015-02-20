@@ -45,65 +45,40 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, pane_count = 0, current_pane = 0;
 
 	var allGifts = null;
-	var giftsLeft;
+	var giftsLeft = null;
 	var imgCount = 0;
 
 
-	var getGifts = function(){
-		var responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", function(data) {
- 			//alert( "success" );
- 		})
- 			.done(function() {
- 				//alert( "second success" )
- 			})
- 			.fail(function() {
- 				//alert( "error" )
- 			})
- 			.always(function() {
-    			//alert( "finished" )
-    		});
-    		allGifts = responseGifts.responseText;
- 			console.log(responseGifts);
- 			console.log(allGifts);
-
- 			giftsLeft = ["O Pequeno Príncipe", "Kit de Pimentas", "Churrasqueira", "Lego® Star Wars™ Snowspeeder™"];
-	 		loadLoopingGift();
-	 		loadGiftsInHTML();
-	};
-	
-
 	var loadLoopingGift = function(){
 		$('#tinderslide').find("ul").append(
-			"<li class=pane0>" 				+
+			"<li class=pane0>" 				    +
 				"<div>Looping</div>" 			+
 				"<div class='tImg'></div>" 		+
 				"<div class='like'></div>" 		+
 				"<div class='dislike'></div>" 	+
 			"</li>");
 		$(".pane0").find(".tImg").css({
-			    		"background": "url('../www/img/gifts/looping.jpg') no-repeat scroll center center",
-			    		"background-size": "cover"});
-	}
+			"background": "url('../www/img/gifts/looping.jpg') no-repeat scroll center center",
+			"background-size": "cover"});
+	};
 
 
-	var loadGiftsInHTML = function (){
-		//alert("loadGiftsInHTML triggered");
-	    var count = 2;
-	    giftsLeft.forEach(function(gift){
-	    	gClass = $('#tinderslide').find("ul").append(
-	    		"<li class=pane"+count+">" 			+
-	    			"<div>"+gift+"</div>" 			+
-	    			"<div class='tImg'></div>" 		+
-	    			"<div>"+"preco"+"</div>"			+
-	    			"<div>"+"loja"+"</div>"			+
-	    			"<div class='like'></div>" 		+
-	    			"<div class='dislike'></div>" 	+
+	var loadGiftsInHTML = function (howMany){
+	    $("#frase").prepend("<h2>Aqui vai uma frase espetacular valorizando o presente</h2>")
+	    for (var count = 1; count <= howMany; count++) {
+	    	$('#tinderslide').find("ul").append(
+	    		"<li class=pane"+count+">" 					+
+	    			"<div>"+giftsLeft[count].name+"</div>" 	+
+	    			"<div class='tImg'></div>" 				+
+	    			"<div>"+"preco"+"</div>"				+
+	    			"<div>"+"loja"+"</div>"					+
+	    			"<div class='like'></div>" 				+
+	    			"<div class='dislike'></div>" 			+
 	    		"</li>");
 	    	$(".pane"+count).find(".tImg").css({
 	    		"background": "url('../www/img/pane/pane"+count+".jpg') no-repeat scroll center center",
 	    		"background-size": "cover"});
-	        count++;
-	    });
+	    };
 	};
 
 
@@ -119,35 +94,45 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 
 
 		init: function (element) {
-			getGifts();
-			container = $(">ul", element);
-			panes = $(">ul>li", element);
-			pane_width = container.width();
-			pane_count = panes.length;
-			current_pane = panes.length - 1;
-			$that = this;
+			var responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", function(data) {
+			})
+			.done(function() {
+			 	allGifts = responseGifts.responseJSON;
+			 	giftsLeft = allGifts;
+			 	console.log(giftsLeft);
 
+			 	//loadLoopingGift();
+			 	loadGiftsInHTML(15);
+
+			 	container = $(">ul", element);		// [ul]
+			 	panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
+			 	pane_width = container.width();		// 317
+			 	pane_count = panes.length;			// 5
+			 	current_pane = panes.length - 1;	// 4
+			 	
+
+			 	console.log(container);
+			 	console.log(panes);
+			 	console.log(pane_width);
+			 	console.log(pane_count);
+			 	console.log(current_pane);
+
+			})
+			.fail(function() {
+				//alert( "error" )
+			})
+			.always(function() {
+			  	//alert( "finished" )
+			});
+			$that = this;
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
-			
-
 		},
 
 		showPane: function (index) {
 			panes.eq(current_pane).hide();
-
-			if(index === 0){
-				// panes.eq(5).show();
-				// panes.eq(4).show();
-				// panes.eq(3).show();
-				// panes.eq(2).show();
-				// panes.eq(1).show();
-				current_pane = 5;
-			}
-			else
-				current_pane = index;
-
+			current_pane = index;
 		},
 
 		next: function () {

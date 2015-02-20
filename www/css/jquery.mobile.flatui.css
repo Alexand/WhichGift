@@ -4260,7 +4260,7 @@ html .ui-page-theme-b #ed-lowInfo {
 
 #feedback.ui-body-b,html #feedback.ui-page-theme-b .ui-body-inherit,html #feedback.ui-bar-b .ui-body-inherit,html #feedback.ui-body-b .ui-body-inherit,html body #feedback.ui-group-theme-b .ui-body-inherit,html #feedback.ui-panel-page-container-b{background:#27c5ad;border:0px;color:#fff; box-shadow: 0 2px 0 darkslategray;}
 #feedback .ui-input-text {border:2px solid #16a085 !important;}
-#feedback textarea {height: auto !important;}
+#feedback textarea {height: 100% !important;}
 ::-webkit-input-placeholder {color: #12856D;}
 :-moz-placeholder {color: #12856D;}
 ::-moz-placeholder {color: #12856D;}
