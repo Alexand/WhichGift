@@ -4196,16 +4196,17 @@ html .ui-page-theme-b .ed-rangeSlider .ui-bar-inherit {background:#bbb;border-co
 
 
 html .ui-content h2 {text-align: center;margin-top:0px;margin-bottom: 10px}
-
-/*#ed-mainButton {
-	position: fixed;
-	bottom:30px;
-	padding: 16px;
-	box-sizing: border-box;
-	width: 100%;
-	margin-left: auto;
-	z-index: 2;
-}*/
+html .ui-content #frase {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
 
 #ed-mainButton {
 	background-color: #31609f;

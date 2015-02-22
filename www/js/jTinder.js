@@ -46,38 +46,47 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 
 	var allGifts = null;
 	var giftsLeft = null;
-	var imgCount = 0;
 
 
 	var loadLoopingGift = function(){
-		$('#tinderslide').find("ul").append(
-			"<li class=pane0>" 				    +
+		$('#tinderslide').find("ul").prepend(
+			"<li class=pane1>" 				    +
 				"<div>Looping</div>" 			+
 				"<div class='tImg'></div>" 		+
 				"<div class='like'></div>" 		+
 				"<div class='dislike'></div>" 	+
 			"</li>");
-		$(".pane0").find(".tImg").css({
+		$(".pane1").find(".tImg").css({
 			"background": "url('../www/img/gifts/looping.jpg') no-repeat scroll center center",
-			"background-size": "cover"});
+			"background-size": "contain"});
 	};
 
 
 	var loadGiftsInHTML = function (howMany){
-	    $("#frase").prepend("<h2>Aqui vai uma frase espetacular valorizando o presente</h2>")
-	    for (var count = 1; count <= howMany; count++) {
-	    	$('#tinderslide').find("ul").append(
-	    		"<li class=pane"+count+">" 					+
-	    			"<div>"+giftsLeft[count].name+"</div>" 	+
-	    			"<div class='tImg'></div>" 				+
-	    			"<div>"+"preco"+"</div>"				+
-	    			"<div>"+"loja"+"</div>"					+
-	    			"<div class='like'></div>" 				+
-	    			"<div class='dislike'></div>" 			+
+		$("#frase").replaceWith("<h2 id=frase>"+allGifts[currentGift].description+"</h2>");
+	    for (var count = 0; count < howMany; count++) {
+	    	console.log(currentGift);
+	    	// Formatando Preço caso haja algum
+	    	price = allGifts[currentGift].price;
+	    	if (price != null){
+	    		price = Number(price).toFixed(2);
+	    		price = "R$" + price.replace(".", ",");
+	    	} else{
+	    		price = "";
+	    	};
+
+	    	$('#tinderslide').find("ul").prepend(
+	    		"<li class=pane"+ currentGift  +">" 					+
+	    			"<div>"+allGifts[currentGift].name+"</div>" 	+
+	    			"<div class='tImg'></div>" 						+
+	    			"<div class='price'>"+price+"</div>"			+
+	    			"<div class='like'></div>" 						+
+	    			"<div class='dislike'></div>" 					+
 	    		"</li>");
-	    	$(".pane"+count).find(".tImg").css({
-	    		"background": "url('../www/img/pane/pane"+count+".jpg') no-repeat scroll center center",
-	    		"background-size": "cover"});
+	    	$(".pane"+ currentGift  ).find(".tImg").css({
+	    		"background": "url("+allGifts[currentGift].photo_url+") no-repeat scroll center center",
+	    		"background-size": "contain"});
+	    	currentGift--;
 	    };
 	};
 
@@ -96,19 +105,22 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 		init: function (element) {
 			var responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", function(data) {
 			})
-			.done(function() {
+			.done( function() {
 			 	allGifts = responseGifts.responseJSON;
-			 	giftsLeft = allGifts;
-			 	console.log(giftsLeft);
+			 	console.log(allGifts.length);
+			 	giftsToLoad = allGifts.length;
 
-			 	//loadLoopingGift();
-			 	loadGiftsInHTML(15);
+			 	currentGift  = giftsToLoad- 1;
+			 	pane_count   = giftsToLoad;		// 5
+			 	current_pane = giftsToLoad;	        // 4
+
+			 	loadGiftsInHTML(giftsToLoad);
+			 	loadLoopingGift();
 
 			 	container = $(">ul", element);		// [ul]
 			 	panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
 			 	pane_width = container.width();		// 317
-			 	pane_count = panes.length;			// 5
-			 	current_pane = panes.length - 1;	// 4
+
 			 	
 
 			 	console.log(container);
@@ -118,10 +130,10 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 			 	console.log(current_pane);
 
 			})
-			.fail(function() {
+			.fail( function() {
 				//alert( "error" )
 			})
-			.always(function() {
+			.always( function() {
 			  	//alert( "finished" )
 			});
 			$that = this;
@@ -130,16 +142,17 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 			$(element).bind('touchend mouseup', this.handler);
 		},
 
+
 		showPane: function (index) {
 			panes.eq(current_pane).hide();
 			current_pane = index;
 		},
 
 		next: function () {
-			imgCount++;
-			if (imgCount === 0){
-				imgCount = 0;
-				loadGiftsInHTML();
+			console.log(current_pane);
+			$("#frase").replaceWith("<h2 id=frase>"+allGifts[current_pane-1].description+"</h2>");
+			if (current_pane == 2){
+				//loadGiftsInHTML(5);
 			}
 			return this.showPane(current_pane - 1);
 		},
@@ -207,10 +220,6 @@ $("#home").find("#home-content").on("click", "#ed-mainButton", function(){
 					break;
 				case 'mouseup':
 				case 'touchend':
-					// incImgPassada();
-					// if (imgCount = 4){
-					//     loadGiftsInHTML();
-					// }
 					touchStart = false;
 					var pageX = (typeof ev.pageX == 'undefined') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX;
 					var pageY = (typeof ev.pageY == 'undefined') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY;

@@ -6,6 +6,8 @@ hooks/
 platforms/
 plugins/
 
+.DS_Store
+
 api/.bundle
 
 # Ignore the default SQLite database.

@@ -1,16 +1,24 @@
 /* Wrapper with padding */
-.tinderUpper{
-    display:inline;
-    background: pink;
+.price{
+    color:#87a393;
+    font-size: 18px;
+    text-align: left;
+    position: absolute;
+    bottom: 5px;
+}
+
+#frase{
+    height:100px;
 }
 
 .tinderWrap  {
-    height: 350px;
+    height: 500px;
     padding: 5%;
+    overflow: hidden;
 }
 
 #tinderslide {
-    position: relative;
+
     width: 95%;
     height: 100%;
     display:block;
