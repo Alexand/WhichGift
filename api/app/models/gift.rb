@@ -12,7 +12,19 @@ class Gift < ActiveRecord::Base
 
 	validates_attachment_file_name :photo, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
 
-	def photo_url
+	def photo_thumb_url
     photo.url(:thumb)
+  end
+
+  def photo_medium_url
+    photo.url(:medium)
+  end
+
+  def photo_large_url
+    photo.url(:large)
+  end
+
+  def photo_giant_url
+    photo.url(:giant)
   end
 end
