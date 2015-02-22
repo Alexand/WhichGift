@@ -4,10 +4,10 @@ class Gift < ActiveRecord::Base
 	accepts_nested_attributes_for :categories, allow_destroy: true
 
 	has_attached_file :photo, styles: {
-    thumb: '100x100>',
-    medium: '256x256#',
-    large: '512x512>',
-    giant: '1024x1024>'
+    thumb: '100x100#',
+    small: '256x256',
+    medium: '512x512',
+    large: '1024x1024'
   }
 
 	validates_attachment_file_name :photo, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
