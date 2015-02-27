@@ -8,13 +8,10 @@ class GiftsController < ApplicationController
   end
 
   def find_my_gifts
-    if params[:gender] != 'U'
-      @gifts = Gift.where(["price >= ? and price <= ? and gender = ? and \"ageGroup_id\" = ?", 
-                        params[:minPrice], params[:maxPrice], params[:gender], params[:ageGroupId]]) 
-    else
-      @gifts = Gift.where(["price >= ? and price <= ? and \"ageGroup_id\" = ?", 
-                        params[:minPrice], params[:maxPrice], params[:ageGroupId]])
-    end
+    @gifts = Gift.where(["price >= ? and price <= ?", params[:minPrice], params[:maxPrice]])
+    
+    @gifts = @gifts.where(["gender = ?", params[:gender]]) if params[:gender] != 'U' 
+    @gifts = @gifts.where(["\"ageGroup_id\" = ?", params[:ageGroupId]]) if params[:ageGroupId] != '1' 
   end
 
   # GET /gifts/1
