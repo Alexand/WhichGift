@@ -71,7 +71,7 @@ ActiveAdmin.register Gift do
       input :name
       input :gender,
         :as => :select,
-        :collection => ['M', 'F', 'U']
+        :collection => ['M', 'F']
       input :price
       input :site, :input_html => { :rows => 1 }
       input :description
