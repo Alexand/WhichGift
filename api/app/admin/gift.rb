@@ -5,7 +5,7 @@ ActiveAdmin.register Gift do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
 
-  permit_params :name, :gender, :price, :site, :description, :photo, :ageGroup_id, category_ids: []
+  permit_params :name, :gender, :price, :site, :description, :photo, ageGroup_ids: [], category_ids: []
 
   action_item only: :index do
     link_to 'Quick add', admin_gift_quick_add_path, class: 'fancybox', data: { 'fancybox-type' => 'ajax' }
@@ -55,7 +55,7 @@ ActiveAdmin.register Gift do
       row :site
       row :description
       row "Age Group" do |gift|
-        gift.ageGroup.description unless gift.ageGroup.nil?  
+        (gift.ageGroup.map{ |p| p.description }).join(', ').html_safe 
       end
       row :created_at
       row :updated_at
@@ -75,7 +75,9 @@ ActiveAdmin.register Gift do
       input :price
       input :site, :input_html => { :rows => 1 }
       input :description
-      input :ageGroup, :as => :select, :collection => AgeGroup.all.map {|u| [u.description, u.id]}, :include_blank => false
+      input :ageGroup, 
+        :as => :select, 
+        :collection => AgeGroup.order(:description).map{|u| [u.description, u.id]}
       input :categories, 
         :as => :select, 
         :collection => Category.order(:name), :input_html => { :size => 50 }
