@@ -48,7 +48,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 			"</li>");
 		$(".pane1").find(".tImg").css({
 			"background": "url('../www/img/looping_512.jpg') no-repeat scroll center center",
-			"background-size": "contain"});
+			"background-size": "cover"});
 	};
 
 
@@ -72,16 +72,17 @@ $("#home").on("click", "#ed-mainButton", function(){
 	    	};
 
 	    	gift = $('#tinderslide').find(".pane1").after(
-	    		"<li class=pane"+ (currentGift + 2) + ">"			+
-	    			"<div>"+allGifts[currentGift].name+"</div>" 	+
-	    			"<div class='tImg'></div>" 						+
-	    			"<div class='price'>"+price+"</div>"			+
-	    			"<div class='like'></div>" 						+
-	    			"<div class='dislike'></div>" 					+
+	    		"<li class=pane"+ (currentGift + 2) + ">"					+
+	    			"<h2>"+allGifts[currentGift].name+"</h2>" 				+
+	    			"<div class='tImg'></div>" 								+
+	    			"<p id=frase>"+allGifts[currentGift].description+"</p>" +
+	    			"<div class='price'>"+price+"</div>"					+
+	    			"<div class='like'></div>" 								+
+	    			"<div class='dislike'></div>" 							+
 	    		"</li>");
 	    	$(".pane"+ (currentGift + 2)).find(".tImg").css({
-	    		"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll center center",
-	    		"background-size": "contain"});
+	    		"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
+	    		"background-size": "cover"});
 	    	if (firstLoad == false){
 	    		panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
 	    	}
