@@ -125,8 +125,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 
 			.done( function() {
 			 	allGifts = responseGifts.responseJSON;
-			 	console.log("allGifts length: " + allGifts.length);
-			 	giftsToLoad = 5;
+			 	giftsToLoad = 2;
 
 			 	currentGift  = allGifts.length - 1;	// getting last index
 			 	currentPhrase = currentGift;
@@ -170,7 +169,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 			$("#frase").replaceWith("<h2 id=frase>"+allGifts[currentPhrase].description+"</h2>");
 			currentPhrase--;
 			if (current_pane == 2){
-				loadGiftsInHTML(5);
+				loadGiftsInHTML(2);
 				console.log(panes);
 				console.log(current_pane);
 			}
