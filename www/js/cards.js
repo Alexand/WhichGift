@@ -1,4 +1,4 @@
-$("#home").on("click", "#ed-mainButton", function(){
+$("#home").on("click", "#findGiftsBt", function(){
  	var valores = $("#especificacoes").serializeArray();
  	console.log(valores);
  	
@@ -53,7 +53,6 @@ $("#home").on("click", "#ed-mainButton", function(){
 
 
 	var loadGiftsInHTML = function (howMany, element){
-		$("#frase").replaceWith("<h2 id=frase>"+allGifts[currentPhrase].description+"</h2>");
 	    currentPhrase--;
 	    if (currentGift < howMany){
 	    	howMany = currentGift;
@@ -71,14 +70,17 @@ $("#home").on("click", "#ed-mainButton", function(){
 	    		price = "";
 	    	};
 
+	    	store = allGifts[currentGift].site.split(".")[1]
+
 	    	gift = $('#tinderslide').find(".pane1").after(
-	    		"<li class=pane"+ (currentGift + 2) + ">"					+
-	    			"<h2>"+allGifts[currentGift].name+"</h2>" 				+
-	    			"<div class='tImg'></div>" 								+
-	    			"<p id=frase>"+allGifts[currentGift].description+"</p>" +
-	    			"<div class='price'>"+price+"</div>"					+
-	    			"<div class='like'></div>" 								+
-	    			"<div class='dislike'></div>" 							+
+	    		"<li class=pane"+ (currentGift + 2) + ">"									+
+	    			"<h2>"+allGifts[currentGift].name+"</h2>" 								+
+	    			"<div class='tImg'href='"+allGifts[currentGift].site+"'></div>" 		+
+	    			"<p id=frase>"+allGifts[currentGift].description+"</p>" 				+
+	    			"<div class='price'>"+price+"</div>"									+
+	    			"<div class='store'>"+store+"</div>"									+
+	    			"<div class='like'></div>" 												+
+	    			"<div class='dislike'></div>" 											+
 	    		"</li>");
 	    	$(".pane"+ (currentGift + 2)).find(".tImg").css({
 	    		"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
@@ -124,6 +126,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 				function(data) {})
 
 			.done( function() {
+				$("#loadingGifts").find("img").hide();
 			 	allGifts = responseGifts.responseJSON;
 			 	giftsToLoad = 2;
 
@@ -166,7 +169,6 @@ $("#home").on("click", "#ed-mainButton", function(){
 		},
 
 		next: function (element) {
-			$("#frase").replaceWith("<h2 id=frase>"+allGifts[currentPhrase].description+"</h2>");
 			currentPhrase--;
 			if (current_pane == 2){
 				loadGiftsInHTML(2);
