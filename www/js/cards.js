@@ -57,7 +57,6 @@ $("#home").on("click", "#ed-mainButton", function(){
 	    currentPhrase--;
 	    if (currentGift < howMany){
 	    	howMany = currentGift;
-	    	console.log("howMany: " + howMany);
 	    };
 
 	    for (var count = 0; count < howMany; count++) {
@@ -139,12 +138,6 @@ $("#home").on("click", "#ed-mainButton", function(){
 			 	panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
 			 	pane_width = container.width();		// 317
 
-			 	//console.log(container);
-			 	//console.log(panes);
-			 	//console.log(pane_width);
-			 	//console.log(pane_count);
-			 	//console.log(current_pane);
-
 			})
 			.fail( function() {
 				//alert( "error" )
@@ -169,10 +162,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 			currentPhrase--;
 			if (current_pane == 2){
 				loadGiftsInHTML(2);
-				console.log(panes);
-				console.log(current_pane);
 			}
-			console.log(currentGift);
 			return this.showPane(current_pane - 1);
 		},
 
