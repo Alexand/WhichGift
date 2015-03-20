@@ -27,15 +27,15 @@ $("#home").on("click", "#findGiftsBt", function(){
 		};
 
 	var container = null;
-	var panes = null;
+	var panes = [];
 	var $that = null;
 	var xStart = 0;
 	var yStart = 0;
 	var touchStart = false;
-	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, pane_count = 0, current_pane = 0;
-
+	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, current_pane = 0;
 	var allGifts = null;
 	var giftsLeft = null;
+	var responseGifts = null;
 
 
 	var loadLoopingGift = function(){
@@ -51,50 +51,76 @@ $("#home").on("click", "#findGiftsBt", function(){
 			"background-size": "cover"});
 	};
 
+	var initializeLoadedGifts = function(responseGifts, element){
+			allGifts = responseGifts.responseJSON;
+		 	giftsToLoad = 2;
+
+		 	currentGift  = allGifts.length - 1;	// getting last index
+		 	//pane_count   = allGifts.length + 1;	// 5 (panes + looping gift)
+		 	current_pane = 0;	        		// 4
+		 	firstLoad = true;
+
+		 	loadLoopingGift();
+		 	loadGiftsInHTML(giftsToLoad, element);
+
+		 	container = $(">ul", element);		// [ul]
+		 	panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
+		 	pane_width = container.width();		// 317
+	}
+
+	function loadSingleGift() {
+			price = allGifts[currentGift].price;
+	  	if (price != null){
+	  		price = Number(price).toFixed(2);
+	  		price = "R$" + price.replace(".", ",");
+	  	} else{
+	  		price = "";
+	  	};
+
+	  	gift = $('#tinderslide').find(".pane1").after(
+	  		"<li class=pane"+ (currentGift + 2) + ">"					+
+	  			"<h2>"+allGifts[currentGift].name+"</h2>" 				+
+	  			"<div class='tImg'></div>" 								+
+	  			"<p id=frase>"+allGifts[currentGift].description+"</p>" +
+	  			"<div class='price'>"+price+"</div>"					+
+	  			"<div class='like'></div>" 								+
+	  			"<div class='dislike'></div>" 							+
+	  		"</li>");
+	  	$(".pane"+ (currentGift + 2)).find(".tImg").css({
+	  		"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
+	  		"background-size": "cover"});
+	  	if (firstLoad == false){
+	  		panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
+	  	}
+	  	currentGift--;
+	}
 
 	var loadGiftsInHTML = function (howMany, element){
-	    currentPhrase--;
+	    var isLastDBPresent = false;
+
 	    if (currentGift < howMany){
 	    	howMany = currentGift;
-	    	console.log("howMany: " + howMany);
-	    };
+	    }
+
+	    if(currentGift === 0 && allGifts.length > 0){
+	    	isLastDBPresent = true;
+			}
 
 	    for (var count = 0; count < howMany; count++) {
+	    	loadSingleGift();
+	    }
 
-	    	// Formatando Preço caso haja algum
-	    	price = allGifts[currentGift].price;
-	    	if (price != null){
-	    		price = Number(price).toFixed(2);
-	    		price = "R$" + price.replace(".", ",");
-	    	} else{
-	    		price = "";
-	    	};
+	    if(isLastDBPresent){
+	    	loadSingleGift();
+	    	current_pane = panes.length - 1;
+	    }else if(currentGift === -1){
+	    	current_pane = 2;
+	    }
+	    else{
+				current_pane += giftsToLoad;	
+	    }
 
-	    	store = allGifts[currentGift].site.split(".")[1]
-
-	    	gift = $('#tinderslide').find(".pane1").after(
-	    		"<li class=pane"+ (currentGift + 2) + ">"									+
-	    			"<h2>"+allGifts[currentGift].name+"</h2>" 								+
-	    			"<div class='tImg'href='"+allGifts[currentGift].site+"'></div>" 		+
-	    			"<p id=frase>"+allGifts[currentGift].description+"</p>" 				+
-	    			"<div class='price'>"+price+"</div>"									+
-	    			"<div class='store'>"+store+"</div>"									+
-	    			"<div class='like'></div>" 												+
-	    			"<div class='dislike'></div>" 											+
-	    		"</li>");
-	    	$(".pane"+ (currentGift + 2)).find(".tImg").css({
-	    		"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
-	    		"background-size": "cover"});
-	    	if (firstLoad == false){
-	    		panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
-	    	}
-	    	currentGift--;
-	    };
 	    firstLoad = false;
-	    current_pane += giftsToLoad;
-	    console.log("current pane: " +current_pane);
-	    //pane_count = current_pane +1;
-	    console.log("pane count: " +pane_count);  
 	};
 
 
@@ -121,34 +147,12 @@ $("#home").on("click", "#findGiftsBt", function(){
 		
 		init: function (element) {
 
-			var responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", 
+			responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", 
 				{"minPrice":minPrice,"maxPrice":maxPrice,"gender":gender,"ageGroupId": ageGroupId},
 				function(data) {})
 
 			.done( function() {
-				$("#loadingGifts").find("img").hide();
-			 	allGifts = responseGifts.responseJSON;
-			 	giftsToLoad = 2;
-
-			 	currentGift  = allGifts.length - 1;	// getting last index
-			 	currentPhrase = currentGift;
-			 	pane_count   = allGifts.length + 1;	// 5 (panes + looping gift)
-			 	current_pane = 0;	        		// 4
-			 	firstLoad = true;
-
-			 	loadLoopingGift();
-			 	loadGiftsInHTML(giftsToLoad, element);
-
-			 	container = $(">ul", element);		// [ul]
-			 	panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
-			 	pane_width = container.width();		// 317
-
-			 	//console.log(container);
-			 	//console.log(panes);
-			 	//console.log(pane_width);
-			 	//console.log(pane_count);
-			 	//console.log(current_pane);
-
+				initializeLoadedGifts(responseGifts, element);
 			})
 			.fail( function() {
 				//alert( "error" )
@@ -164,18 +168,18 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 
 		showPane: function (index) {
-			panes.eq(current_pane).hide();
+			panes.eq(current_pane).remove();
+			panes.splice(-1,1);
 			current_pane = index;
+			if(panes.length === 0){
+				initializeLoadedGifts(responseGifts, document.getElementById('tinderslide'));
+			}
 		},
 
-		next: function (element) {
-			currentPhrase--;
+		next: function () {
 			if (current_pane == 2){
 				loadGiftsInHTML(2);
-				console.log(panes);
-				console.log(current_pane);
 			}
-			console.log(currentGift);
 			return this.showPane(current_pane - 1);
 		},
 
@@ -220,7 +224,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 						var pageY = typeof ev.pageY == 'undefined' ? ev.originalEvent.touches[0].pageY : ev.pageY;
 						var deltaX = parseInt(pageX) - parseInt(xStart);
 						var deltaY = parseInt(pageY) - parseInt(yStart);
-						var percent = ((100 / pane_width) * deltaX) / pane_count;
+						var percent = ((100 / pane_width) * deltaX) / panes.length;
 						posX = deltaX + lastPosX;
 						posY = deltaY + lastPosY;
 

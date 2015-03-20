@@ -31,6 +31,7 @@
     width: 95%;
     height: 95%;
     display:block;
+    overflow: hidden;
 }
 
 #tinderslide ul {
