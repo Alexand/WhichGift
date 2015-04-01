@@ -102,13 +102,14 @@ $("#home").on("click", "#ed-mainButton", function(){
 	    	howMany = currentGift;
 	    }
 
-	    if(currentGift === 0 && allGifts.length > 0){
+	    if((currentGift === 0 || currentGift === 1) && allGifts.length > 0){
 	    	isLastDBPresent = true;
+			}else{
+		    for (var count = 0; count < howMany; count++) {
+		    	loadSingleGift();
+		    }				
 			}
 
-	    for (var count = 0; count < howMany; count++) {
-	    	loadSingleGift();
-	    }
 
 	    if(isLastDBPresent){
 	    	loadSingleGift();
