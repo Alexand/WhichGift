@@ -5,6 +5,8 @@
 //
 //
 
+var firstSearch = true;
+
 $("#feedbackForm").on("click", "#ed-mainButton", function(){
 	var valores = $("#feedbackForm").serializeArray();
 	motivos = [0, "Bug", "Critica", "Sugestao"];
@@ -39,7 +41,6 @@ $("#feedbackForm").on("click", "#ed-mainButton", function(){
 
 
 $("#home").on("click", "#findGiftsBt", function(){
-	//alert("indo")
 	(jQuery, window, document);
 
 	$("#tinderslide").Cards({
@@ -53,18 +54,13 @@ $("#home").on("click", "#findGiftsBt", function(){
 		    // set the status text
 	        $('#status').html('Like image ' + (item.index()+1));
 	    },
-
+	    
 		animationRevertSpeed: 200,
 		animationSpeed: 400,
 		threshold: 1,
 		likeSelector: '.like',
 		dislikeSelector: '.dislike'
 	});
-
-	// $('.actions .like, .actions .dislike').click(function(e){
-	// 	e.preventDefault();
-	// 	$("#tinderslide").Cards($(this).attr('class'));
-	// });
 });
 
 

@@ -122,7 +122,6 @@ $("#home").on("click", "#findGiftsBt", function(){
 	  	currentGift--;
 	}
 
-
 	var loadGiftsInHTML = function (howMany, element){
 	    var isLastDBPresent = false;
 
@@ -154,6 +153,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 
 	function Plugin(element, options) {
+		
 		this.element = element;
 		this.settings = $.extend({}, defaults, options);
 		this._defaults = defaults;
@@ -175,7 +175,9 @@ $("#home").on("click", "#findGiftsBt", function(){
 		// url:
 		
 		init: function (element) {
-
+		if (!firstSearch){
+					$('#tinderslide ul li').remove()
+				}
 			responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", 
 				{"minPrice":minPrice,"maxPrice":maxPrice,"gender":gender,"ageGroupId": ageGroupId},
 				function(data) {})
@@ -319,10 +321,13 @@ $("#home").on("click", "#findGiftsBt", function(){
 		this.each(function () {
 			if (!$.data(this, "plugin_" + pluginName)) {
 				$.data(this, "plugin_" + pluginName, new Plugin(this, options));
+				firstSearch = false;
 			}
 			else if ($.isFunction(Plugin.prototype[options])) {
 				$.data(this, 'plugin_' + pluginName)[options]();
-		    }
+	    }else if(!firstSearch){
+	    	$.data(this, 'plugin_' + pluginName).init(this);
+	    }
 		});
 
 		return arguments.callee;
