@@ -1,4 +1,4 @@
-$("#home").on("click", "#ed-mainButton", function(){
+$("#home").on("click", "#findGiftsBt", function(){
  	var valores = $("#especificacoes").serializeArray();
  	console.log(valores);
  	
@@ -41,8 +41,9 @@ $("#home").on("click", "#ed-mainButton", function(){
 	var loadLoopingGift = function(){
 		$('#tinderslide').find("ul").prepend(
 			"<li class=pane1>" 				    +
-				"<div>Looping</div>" 			+
+				"<h2>Looping</h2>" 				+
 				"<div class='tImg'></div>" 		+
+				"<p id=frase>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
 				"<div class='like'></div>" 		+
 				"<div class='dislike'></div>" 	+
 			"</li>");
@@ -51,8 +52,24 @@ $("#home").on("click", "#ed-mainButton", function(){
 			"background-size": "cover"});
 	};
 
+
+	var loadEmptyGift = function(){
+		$('#tinderslide').find("ul").prepend(
+			"<li class=pane1>" 				    	+
+				"<h2>Nenhum Encontrado</h2>" 		+
+				"<div class='tImg'></div>" 			+
+				"<p id=frase>Opa, não foram encontrados presentes para este perfil. Tente outras especificações.</p>" +
+				"<div class='like'></div>" 			+
+				"<div class='dislike'></div>" 		+
+			"</li>");
+		$(".pane1").find(".tImg").css({
+			"background": "url('../www/img/empty_512.jpg') no-repeat scroll center center",
+			"background-size": "cover"});
+	};
+
+
 	var initializeLoadedGifts = function(responseGifts, element){
-			allGifts = responseGifts.responseJSON;
+			allGifts = responseGifts.responseJSON.sort(function() { return 0.5 - Math.random() });
 		 	giftsToLoad = 2;
 
 		 	currentGift  = allGifts.length - 1;	// getting last index
@@ -60,13 +77,23 @@ $("#home").on("click", "#ed-mainButton", function(){
 		 	current_pane = 0;	        		// 4
 		 	firstLoad = true;
 
-		 	loadLoopingGift();
-		 	loadGiftsInHTML(giftsToLoad, element);
+		 	
+		 	console.log("Gifts found: " +allGifts.length);
+
+		 	if (allGifts.length == 0) {
+		 		loadEmptyGift();
+		 	} else{
+		 		loadLoopingGift();
+		 		loadGiftsInHTML(giftsToLoad, element);
+		 	};
+
+		 	$("#loadingGifts").find("img").hide();	// hiding the Loading.gif
 
 		 	container = $(">ul", element);		// [ul]
 		 	panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
 		 	pane_width = container.width();		// 317
 	}
+
 
 	function loadSingleGift() {
 			price = allGifts[currentGift].price;
@@ -94,6 +121,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 	  	}
 	  	currentGift--;
 	}
+
 
 	var loadGiftsInHTML = function (howMany, element){
 	    var isLastDBPresent = false;
@@ -207,12 +235,14 @@ $("#home").on("click", "#ed-mainButton", function(){
 
 			switch (ev.type) {
 				case 'touchstart':
+				console.log("TOUCHSTART");
 					if(touchStart === false) {
 						touchStart = true;
 						xStart = ev.originalEvent.touches[0].pageX;
 						yStart = ev.originalEvent.touches[0].pageY;
 					}
 				case 'mousedown':
+					console.log("MOUSEDOWN");
 					if(touchStart === false) {
 						touchStart = true;
 						xStart = ev.pageX;
@@ -220,6 +250,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 					}
 				case 'mousemove':
 				case 'touchmove':
+				console.log("MOVING");
 					if(touchStart === true) {
 						var pageX = typeof ev.pageX == 'undefined' ? ev.originalEvent.touches[0].pageX : ev.pageX;
 						var pageY = typeof ev.pageY == 'undefined' ? ev.originalEvent.touches[0].pageY : ev.pageY;
@@ -294,7 +325,7 @@ $("#home").on("click", "#ed-mainButton", function(){
 		    }
 		});
 
-		return this;
+		return arguments.callee;
 	};
 
 })(jQuery, window, document);

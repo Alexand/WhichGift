@@ -7,6 +7,15 @@
     bottom: 5px;
 }
 
+.store{
+    color:#87a393;
+    font-size: 18px;
+    right: 10px;
+    position: absolute;
+    bottom: 5px;
+    text-transform:capitalize;
+}
+
 #frase{
     height:100px;
     padding:10px;
@@ -22,6 +31,7 @@
     width: 95%;
     height: 95%;
     display:block;
+
 }
 
 #tinderslide ul {

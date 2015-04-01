@@ -35,8 +35,13 @@ $("#feedbackForm").on("click", "#ed-mainButton", function(){
 //
 //
 
-$("#home").on("click", "#ed-mainButton", function(){
+
+
+
+$("#home").on("click", "#findGiftsBt", function(){
 	//alert("indo")
+	(jQuery, window, document);
+
 	$("#tinderslide").Cards({
 		// dislike callback
 	    onDislike: function (item) {

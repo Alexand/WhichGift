@@ -66,14 +66,22 @@
                 </fieldset>
 			</form>
     	</div>
+    </div>
+
 <!-- Botão Continuar -->
-    	<a data-role="button" href="#gift" data-transition="slide" class="ui-btn ui-corner-all" id="ed-mainButton">Encontrar Presente</a>
+	<div class="findGiftsDiv">
+    	<a data-role="button" href="#gift" data-transition="slide" class="ui-btn ui-corner-all" id="findGiftsBt"></a>
     </div>
 
 <!-- LowInfo -->
 	<div id="ed-lowInfo">
 		<a href="#feedback" data-transition="slide" data-direction="reverse" class="ui-btn-left">Feedback</a>
-		<a href="#termos" class="ui-btn-right" data-transition="slide">Termos e Condições</a>
+		<a href="#termos" class="ui-btn-right" data-transition="pop" data-rel="popup" data-position-to="window">Termos e Condições</a>
+	</div>
+
+<!-- ===== TERMOS ===== -->
+	<div id="termos" data-role="popup" class="ui-content">
+		<embed src="termos.txt">
 	</div>
 </div>
 
@@ -89,6 +97,12 @@
 
 <!-- Descrição 	<div data-role="main" class="ui-content">
 	</div>-->
+
+
+<!-- Loading -->
+    <div id="loadingGifts" class="winCentered">
+    	<img src="img/loading.gif">
+	</div>
 
 <!-- Cards -->
 	<div class="tinderWrap">
@@ -159,6 +173,6 @@
 	<script src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
 
 	<script src="js/whichgift.js"></script>
-
+	<script src="js/ed.js"></script>
 
 </body></html>

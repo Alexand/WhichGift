@@ -1,6 +1,6 @@
  .ui-mobile .ui-page-active {
  	display: block;
- 	overflow: visible;
+ 	overflow: hidden;
 	overflow-x: auto;
 }
 
@@ -84,6 +84,27 @@ html .ui-content #frase {
 	box-shadow: 0 2px 0 #214071;
 }
 
+.findGiftsDiv {
+	height: 80px;
+	width: 100%;
+	position:fixed;
+	bottom: 30px;
+	margin: auto auto;
+	z-index: 3;
+
+}
+
+#findGiftsBt {
+	background: #31609f url(../img/icon_bt.png) no-repeat center center;
+	border:0px;
+	box-shadow: 0 2px 0 #214071;
+	height: 50px;
+	width: 42px;
+	border-radius: 50px;
+	margin: auto auto;
+
+}
+
 input #ed-mainButton {
 	text-align: center;
 	background-color: #31609f;
@@ -135,6 +156,34 @@ html .ui-page-theme-b #ed-lowInfo {
 :-moz-placeholder {color: #12856D;}
 ::-moz-placeholder {color: #12856D;}
 :-ms-input-placeholder {color: #12856D;}
+
+.winCentered{
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+#loadingGifts{
+	width: 256px;
+	height: 256px;
+}
+
+#termos {
+	background-color: rgba(0,0,0,0.5);
+}
+
+#termos embed {
+	overflow: hidden;
+}
+
+#termos p{
+	color: white;
+}
+
+
 
 @font-face {
   font-family: 'Lato';
