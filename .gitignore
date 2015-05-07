@@ -1,7 +1,7 @@
 ####################
 ## Personal Ignore
 ####################
-
+.idea/
 hooks/
 platforms/
 plugins/
