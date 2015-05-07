@@ -179,8 +179,8 @@ $("#home").on("click", "#findGiftsBt", function(){
 					$('#tinderslide ul li').remove()
 				}
 
-			//responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
-			responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
+            //responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
+            responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
 				{"minPrice":minPrice,"maxPrice":maxPrice,"gender":gender,"ageGroupId": ageGroupId},
 				function(data) {})
 
@@ -193,7 +193,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			.always( function() {
 			  	//alert( "finished" )
 			});
-			$that = this;
+            $that = this;
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
