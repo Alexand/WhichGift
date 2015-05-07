@@ -178,7 +178,9 @@ $("#home").on("click", "#findGiftsBt", function(){
 		if (!firstSearch){
 					$('#tinderslide ul li').remove()
 				}
-			responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json", 
+
+			//responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
+			responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
 				{"minPrice":minPrice,"maxPrice":maxPrice,"gender":gender,"ageGroupId": ageGroupId},
 				function(data) {})
 
@@ -195,16 +197,21 @@ $("#home").on("click", "#findGiftsBt", function(){
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
+
+			console.log('init currPane:' + current_pane);
 		},
 
 
 		showPane: function (index) {
+			console.log('showPane oldCurrPane:' + current_pane);
 			panes.eq(current_pane).remove();
 			panes.splice(-1,1);
 			current_pane = index;
+			console.log('showPane newCurrPane:' + current_pane);
 			if(panes.length === 0){
 				initializeLoadedGifts(responseGifts, document.getElementById('tinderslide'));
 			}
+
 		},
 
 		next: function () {
@@ -237,14 +244,12 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 			switch (ev.type) {
 				case 'touchstart':
-				console.log("TOUCHSTART");
 					if(touchStart === false) {
 						touchStart = true;
 						xStart = ev.originalEvent.touches[0].pageX;
 						yStart = ev.originalEvent.touches[0].pageY;
 					}
 				case 'mousedown':
-					console.log("MOUSEDOWN");
 					if(touchStart === false) {
 						touchStart = true;
 						xStart = ev.pageX;
@@ -252,7 +257,6 @@ $("#home").on("click", "#findGiftsBt", function(){
 					}
 				case 'mousemove':
 				case 'touchmove':
-				console.log("MOVING");
 					if(touchStart === true) {
 						var pageX = typeof ev.pageX == 'undefined' ? ev.originalEvent.touches[0].pageX : ev.pageX;
 						var pageY = typeof ev.pageY == 'undefined' ? ev.originalEvent.touches[0].pageY : ev.pageY;

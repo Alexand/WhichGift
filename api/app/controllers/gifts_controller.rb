@@ -10,8 +10,11 @@ class GiftsController < ApplicationController
   def find_my_gifts
     @gifts = Gift.where(["price >= ? and price <= ?", params[:minPrice], params[:maxPrice]])
     
-    @gifts = @gifts.where(["gender = ?", params[:gender]]) if params[:gender] != 'U' 
-    @gifts = @gifts.where(["\"ageGroup_id\" = ?", params[:ageGroupId]]) if params[:ageGroupId] != '1' 
+    @gifts = @gifts.where(["gender = ?", params[:gender]]) if params[:gender] != 'U'
+    if params[:ageGroupId] != '1'
+      @gifts = @gifts.joins("INNER JOIN \"gifts_ageGroups\" g ON g.gift_id = gifts.id and g.\"ageGroup_id\" = #{params[:ageGroupId]}")
+    end
+    p @gifts
   end
 
   # GET /gifts/1
