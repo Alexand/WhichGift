@@ -69,34 +69,36 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 
 	var initializeLoadedGifts = function(responseGifts, element){
-			allGifts = responseGifts.responseJSON.sort(function() { return 0.5 - Math.random() });
-		 	giftsToLoad = 2;
+        allGifts = responseGifts.responseJSON.sort(function() { return 0.5 - Math.random() });
+        if (allGifts.length>1)
+            giftsToLoad = 2;
+        else {
+            giftsToLoad = allGifts.length;
+        }
 
-		 	currentGift  = allGifts.length - 1;	// getting last index
-		 	//pane_count   = allGifts.length + 1;	// 5 (panes + looping gift)
-		 	current_pane = 0;	        		// 4
-		 	firstLoad = true;
+        current_pane = 0;	        		// 4
+        firstLoad = true;
+        console.log("Gifts found: " + allGifts.length);
 
-		 	
-		 	console.log("Gifts found: " +allGifts.length);
+        if (allGifts.length == 0) {
+            loadEmptyGift();
+        } else{
+            currentGift  = allGifts.length - 1;	// getting last index
+            loadLoopingGift();
+            loadGiftsInHTML(giftsToLoad, element);
+        };
 
-		 	if (allGifts.length == 0) {
-		 		loadEmptyGift();
-		 	} else{
-		 		loadLoopingGift();
-		 		loadGiftsInHTML(giftsToLoad, element);
-		 	};
+        $("#loadingGifts").find("img").hide();	// hiding the Loading.gif
 
-		 	$("#loadingGifts").find("img").hide();	// hiding the Loading.gif
-
-		 	container = $(">ul", element);		// [ul]
-		 	panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
-		 	pane_width = container.width();		// 317
+        container = $(">ul", element);		// [ul]
+        panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
+        pane_width = container.width();		// 317
 	}
 
 
 	function loadSingleGift() {
-			price = allGifts[currentGift].price;
+        price = allGifts[currentGift].price;
+
 	  	if (price != null){
 	  		price = Number(price).toFixed(2);
 	  		price = "R$" + price.replace(".", ",");
@@ -131,16 +133,20 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 	    if((currentGift === 0 || currentGift === 1) && allGifts.length > 0){
 	    	isLastDBPresent = true;
-			}else{
+        }else{
 		    for (var count = 0; count < howMany; count++) {
 		    	loadSingleGift();
 		    }				
-			}
+        }
 
 
 	    if(isLastDBPresent){
 	    	loadSingleGift();
-	    	current_pane = panes.length - 1;
+            if(panes.length > 0)
+	    	    current_pane = panes.length - 1;
+            else{
+                current_pane = 1;
+            }
 	    }else if(currentGift === -1){
 	    	current_pane = 2;
 	    }
@@ -179,8 +185,8 @@ $("#home").on("click", "#findGiftsBt", function(){
 					$('#tinderslide ul li').remove()
 				}
 
-            //responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
-            responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
+            responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
+            //responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
 				{"minPrice":minPrice,"maxPrice":maxPrice,"gender":gender,"ageGroupId": ageGroupId},
 				function(data) {})
 
@@ -197,8 +203,6 @@ $("#home").on("click", "#findGiftsBt", function(){
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
-
-			console.log('init currPane:' + current_pane);
 		},
 
 
