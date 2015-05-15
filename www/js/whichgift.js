@@ -74,8 +74,8 @@ $("#home").on("click", "#findGiftsBt", function(){
 //
 
 // botão Voltar
-$("#giftsHeader").on("click","a" , function(){
-	//alert("voltando")
+$("#giftsHeader").on("click","#btnVoltar" , function(){
+
 });
 
 // resetando Especificações

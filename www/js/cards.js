@@ -181,9 +181,19 @@ $("#home").on("click", "#findGiftsBt", function(){
 		// url:
 		
 		init: function (element) {
-		if (!firstSearch){
-					$('#tinderslide ul li').remove()
-				}
+			if (!firstSearch){
+				$('#tinderslide ul li').remove();
+				container = null;
+				panes = [];
+				$that = null;
+				xStart = 0;
+				yStart = 0;
+				touchStart = false;
+				posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, current_pane = 0;
+				allGifts = null;
+				giftsLeft = null;
+				responseGifts = null;
+			}
 
             responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
             //responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
