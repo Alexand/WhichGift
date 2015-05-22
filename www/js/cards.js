@@ -95,7 +95,6 @@ $("#home").on("click", "#findGiftsBt", function(){
         pane_width = container.width();		// 317
 	}
 
-
 	function loadSingleGift() {
         price = allGifts[currentGift].price;
 
@@ -109,12 +108,14 @@ $("#home").on("click", "#findGiftsBt", function(){
 	  	gift = $('#tinderslide').find(".pane1").after(
 	  		"<li class=pane"+ (currentGift + 2) + ">"					+
 	  			"<h2>"+allGifts[currentGift].name+"</h2>" 				+
-	  			"<div class='tImg'></div>" 								+
+	  			"<div class='tImg'></div>" 	+
+				"<div class='invisible'>"+allGifts[currentGift].site+"</div>" 	+
 	  			"<p id=frase>"+allGifts[currentGift].description+"</p>" +
 	  			"<div class='price'>"+price+"</div>"					+
-	  			"<div class='like'></div>" 								+
-	  			"<div class='dislike'></div>" 							+
+	  			//"<div class='like'></div>" 								+
+	  			//"<div class='dislike'></div>" 							+
 	  		"</li>");
+
 	  	$(".pane"+ (currentGift + 2)).find(".tImg").css({
 	  		"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
 	  		"background-size": "cover"});
@@ -195,8 +196,8 @@ $("#home").on("click", "#findGiftsBt", function(){
 				responseGifts = null;
 			}
 
-            responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
-            //responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
+            //responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
+            responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
 				{"minPrice":minPrice,"maxPrice":maxPrice,"gender":gender,"ageGroupId": ageGroupId},
 				function(data) {})
 
@@ -213,6 +214,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
+			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText, '_blank', 'location=yes');};
 		},
 
 
@@ -222,6 +224,12 @@ $("#home").on("click", "#findGiftsBt", function(){
 			panes.splice(-1,1);
 			current_pane = index;
 			console.log('showPane newCurrPane:' + current_pane);
+
+			//var js = "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');";
+			//var newclick = new Function(js);
+			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText, '_blank', 'location=yes');};
+			//$("#openStore").attr('onclick', "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');").click(newclick);
+
 			if(panes.length === 0){
 				initializeLoadedGifts(responseGifts, document.getElementById('tinderslide'));
 			}
