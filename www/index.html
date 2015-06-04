@@ -11,11 +11,16 @@
 	<link rel="stylesheet" href="css/jquery.mobile.flatui.min.css">
 	<link rel="stylesheet" href="css/cards.css">
 	<link rel="stylesheet" href="css/whichgift.css">
+	<script>
+		setTimeout(function(){
+			window.analytics.trackView('home');
+		}, 5000);
+	</script>
 </head>
 
 
 
-<body>
+<body onload="script();">
 <!-- ===== MAIN PAGE ===== -->
 <div data-role="page" id="home" class="ui-page ui-page-theme-b">
 

@@ -37,9 +37,6 @@ var app = {
         app.receivedEvent('deviceready');
         FastClick.attach(document.body);
         window.analytics.startTrackerWithId('UA-62972903-2');
-        window.analytics.trackView('WhichGift');
-        window.analytics.trackView('home');
-        window.analytics.trackView('gift');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
