@@ -73,11 +73,6 @@ $("#home").on("click", "#findGiftsBt", function(){
 //
 //
 
-// botão Voltar
-$("#giftsHeader").on("click","#btnVoltar" , function(){
-
-});
-
 // resetando Especificações
 $("#giftsHeader").on("click", "#resetButton", function(){
     $("#especificacoes").closest("form").trigger("reset");
