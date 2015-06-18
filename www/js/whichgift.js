@@ -1,4 +1,12 @@
 
+// INITIALIZE
+$( document ).ready(function() {
+	$("#openStore").hide();
+	$("body").removeClass("ui-mobile-viewport-transitioning");
+});
+
+
+
 //
 //
 //     FEEDBACK
@@ -26,19 +34,11 @@ $("#feedbackForm").on("click", "#ed-mainButton", function(){
 
 
 
-
-
-
-
-
 //
 //
 //     ESPECIFICAÇÕES
 //
 //
-
-
-
 
 $("#home").on("click", "#findGiftsBt", function(){
 	(jQuery, window, document);
@@ -73,7 +73,16 @@ $("#home").on("click", "#findGiftsBt", function(){
 //
 //
 
+// botão Voltar
+$("#giftsHeader").on("click","#btnVoltar" , function(){
+	$("#loadingGifts").find("img").show();
+	$("#openStore").hide();
+});
+
 // resetando Especificações
 $("#giftsHeader").on("click", "#resetButton", function(){
     $("#especificacoes").closest("form").trigger("reset");
+	$("#loadingGifts").find("img").show();
+	$("#openStore").hide();
 });
+

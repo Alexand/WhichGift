@@ -81,14 +81,16 @@ $("#home").on("click", "#findGiftsBt", function(){
         console.log("Gifts found: " + allGifts.length);
 
         if (allGifts.length == 0) {
-            loadEmptyGift();
+			loadEmptyGift();
         } else{
             currentGift  = allGifts.length - 1;	// getting last index
             loadLoopingGift();
             loadGiftsInHTML(giftsToLoad, element);
+			$("#openStore").show();
         };
 
-        $("#loadingGifts").find("img").hide();	// hiding the Loading.gif
+        $("#loadingGifts").find("img").hide();
+
 
         container = $(">ul", element);		// [ul]
         panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
@@ -224,7 +226,11 @@ $("#home").on("click", "#findGiftsBt", function(){
 			panes.splice(-1,1);
 			current_pane = index;
 			console.log('showPane newCurrPane:' + current_pane);
-
+			if(current_pane == 0){
+				$("#openStore").hide();
+			}else{
+				$("#openStore").show();
+			}
 			//var js = "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');";
 			//var newclick = new Function(js);
 			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText, '_blank', 'location=yes');};
@@ -240,6 +246,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			if (current_pane == 2){
 				loadGiftsInHTML(2);
 			}
+			console.log(panes.length);
 			return this.showPane(current_pane - 1);
 		},
 
