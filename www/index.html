@@ -20,7 +20,7 @@
 
 
 
-<body onload="script();">
+<body>
 <!-- ===== MAIN PAGE ===== -->
 <div data-role="page" id="home" class="ui-page ui-page-theme-b">
 
@@ -100,13 +100,9 @@
 		<a href="#home" data-icon="recycle" data-transition="pop" data-iconpos="right" id="resetButton" class="ui-btn-right">Recomeçar</a>
 	</div>
 
-<!-- Descrição 	<div data-role="main" class="ui-content">
-	</div>-->
-
-
 <!-- Loading -->
-    <div id="loadingGifts" class="winCentered">
-    	<img src="img/loading.gif">
+  <div id="loadingGifts" class="winCentered">
+    <img src="img/loading.gif">
 	</div>
 
 <!-- Cards -->
@@ -119,13 +115,6 @@
 			<a href="#" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn ui-corner-all" id="ed-mainButton">Ir Para Loja</a>
 		</div>
     </div>
-
- jTinder trigger by buttons
-	<div class="actions">
-        <a href="#" class="dislike"><i></i></a>
-        <a href="#" class="like"><i></i></a>
-    </div>
-</div>
 
 
 
@@ -153,7 +142,7 @@
 				<label for="email">Email (opcional):</label>
 				<input type="email" data-clear-btn="false" name="email" id="email" placeholder="">
 				<label for="comentarios">Comentários:</label>
-				<textarea name="comentarios" id="comentarios" cols="30" rows="8" value="" placeholder="Hei! O que achou da experiência, usabilidade e diversão? Tem alguma sugestão de presentes?"></textarea>
+				<textarea name="comentarios" id="comentarios" cols="30" rows="5" value="" placeholder="Hei! O que achou da experiência, usabilidade e diversão? Tem alguma sugestão de presentes?"></textarea>
 				<a href="#popupBasic" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn ui-corner-all" id="ed-mainButton">Enviar</a>
 				<div data-role="popup" id="popupBasic" data-overlay-theme="b">
 					<p>Formulário enviado, muito obrigado</p>
@@ -168,13 +157,13 @@
 	<script src="cordova.js"></script>
 	<script src="js/index.js"></script>
 <!-- jQuery lib -->
-    <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/jquery-1.11.3.min.js"></script>
 <!-- jQuery Mobile -->
-	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.0.min.js"></script>
+	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.5.min.js"></script>
 <!-- transform2d lib -->
-    <script src="js/jquery.transform2d.js"></script>
+  <script src="js/jquery.transform2d.js"></script>
 <!-- gifts cards lib -->
-    <script src="js/cards.js"></script>
+  <script src="js/cards.js"></script>
 <!-- App-o-Matic Plugins -->
 	<script src="lib/fastclick/js/fastclick.js"></script>
 	<script src="lib/handlebars/js/handlebars-v1.3.0.js"></script>

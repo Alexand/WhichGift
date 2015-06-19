@@ -5,6 +5,7 @@
     text-align: left;
     position: absolute;
     bottom: 5px;
+    display:block;
 }
 
 .store{

@@ -1,7 +1,7 @@
 $("#home").on("click", "#findGiftsBt", function(){
  	var valores = $("#especificacoes").serializeArray();
  	console.log(valores);
- 	
+
  	minPrice = valores[0].value;
  	maxPrice = valores[1].value;
  	ageGroupId = valores[2].value;
@@ -36,6 +36,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 	var allGifts = null;
 	var giftsLeft = null;
 	var responseGifts = null;
+	var isEmptyGift = 0;
 
 
 	var loadLoopingGift = function(){
@@ -81,7 +82,9 @@ $("#home").on("click", "#findGiftsBt", function(){
         console.log("Gifts found: " + allGifts.length);
 
         if (allGifts.length == 0) {
-			loadEmptyGift();
+						loadEmptyGift();
+						isEmptyGift = 1;
+						$("#openStore").hide();
         } else{
             currentGift  = allGifts.length - 1;	// getting last index
             loadLoopingGift();
@@ -139,7 +142,7 @@ $("#home").on("click", "#findGiftsBt", function(){
         }else{
 		    for (var count = 0; count < howMany; count++) {
 		    	loadSingleGift();
-		    }				
+		    }
         }
 
 
@@ -154,7 +157,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 	    	current_pane = 2;
 	    }
 	    else{
-				current_pane += giftsToLoad;	
+				current_pane += giftsToLoad;
 	    }
 
 	    firstLoad = false;
@@ -162,7 +165,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 
 	function Plugin(element, options) {
-		
+
 		this.element = element;
 		this.settings = $.extend({}, defaults, options);
 		this._defaults = defaults;
@@ -171,7 +174,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 	}
 
 	Plugin.prototype = {
-		
+
 		// description:
 		// id:
 		// name:
@@ -182,7 +185,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 		// price:
 		// site:
 		// url:
-		
+
 		init: function (element) {
 			if (!firstSearch){
 				$('#tinderslide ul li').remove();
@@ -196,6 +199,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 				allGifts = null;
 				giftsLeft = null;
 				responseGifts = null;
+				isEmptyGift = 0;
 			}
 
             //responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
@@ -216,7 +220,8 @@ $("#home").on("click", "#findGiftsBt", function(){
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
-			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText, '_blank', 'location=yes');};
+			var utm = "?utm_source=WhichGift&utm_medium=Mobile%20App&utm_campaign=WhichGift"
+			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText+utm, '_blank', 'location=yes');};
 		},
 
 
@@ -233,7 +238,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			}
 			//var js = "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');";
 			//var newclick = new Function(js);
-			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText, '_blank', 'location=yes');};
+			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText+utm, '_blank', 'location=yes');};
 			//$("#openStore").attr('onclick', "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');").click(newclick);
 
 			if(panes.length === 0){
@@ -243,6 +248,9 @@ $("#home").on("click", "#findGiftsBt", function(){
 		},
 
 		next: function () {
+			if(isEmptyGift == 1){
+				window.location.href = "#home";
+			};
 			if (current_pane == 2){
 				loadGiftsInHTML(2);
 			}
