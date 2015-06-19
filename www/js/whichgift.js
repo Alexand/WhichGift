@@ -18,14 +18,14 @@ var firstSearch = true;
 $("#feedbackForm").on("click", "#ed-mainButton", function(){
 	var valores = $("#feedbackForm").serializeArray();
 	motivos = [0, "Bug", "Critica", "Sugestao"];
-	
+
 	category = motivos[valores[0].value];
 	name = valores[1].value;
 	email = valores[2].value;
 	comment = valores[3].value;
 	//console.log(valores);
 
-	$.post( "https://whichgift.herokuapp.com/feedbacks", 
+	$.post( "https://whichgift.herokuapp.com/feedbacks",
 	        {"feedback": {"name":name, "email":email, "comment":comment, "category":category} },
 	        function() {}
 	);
@@ -54,7 +54,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 		    // set the status text
 	        $('#status').html('Like image ' + (item.index()+1));
 	    },
-	    
+
 		animationRevertSpeed: 200,
 		animationSpeed: 400,
 		threshold: 1,
@@ -81,7 +81,7 @@ $("#giftsHeader").on("click","#btnVoltar" , function(){
 
 // resetando Especificações
 $("#giftsHeader").on("click", "#resetButton", function(){
-    $("#especificacoes").closest("form").trigger("reset");
+  $("#especificacoes").closest("form").trigger("reset");
 	$("#loadingGifts").find("img").show();
 	$("#openStore").hide();
 });
