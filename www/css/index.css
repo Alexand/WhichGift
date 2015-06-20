@@ -20,8 +20,8 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
- 
- 
+
+
     /* please use this in the body tag of your HTML...i have fixed the bouncing and rubber band effects.
     http://stackoverflow.com/questions/15126629/prevent-scrolling-out-of-cordovaview-in-cordova-for-windows-phone-8 */
  	backface-visibility:hidden;
@@ -30,7 +30,7 @@ body {
  	-ms-content-zooming: none;
  	-ms-touch-action:none;
 }
- 
+
 html .ui-body-a,html .ui-page-theme-a .ui-body-inherit,html .ui-bar-a .ui-body-inherit,html .ui-body-a .ui-body-inherit,html body .ui-group-theme-a .ui-body-inherit,html .ui-panel-page-container-a{background:#fff;border-color:#2c3e50;color:yellow}
 html .ui-overlay-a,html .ui-page-theme-a,html .ui-page-theme-a .ui-panel-wrapper{background:#f9f9f9;border-color:#bbb;color:#89dbd7}
 
@@ -66,7 +66,7 @@ html .ui-page-theme-b .ed-rangeSlider .ui-bar-inherit {background:#bbb;border-co
 }
 
 html .ui-content h2 {font-size: 18px; text-align: center;margin-top:0px;margin-bottom: 10px}
-html .ui-content #frase {
+html .ui-content #descricao {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-box;
@@ -76,12 +76,6 @@ html .ui-content #frase {
 	-ms-flex-align: center;
 	-webkit-align-items: center;
 	align-items: center;
-}
-
-#ed-mainButton {
-	background-color: #31609f;
-	border:0px;
-	box-shadow: 0 2px 0 #214071;
 }
 
 .findGiftsDiv {
@@ -105,7 +99,7 @@ html .ui-content #frase {
 
 }
 
-input #ed-mainButton {
+input #longButton {
 	text-align: center;
 	background-color: #31609f;
 	border:0px;
@@ -130,7 +124,7 @@ html .ui-page-theme-b #ed-lowInfo {
 #fullWidth .ui-controlgroup-controls {width: 100%;}
 #fullWidth .ui-radio {width: 33.3333%;}
 #fullWidth label {
-	text-align: center; 
+	text-align: center;
 	padding-left:5px;
 	padding-right: 5px;
 	box-shadow: 0 2px 0 darkslategray;}
@@ -143,6 +137,10 @@ html .ui-page-theme-b #ed-lowInfo {
 
 #select-native-1 ui-btn{
 	box-shadow: 0 2px 0 pink;
+}
+
+.ui-select .ui-btn select{
+  box-shadow: 0 2px 0 darkslategray;
 }
 
 #cat, #ed-categories{
@@ -183,6 +181,11 @@ html .ui-page-theme-b #ed-lowInfo {
 	color: white;
 }
 
+html .ui-page-theme-b .longBtn {
+  background-color: #31609f;
+  border:0px;
+  box-shadow: 0 2px 0 #214071;
+}
 
 
 @font-face {

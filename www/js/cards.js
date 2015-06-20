@@ -44,7 +44,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			"<li class=pane1>" 				    +
 				"<h2>Looping</h2>" 				+
 				"<div class='tImg'></div>" 		+
-				"<p id=frase>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
+				"<p id=descricao>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
 				"<div class='like'></div>" 		+
 				"<div class='dislike'></div>" 	+
 			"</li>");
@@ -59,7 +59,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			"<li class=pane1>" 				    	+
 				"<h2>Nenhum Encontrado</h2>" 		+
 				"<div class='tImg'></div>" 			+
-				"<p id=frase>Opa, não foram encontrados presentes para este perfil. Tente outras especificações.</p>" +
+				"<p id=descricao>Opa, não foram encontrados presentes para este perfil. Tente outras especificações.</p>" +
 				"<div class='like'></div>" 			+
 				"<div class='dislike'></div>" 		+
 			"</li>");
@@ -115,7 +115,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 	  			"<h2>"+allGifts[currentGift].name+"</h2>" 				+
 	  			"<div class='tImg'></div>" 	+
 				"<div class='invisible'>"+allGifts[currentGift].site+"</div>" 	+
-	  			"<p id=frase>"+allGifts[currentGift].description+"</p>" +
+	  			"<p id=descricao>"+allGifts[currentGift].description+"</p>" +
 	  			"<div class='price'>"+price+"</div>"					+
 	  			//"<div class='like'></div>" 								+
 	  			//"<div class='dislike'></div>" 							+

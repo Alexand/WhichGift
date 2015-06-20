@@ -1,39 +1,13 @@
-/* Wrapper with padding */
-.price{
-    color:#87a393;
-    font-size: 18px;
-    text-align: left;
-    position: absolute;
-    bottom: 5px;
-    display:block;
-}
-
-.store{
-    color:#87a393;
-    font-size: 18px;
-    right: 10px;
-    position: absolute;
-    bottom: 5px;
-    text-transform:capitalize;
-}
-
-#frase{
-    height:100px;
-    padding:10px;
-}
 .invisible {
     display: none;
 }
+
 .tinderWrap  {
     height: 95%;
     padding: 5%;
     overflow: hidden;
 }
-#openStore{
-    text-align: center;
-    display: block;
-    margin-top: 30px !important;
-}
+
 #tinderslide {
     width: 95%;
     height: 85%;
@@ -78,7 +52,7 @@
     -webkit-backface-visibility: hidden;
 }
 
-/* Image text */
+
 #tinderslide li h2 {
     font-size: 24px;
     font-family: Lato;
@@ -88,7 +62,48 @@
     margin: 0px;
     margin-bottom: 5px;
     position: relative;
+    /*background-color: green;*/
 }
+
+#tinderslide .tImg {
+    height: 70%;
+    width: 100%;
+    -webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
+    -moz-transform: translate3d(0%,0,0) scale3d(1,1,1);
+    -ms-transform: translate3d(0%,0,0) scale3d(1,1,1);
+    -o-transform: translate3d(0%,0,0) scale3d(1,1,1);
+    transform: translate3d(0%,0,0) scale3d(1,1,1);
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0) scale3d(1,1,1);
+    -webkit-transform-style: preserve-3d;
+}
+
+#descricao{
+    padding:10px;
+    text-align: left;
+    position: absolute;
+    bottom:20px;
+    background-color: #c5e4df;
+}
+
+.price{
+    color:#87a393;
+    font-size: 18px;
+    right: 5px;
+    position: absolute;
+    bottom: 5px;
+    display:block;
+    /*background-color: yellow;*/
+}
+
+#openStore{
+    text-align: center;
+    display: block;
+    margin-top: 30px !important;
+}
+
 
 
 /* Image rotation */
@@ -107,6 +122,8 @@
     -ms-transform: rotate(2deg);
     transform: rotate(2deg);
 }
+
+
 
 /* Like & dislike badge images */
 #tinderslide .like,
@@ -132,26 +149,10 @@
 }
 
 #tinderslide .dislike {
-
     background: url("../img/nope.png") no-repeat scroll 0 0;
 }
 
-/* Image container */
-#tinderslide .tImg {
-    height: 70%;
-    width: 100%;
 
-    -webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
-    -moz-transform: translate3d(0%,0,0) scale3d(1,1,1);
-    -ms-transform: translate3d(0%,0,0) scale3d(1,1,1);
-    -o-transform: translate3d(0%,0,0) scale3d(1,1,1);
-    transform: translate3d(0%,0,0) scale3d(1,1,1);
-    overflow: hidden;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translate3d(0,0,0) scale3d(1,1,1);
-    -webkit-transform-style: preserve-3d;
-}
 
 /* Action - buttons */
 .actions {
@@ -210,6 +211,8 @@
   background: #f5f5f5;
 }
 
+
+
 /* jTinder status text */
 #status {
     text-align: center;
@@ -218,5 +221,3 @@
     margin-top: 30px;
     font-weight: bold;
 }
-
-

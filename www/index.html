@@ -96,7 +96,7 @@
 <div data-role="page" id="gift" class="ui-page ui-page-theme-b giftPage">
 <!-- Header -->
 	<div data-role="header" data-position="fixed" id="giftsHeader">
-		<h1></h1><a href="#home" id="btnVoltar" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
+		<h1></h1><a href="#home" id="btnVoltar" data-transition="slide" data-direction="reverse" data-icon="arrow-l" class="ui-btn-left">Voltar</a>
 		<a href="#home" data-icon="recycle" data-transition="pop" data-iconpos="right" id="resetButton" class="ui-btn-right">Recomeçar</a>
 	</div>
 
@@ -112,17 +112,17 @@
 	        </ul>
 	    </div>
 		<div id='openStore'>
-			<a href="#" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn ui-corner-all" id="ed-mainButton">Ir Para Loja</a>
+			<a href="#" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn ui-corner-all longBtn" id="openStoreBtn">Ir Para Loja</a>
 		</div>
-    </div>
-
+  </div>
+</div>
 
 
 <!-- ===== FEEDBACK ===== -->
 <div data-role="page" id="feedback" class="ui-page ui-page-theme-b">
 	<div data-role="header" data-position="fixed">
 		<h1></h1>
-		<a href="#home" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right">Voltar</a>
+		<a href="#home" data-transition="slide" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right">Voltar</a>
 	</div>
 
 	<div data-role="main" class="ui-content">
@@ -143,7 +143,7 @@
 				<input type="email" data-clear-btn="false" name="email" id="email" placeholder="">
 				<label for="comentarios">Comentários:</label>
 				<textarea name="comentarios" id="comentarios" cols="30" rows="5" value="" placeholder="Hei! O que achou da experiência, usabilidade e diversão? Tem alguma sugestão de presentes?"></textarea>
-				<a href="#popupBasic" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn ui-corner-all" id="ed-mainButton">Enviar</a>
+				<a href="#popupBasic" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn longBtn ui-corner-all" id="sendFeedback">Enviar</a>
 				<div data-role="popup" id="popupBasic" data-overlay-theme="b">
 					<p>Formulário enviado, muito obrigado</p>
 				</div>
@@ -159,10 +159,10 @@
   <script src="lib/jquery-mobile/js/jquery-1.11.3.min.js"></script>
 	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.5.min.js"></script>
   <script src="lib/jquery-mobile/js/jquery.transform2d.js"></script>
-  <script src="js/cards.js"></script>
 	<script src="lib/fastclick/js/fastclick.js"></script>
 	<script src="lib/handlebars/js/handlebars-v1.3.0.js"></script>
 	<script src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
+  <script src="js/cards.js"></script>
 	<script src="js/whichgift.js"></script>
 
 </body></html>

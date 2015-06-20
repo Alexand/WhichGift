@@ -15,7 +15,7 @@ $( document ).ready(function() {
 
 var firstSearch = true;
 
-$("#feedbackForm").on("click", "#ed-mainButton", function(){
+$("#feedbackForm").on("click", "#sendFeedback", function(){
 	var valores = $("#feedbackForm").serializeArray();
 	motivos = [0, "Bug", "Critica", "Sugestao"];
 
