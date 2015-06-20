@@ -37,6 +37,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 	var giftsLeft = null;
 	var responseGifts = null;
 	var isEmptyGift = 0;
+	var utm = "?utm_source=WhichGift&utm_medium=Mobile%20App&utm_campaign=WhichGift";
 
 
 	var loadLoopingGift = function(){
@@ -220,7 +221,6 @@ $("#home").on("click", "#findGiftsBt", function(){
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
-			var utm = "?utm_source=WhichGift&utm_medium=Mobile%20App&utm_campaign=WhichGift"
 			$("#openStore")[0].onclick = function(){window.open($(panes[current_pane]).find(".invisible")[0].innerText+utm, '_blank', 'location=yes');};
 		},
 

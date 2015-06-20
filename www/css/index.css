@@ -181,7 +181,7 @@ html .ui-page-theme-b #ed-lowInfo {
 	color: white;
 }
 
-html .ui-page-theme-b .longBtn {
+html .ui-page-theme-b .longBtn, html .ui-page-theme-b .longBtn:focus, html .ui-page-theme-b .longBtn:active, html .ui-page-theme-b .longBtn:visited, html .ui-page-theme-b .longBtn:hover {
   background-color: #31609f;
   border:0px;
   box-shadow: 0 2px 0 #214071;
