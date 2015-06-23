@@ -3,6 +3,7 @@
 $( document ).ready(function() {
 	$("#openStore").hide();
 	$("body").removeClass("ui-mobile-viewport-transitioning");
+
 });
 
 

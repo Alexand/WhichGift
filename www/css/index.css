@@ -169,16 +169,12 @@ html .ui-page-theme-b #ed-lowInfo {
 	height: 256px;
 }
 
-#termos {
-	background-color: rgba(0,0,0,0.5);
+#termos{
+    background-color: rgba(0,0,0,0.7);
 }
 
-#termos embed {
-	overflow: hidden;
-}
-
-#termos p{
-	color: white;
+#termos embed{
+    height: 400px;
 }
 
 html .ui-page-theme-b .longBtn, html .ui-page-theme-b .longBtn:focus, html .ui-page-theme-b .longBtn:active, html .ui-page-theme-b .longBtn:visited, html .ui-page-theme-b .longBtn:hover {
