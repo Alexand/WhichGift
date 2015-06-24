@@ -40,131 +40,6 @@ $("#home").on("click", "#findGiftsBt", function(){
 	var utm = "?utm_source=WhichGift&utm_medium=Mobile%20App&utm_campaign=WhichGift";
 
 
-	var loadLoopingGift = function(){
-		$('#tinderslide').find("ul").prepend(
-			"<li class=pane1>" 				    +
-				"<h2>Looping</h2>" 				+
-				"<div class='tImg'></div>" 		+
-				"<p id=descricao>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
-				"<div class='like'></div>" 		+
-				"<div class='dislike'></div>" 	+
-			"</li>");
-		$(".pane1").find(".tImg").css({
-			"background": "url('../www/img/looping_512.jpg') no-repeat scroll center center",
-			"background-size": "cover"});
-	};
-
-
-	var loadEmptyGift = function(){
-		$('#tinderslide').find("ul").prepend(
-			"<li class=pane1>" 				    	+
-				"<h2>Nenhum Encontrado</h2>" 		+
-				"<div class='tImg'></div>" 			+
-				"<p id=descricao>Opa, não foram encontrados presentes para este perfil. Tente outras especificações.</p>" +
-				"<div class='like'></div>" 			+
-				"<div class='dislike'></div>" 		+
-			"</li>");
-		$(".pane1").find(".tImg").css({
-			"background": "url('../www/img/empty_512.jpg') no-repeat scroll center center",
-			"background-size": "cover"});
-	};
-
-
-	var initializeLoadedGifts = function(responseGifts, element){
-        allGifts = responseGifts.responseJSON.sort(function() { return 0.5 - Math.random() });
-        if (allGifts.length>1)
-            giftsToLoad = 2;
-        else {
-            giftsToLoad = allGifts.length;
-        }
-
-        current_pane = 0;	        		// 4
-        firstLoad = true;
-        console.log("Gifts found: " + allGifts.length);
-
-        if (allGifts.length == 0) {
-						loadEmptyGift();
-						isEmptyGift = 1;
-						$("#openStore").hide();
-        } else{
-            currentGift  = allGifts.length - 1;	// getting last index
-            loadLoopingGift();
-            loadGiftsInHTML(giftsToLoad, element);
-			$("#openStore").show();
-        };
-
-        $("#loadingGifts").find("img").hide();
-
-
-        container = $(">ul", element);		// [ul]
-        panes = $(">ul>li", element);		// [li.pane1, li.pane2, li.pane3, li.pane4, li.pane5]
-        pane_width = container.width();		// 317
-	}
-
-	function loadSingleGift() {
-        price = allGifts[currentGift].price;
-
-	  	if (price != null){
-	  		price = Number(price).toFixed(2);
-	  		price = "R$" + price.replace(".", ",");
-	  	} else{
-	  		price = "";
-	  	};
-
-	  	gift = $('#tinderslide').find(".pane1").after(
-	  		"<li class=pane"+ (currentGift + 2) + ">"					+
-	  			"<h2>"+allGifts[currentGift].name+"</h2>" 				+
-	  			"<div class='tImg'></div>" 	+
-				"<div class='invisible'>"+allGifts[currentGift].site+"</div>" 	+
-	  			"<p id=descricao>"+allGifts[currentGift].description+"</p>" +
-	  			"<div class='price'>"+price+"</div>"					+
-	  			//"<div class='like'></div>" 								+
-	  			//"<div class='dislike'></div>" 							+
-	  		"</li>");
-
-	  	$(".pane"+ (currentGift + 2)).find(".tImg").css({
-	  		"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
-	  		"background-size": "cover"});
-	  	if (firstLoad == false){
-	  		panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
-	  	}
-	  	currentGift--;
-	}
-
-	var loadGiftsInHTML = function (howMany, element){
-	    var isLastDBPresent = false;
-
-	    if (currentGift < howMany){
-	    	howMany = currentGift;
-	    }
-
-	    if((currentGift === 0 || currentGift === 1) && allGifts.length > 0){
-	    	isLastDBPresent = true;
-        }else{
-		    for (var count = 0; count < howMany; count++) {
-		    	loadSingleGift();
-		    }
-        }
-
-
-	    if(isLastDBPresent){
-	    	loadSingleGift();
-            if(panes.length > 0)
-	    	    current_pane = panes.length - 1;
-            else{
-                current_pane = 1;
-            }
-	    }else if(currentGift === -1){
-	    	current_pane = 2;
-	    }
-	    else{
-				current_pane += giftsToLoad;
-	    }
-
-	    firstLoad = false;
-	};
-
-
 	function Plugin(element, options) {
 
 		this.element = element;
@@ -209,10 +84,10 @@ $("#home").on("click", "#findGiftsBt", function(){
 				function(data) {})
 
 			.done( function() {
-				initializeLoadedGifts(responseGifts, element);
+				$that.initializeLoadedGifts(responseGifts, element);
 			})
 			.fail( function() {
-				//alert( "error" )
+				alert( "WhichGift não conseguiu acessar os Presentes" );
 			})
 			.always( function() {
 			  	//alert( "finished" )
@@ -225,12 +100,139 @@ $("#home").on("click", "#findGiftsBt", function(){
 		},
 
 
+		initializeLoadedGifts: function(responseGifts, element){
+			// Getting the JSON and randomizing gifts order
+			allGifts = responseGifts.responseJSON.sort(function() { return 0.5 - Math.random() });
+			if (allGifts.length>1){
+				giftsToLoad = 2;
+			}
+			else {
+				giftsToLoad = allGifts.length;
+			}
+
+		        current_pane = 0;
+		        firstLoad = true;
+		        console.log("Gifts found: " + allGifts.length);
+
+		        if (allGifts.length == 0) {
+		        	this.loadEmptyGift();
+		        	isEmptyGift = 1;
+		        	$("#openStore").hide();
+		        } else{
+		            currentGift  = allGifts.length - 1;	// getting last index
+		            this.loadLoopingGift();
+		            this.loadGiftsInHTML(giftsToLoad, element);
+		            $("#openStore").show();
+		        };
+
+		        $("#loadingGifts").find("img").hide();
+
+
+		        container = $(">ul", element);
+		        panes = $(">ul>li", element);
+		        pane_width = container.width();
+		    },
+
+
+		loadGiftsInHTML: function (howMany, element) {
+			var isLastDBPresent = false;
+
+			if (currentGift < howMany){
+			    howMany = currentGift;
+			}
+
+			if((currentGift === 0 || currentGift === 1) && allGifts.length > 0){
+				isLastDBPresent = true;
+			}else{
+				for (var count = 0; count < howMany; count++) {
+					this.loadSingleGift();
+				}
+			}
+
+			if(isLastDBPresent){
+				this.loadSingleGift();
+				if(panes.length > 0)
+					current_pane = panes.length - 1;
+				else{
+					current_pane = 1;
+				}
+			}else if(currentGift === -1){
+				current_pane = 2;
+			}
+			else{
+				current_pane += giftsToLoad;
+			}
+
+			firstLoad = false;
+			},
+
+
+			loadLoopingGift: function(){
+				$('#tinderslide').find("ul").prepend(
+					"<li class=pane1>" 				+
+					"<h2>Looping</h2>" 				+
+					"<div class='tImg'></div>" 		+
+					"<p id=descricao>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
+					"<div class='like'></div>" 		+
+					"<div class='dislike'></div>" 	+
+					"</li>");
+				$(".pane1").find(".tImg").css({
+					"background": "url('../www/img/looping_512.jpg') no-repeat scroll center center",
+					"background-size": "cover"});
+			},
+
+
+			loadEmptyGift: function(){
+				$('#tinderslide').find("ul").prepend(
+					"<li class=pane1>" 				    +
+					"<h2>Nenhum Encontrado</h2>" 		+
+					"<div class='tImg'></div>" 			+
+					"<p id=descricao>Opa, não foram encontrados presentes para este perfil. Tente outras especificações.</p>" +
+					"<div class='like'></div>" 			+
+					"<div class='dislike'></div>" 		+
+					"</li>");
+				$(".pane1").find(".tImg").css({
+					"background": "url('../www/img/empty_512.jpg') no-repeat scroll center center",
+					"background-size": "cover"});
+			},
+
+
+			loadSingleGift: function() {
+				price = allGifts[currentGift].price;
+
+				// Formatting the Price (R$***,**)
+				if (price != null){
+					price = Number(price).toFixed(2);
+					price = "R$" + price.replace(".", ",");
+				} else{
+					price = "";
+				};
+
+				gift = $('#tinderslide').find(".pane1").after(
+					"<li class=pane"+ (currentGift + 2) + ">"					+
+					"<h2>"+allGifts[currentGift].name+"</h2>" 				+
+					"<div class='tImg'></div>" 	+
+					"<div class='invisible'>"+allGifts[currentGift].site+"</div>" 	+
+					"<p id=descricao>"+allGifts[currentGift].description+"</p>" +
+					"<div class='price'>"+price+"</div>"					+
+				  			//"<div class='like'></div>" 								+
+				  			//"<div class='dislike'></div>" 							+
+				  			"</li>");
+
+				$(".pane"+ (currentGift + 2)).find(".tImg").css({
+					"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
+					"background-size": "cover"});
+				if (firstLoad == false){
+					panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
+				}
+				currentGift--;
+			},
+
+
 		showPane: function (index) {
-			console.log('showPane oldCurrPane:' + current_pane);
 			panes.eq(current_pane).remove();
 			panes.splice(-1,1);
 			current_pane = index;
-			console.log('showPane newCurrPane:' + current_pane);
 			if(current_pane == 0){
 				$("#openStore").hide();
 			}else{
@@ -242,21 +244,21 @@ $("#home").on("click", "#findGiftsBt", function(){
 			//$("#openStore").attr('onclick', "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');").click(newclick);
 
 			if(panes.length === 0){
-				initializeLoadedGifts(responseGifts, document.getElementById('tinderslide'));
+				this.initializeLoadedGifts(responseGifts, document.getElementById('tinderslide'));
 			}
-
 		},
+
 
 		next: function () {
 			if(isEmptyGift == 1){
 				window.location.href = "#home";
 			};
 			if (current_pane == 2){
-				loadGiftsInHTML(2);
+				this.loadGiftsInHTML(2);
 			}
-			console.log(panes.length);
 			return this.showPane(current_pane - 1);
 		},
+
 
 		dislike: function(element) {
 			panes.eq(current_pane).animate({"transform": "translate(-" + (pane_width) + "px," + (pane_width*-1.5) + "px) rotate(-60deg)"}, $that.settings.animationSpeed, function () {
@@ -267,6 +269,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			});
 		},
 
+
 		like: function(element) {
 			panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (pane_width*-1.5) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
 				if($that.settings.onLike) {
@@ -275,6 +278,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 				$that.next(element);
 			});
 		},
+
 
 		handler: function (ev) {
 			ev.preventDefault();
@@ -357,6 +361,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			}
 		}
 	};
+
 
 	$.fn[ pluginName ] = function (options) {
 		this.each(function () {
