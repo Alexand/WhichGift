@@ -1,26 +1,21 @@
+// Obtaining Input Values
 $("#home").on("click", "#findGiftsBt", function(){
  	var valores = $("#especificacoes").serializeArray();
- 	console.log(valores);
-
  	minPrice = valores[0].value;
  	maxPrice = valores[1].value;
  	ageGroupId = valores[2].value;
  	gender = valores[3].value;
-
- 	// minPrice = "0";				// defaults
- 	// maxPrice = "300";
- 	// ageGroupId = "1";
- 	// gender = "U";
 });
 
 
+//Nameless jQuery Plugin declaration
 ;(function ($, window, document, undefined) {
 	var pluginName = "Cards",
 		defaults = {
 			onDislike: null,
 			onLike: null,
 			animationRevertSpeed: 200,
-			animationSpeed: 400,
+			animationSpeed: 500,
 			threshold: 1,
 			likeSelector: '.like',
 			dislikeSelector: '.dislike'
@@ -40,6 +35,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 	var utm = "?utm_source=WhichGift&utm_medium=Mobile%20App&utm_campaign=WhichGift";
 
 
+
 	function Plugin(element, options) {
 
 		this.element = element;
@@ -51,16 +47,11 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 	Plugin.prototype = {
 
-		// description:
-		// id:
-		// name:
-		// photo_giant_url:
-		// photo_large_url:
-		// photo_medium_url:
-		// photo_thumb_url:
-		// price:
-		// site:
-		// url:
+		// id: 									// photo_giant_url:
+		// name:								// photo_giant_url:
+		// description:					// photo_large_url:
+		// price: 							// photo_medium_url:
+		// site: 								// photo_thumb_url:
 
 		init: function (element) {
 			if (!firstSearch){
@@ -76,23 +67,23 @@ $("#home").on("click", "#findGiftsBt", function(){
 				giftsLeft = null;
 				responseGifts = null;
 				isEmptyGift = 0;
-			}
+			};
 
-            //responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
-            responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
+      //responseGifts = $.post( "http://localhost:3000/api/find_my_gifts.json",
+			responseGifts = $.post( "https://whichgift.herokuapp.com/api/find_my_gifts.json",
 				{"minPrice":minPrice,"maxPrice":maxPrice,"gender":gender,"ageGroupId": ageGroupId},
 				function(data) {})
 
 			.done( function() {
-				$that.initializeLoadedGifts(responseGifts, element);
+				$that.checkingResponse(responseGifts, element);
 			})
 			.fail( function() {
-				alert( "WhichGift não conseguiu acessar os Presentes" );
+				alert( "Opa! WhichGift não conseguiu acessar os Presentes" );
 			})
 			.always( function() {
 			  	//alert( "finished" )
 			});
-            $that = this;
+      $that = this;
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
@@ -100,38 +91,39 @@ $("#home").on("click", "#findGiftsBt", function(){
 		},
 
 
-		initializeLoadedGifts: function(responseGifts, element){
+		checkingResponse: function(responseGifts, element){
 			// Getting the JSON and randomizing gifts order
 			allGifts = responseGifts.responseJSON.sort(function() { return 0.5 - Math.random() });
-			if (allGifts.length>1){
-				giftsToLoad = 2;
-			}
-			else {
-				giftsToLoad = allGifts.length;
-			}
 
-		        current_pane = 0;
-		        firstLoad = true;
-		        console.log("Gifts found: " + allGifts.length);
+			current_pane = 0;
+			firstLoad = true;
+			giftsQt = allGifts.length
+			giftsToLoad = 2;
+			console.log("Gifts found: " + giftsQt);
 
-		        if (allGifts.length == 0) {
-		        	this.loadEmptyGift();
-		        	isEmptyGift = 1;
-		        	$("#openStore").hide();
-		        } else{
-		            currentGift  = allGifts.length - 1;	// getting last index
-		            this.loadLoopingGift();
-		            this.loadGiftsInHTML(giftsToLoad, element);
-		            $("#openStore").show();
-		        };
+		  if (giftsQt == 0) { // Empty Gift
+		  	this.loadEmptyGift();
+		  	isEmptyGift = 1;
+		  	$("#openStore").hide();
 
-		        $("#loadingGifts").find("img").hide();
+		  } else if (giftsQt < giftsToLoad){
+		  	currentGift = allGifts.length - 1;
+		  	this.loadLoopingGift();
+		  	this.loadGiftsInHTML(giftsQt, element);
+		  	$("#openStore").show();
 
+		  } else {
+		    currentGift = allGifts.length - 1;	// getting last index
+		    this.loadLoopingGift();
+		    this.loadGiftsInHTML(giftsToLoad, element);
+		    $("#openStore").show();
+		  };
 
-		        container = $(">ul", element);
-		        panes = $(">ul>li", element);
-		        pane_width = container.width();
-		    },
+		  container = $(">ul", element);
+		  panes = $(">ul>li", element);
+		  pane_width = container.width();
+		  $("#loadingGifts").find("img").hide();
+		},
 
 
 		loadGiftsInHTML: function (howMany, element) {
@@ -141,92 +133,92 @@ $("#home").on("click", "#findGiftsBt", function(){
 			    howMany = currentGift;
 			}
 
-			if((currentGift === 0 || currentGift === 1) && allGifts.length > 0){
+			if ((currentGift === 0 || currentGift === 1) && allGifts.length > 0) {
 				isLastDBPresent = true;
-			}else{
+			} else {
 				for (var count = 0; count < howMany; count++) {
 					this.loadSingleGift();
 				}
 			}
 
-			if(isLastDBPresent){
+			if (isLastDBPresent) {
 				this.loadSingleGift();
-				if(panes.length > 0)
+				if (panes.length > 0) {
 					current_pane = panes.length - 1;
-				else{
+				}	else {
 					current_pane = 1;
 				}
-			}else if(currentGift === -1){
+			} else if (currentGift === -1) {
 				current_pane = 2;
-			}
-			else{
+			} else {
 				current_pane += giftsToLoad;
 			}
 
 			firstLoad = false;
-			},
+		},
 
 
-			loadLoopingGift: function(){
-				$('#tinderslide').find("ul").prepend(
-					"<li class=pane1>" 				+
-					"<h2>Looping</h2>" 				+
-					"<div class='tImg'></div>" 		+
-					"<p id=descricao>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
-					"<div class='like'></div>" 		+
-					"<div class='dislike'></div>" 	+
-					"</li>");
-				$(".pane1").find(".tImg").css({
-					"background": "url('../www/img/looping_512.jpg') no-repeat scroll center center",
-					"background-size": "cover"});
-			},
+		loadLoopingGift: function(){
+			$('#tinderslide').find("ul").prepend(
+				"<li class=pane1>" 						+
+				"<h2>Looping</h2>" 						+
+				"<div class='tImg'></div>" 		+
+				"<p id=descricao>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
+				"<div class='like'></div>" 		+
+				"<div class='dislike'></div>" +
+				"</li>");
+			$(".pane1").find(".tImg").css({
+				"background": "url('../www/img/looping_512.jpg') no-repeat scroll center center",
+				"background-size": "cover"});
+		},
 
 
-			loadEmptyGift: function(){
-				$('#tinderslide').find("ul").prepend(
-					"<li class=pane1>" 				    +
-					"<h2>Nenhum Encontrado</h2>" 		+
-					"<div class='tImg'></div>" 			+
-					"<p id=descricao>Opa, não foram encontrados presentes para este perfil. Tente outras especificações.</p>" +
-					"<div class='like'></div>" 			+
-					"<div class='dislike'></div>" 		+
-					"</li>");
-				$(".pane1").find(".tImg").css({
-					"background": "url('../www/img/empty_512.jpg') no-repeat scroll center center",
-					"background-size": "cover"});
-			},
+		loadEmptyGift: function(){
+			$('#tinderslide').find("ul").prepend(
+				"<li class=pane1>" 				      +
+				"<h2>Nenhum Encontrado</h2>" 		+
+				"<div class='tImg'></div>" 			+
+				"<p id=descricao>Opa, não foram encontrados presentes para este perfil. Tente outras especificações.</p>" +
+				"<div class='like'></div>" 			+
+				"<div class='dislike'></div>" 	+
+				"</li>");
+			$(".pane1").find(".tImg").css({
+				"background": "url('../www/img/empty_512.jpg') no-repeat scroll center center",
+				"background-size": "cover"});
+		},
 
 
-			loadSingleGift: function() {
-				price = allGifts[currentGift].price;
+		loadSingleGift: function() {
+			// Formatting the Price (R$***,**)
+			price = allGifts[currentGift].price;
+			if (price == 0 || price == null){
+				price = "";
+			} else {
+				price = Number(price).toFixed(2);
+				price = "R$" + price.replace(".", ",");
+			};
 
-				// Formatting the Price (R$***,**)
-				if (price != null){
-					price = Number(price).toFixed(2);
-					price = "R$" + price.replace(".", ",");
-				} else{
-					price = "";
-				};
+			gift = $('#tinderslide').find(".pane1").after(
+				"<li class=pane"+ (currentGift + 2) + ">"											+
+				"<h2>"+allGifts[currentGift].name+"</h2>" 										+
+				"<div class='tImg'></div>" 																		+
+				"<div class='invisible'>"+allGifts[currentGift].site+"</div>" +
+				"<p id=descricao>"+allGifts[currentGift].description+"</p>" 	+
+				"<div class='price'>"+price+"</div>"													+
+			  //"<div class='like'></div>" 																	+
+			  //"<div class='dislike'></div>" 															+
+			  "</li>");
 
-				gift = $('#tinderslide').find(".pane1").after(
-					"<li class=pane"+ (currentGift + 2) + ">"					+
-					"<h2>"+allGifts[currentGift].name+"</h2>" 				+
-					"<div class='tImg'></div>" 	+
-					"<div class='invisible'>"+allGifts[currentGift].site+"</div>" 	+
-					"<p id=descricao>"+allGifts[currentGift].description+"</p>" +
-					"<div class='price'>"+price+"</div>"					+
-				  			//"<div class='like'></div>" 								+
-				  			//"<div class='dislike'></div>" 							+
-				  			"</li>");
+			$(".pane"+ (currentGift + 2)).find(".tImg").css({
+				"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
+				"background-size": "cover"});
 
-				$(".pane"+ (currentGift + 2)).find(".tImg").css({
-					"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
-					"background-size": "cover"});
-				if (firstLoad == false){
-					panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
-				}
-				currentGift--;
-			},
+			if (firstLoad == false){
+				panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
+			}
+
+			currentGift--;
+		},
 
 
 		showPane: function (index) {
@@ -235,7 +227,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			current_pane = index;
 			if(current_pane == 0){
 				$("#openStore").hide();
-			}else{
+			} else {
 				$("#openStore").show();
 			}
 			//var js = "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');";
@@ -244,7 +236,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			//$("#openStore").attr('onclick', "window.open('" + $(panes[current_pane]).find(".invisible")[0].innerText +  "', '_blank', 'location=yes');").click(newclick);
 
 			if(panes.length === 0){
-				this.initializeLoadedGifts(responseGifts, document.getElementById('tinderslide'));
+				this.checkingResponse(responseGifts, document.getElementById('tinderslide'));
 			}
 		},
 
@@ -255,7 +247,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			};
 			if (current_pane == 2){
 				this.loadGiftsInHTML(2);
-			}
+			};
 			return this.showPane(current_pane - 1);
 		},
 
@@ -336,14 +328,14 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 					if (opa >= 1) {
 						if (posX > 0) {
-							panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (posY + pane_width) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
+							panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (posY + pane_width+250) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
 								if($that.settings.onLike) {
 									$that.settings.onLike(panes.eq(current_pane));
 								}
 								$that.next();
 							});
 						} else {
-							panes.eq(current_pane).animate({"transform": "translate(-" + (pane_width) + "px," + (posY + pane_width) + "px) rotate(-60deg)"}, $that.settings.animationSpeed, function () {
+							panes.eq(current_pane).animate({"transform": "translate(-" + (pane_width) + "px," + (posY + pane_width+250) + "px) rotate(-60deg)"}, $that.settings.animationSpeed, function () {
 								if($that.settings.onDislike) {
 									$that.settings.onDislike(panes.eq(current_pane));
 								}
@@ -379,4 +371,5 @@ $("#home").on("click", "#findGiftsBt", function(){
 		return arguments.callee;
 	};
 
-})(jQuery, window, document);
+})(jQuery, window, document) //Nameless jQuery Plugin call
+;

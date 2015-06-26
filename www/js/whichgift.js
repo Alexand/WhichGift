@@ -56,7 +56,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 	    },
 
 		animationRevertSpeed: 200,
-		animationSpeed: 400,
+		animationSpeed: 500,
 		threshold: 1,
 		likeSelector: '.like',
 		dislikeSelector: '.dislike'
