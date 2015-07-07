@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget 
-    id="com.example.whichgift" 
-    version="0.0.1" 
-    xmlns="http://www.w3.org/ns/widgets" 
+<widget
+    id="com.example.whichgift"
+    version="0.0.1"
+    xmlns="http://www.w3.org/ns/widgets"
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
     <name>WhichGift</name>
@@ -17,9 +17,9 @@
 
 
 
-<!-- ALL PLATFORMS -->  
+<!-- ALL PLATFORMS -->
     <icon src="res/icon.png" />
-    <splash src="res/splash-hdpi.png" />
+    <splash src="res/splash-hdpi.jpg" />
     <preference name="Orientation" value="portrait" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="2000" />
@@ -30,7 +30,12 @@
         <feature name="GAPlugin" >
             < param name="android-package" value="com.adobe.plugins.GAPlugin"/>
         </feature>
+        <icon src="res/android/ldpi.png" density="ldpi" />
+        <icon src="res/android/mdpi.png" density="mdpi" />
+        <icon src="res/android/hdpi.png" density="hdpi" />
+        <icon src="res/android/xhdpi.png" density="xhdpi" />
     </platform>
+
 
 
 

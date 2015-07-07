@@ -92,6 +92,8 @@ $("#home").on("click", "#findGiftsBt", function(){
 
 
 		checkingResponse: function(responseGifts, element){
+			"Checks response from HTTP Request and triggers the right calls"
+
 			// Getting the JSON and randomizing gifts order
 			allGifts = responseGifts.responseJSON.sort(function() { return 0.5 - Math.random() });
 
@@ -99,6 +101,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			firstLoad = true;
 			giftsQt = allGifts.length
 			giftsToLoad = 2;
+			currentGift = allGifts.length - 1; // getting last index
 			console.log("Gifts found: " + giftsQt);
 
 		  if (giftsQt == 0) { // Empty Gift
@@ -107,13 +110,11 @@ $("#home").on("click", "#findGiftsBt", function(){
 		  	$("#openStore").hide();
 
 		  } else if (giftsQt < giftsToLoad){
-		  	currentGift = allGifts.length - 1;
 		  	this.loadLoopingGift();
 		  	this.loadGiftsInHTML(giftsQt, element);
 		  	$("#openStore").show();
 
 		  } else {
-		    currentGift = allGifts.length - 1;	// getting last index
 		    this.loadLoopingGift();
 		    this.loadGiftsInHTML(giftsToLoad, element);
 		    $("#openStore").show();
@@ -130,7 +131,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 			var isLastDBPresent = false;
 
 			if (currentGift < howMany){
-			    howMany = currentGift;
+				howMany = currentGift;
 			}
 
 			if ((currentGift === 0 || currentGift === 1) && allGifts.length > 0) {
@@ -184,6 +185,21 @@ $("#home").on("click", "#findGiftsBt", function(){
 				"</li>");
 			$(".pane1").find(".tImg").css({
 				"background": "url('../www/img/empty_512.jpg') no-repeat scroll center center",
+				"background-size": "cover"});
+		},
+
+
+		loadMarvelousIdea: function(){
+			$('#tinderslide').find("ul").prepend(
+				"<li class=pane1>" 				      +
+				"<h2>Ideia Maravilhosa</h2>" 		+
+				"<div class='tImg'></div>" 			+
+				"<p id=descricao>Achou tudo ruim? Então envie para nós sua ideia maravilhosa e quem sabe ela não aparece aqui?!</p>" +
+				"<div class='like'></div>" 			+
+				"<div class='dislike'></div>" 	+
+				"</li>");
+			$(".pane1").find(".tImg").css({
+				"background": "url('../www/img/marvelousIdea_512.jpg') no-repeat scroll center center",
 				"background-size": "cover"});
 		},
 

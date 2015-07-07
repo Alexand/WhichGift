@@ -41,7 +41,7 @@ $("#feedbackForm").on("click", "#sendFeedback", function(){
 //
 
 $("#home").on("click", "#findGiftsBt", function(){
-	(jQuery, window, document);
+	//(jQuery, window, document); João, precisa dessa linha??
 
 	$("#tinderslide").Cards({
 		// dislike callback
