@@ -22,6 +22,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
     },
+
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
@@ -29,6 +30,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
@@ -37,8 +39,14 @@ var app = {
         app.receivedEvent('deviceready');
         FastClick.attach(document.body);
         window.analytics.startTrackerWithId('UA-62972903-2');
+        var element = document.getElementById('deviceProperties');
+            element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                                'Device PhoneGap: ' + device.phonegap + '<br />' +
+                                'Device Platform: ' + device.platform + '<br />' +
+                                'Device UUID: '     + device.uuid     + '<br />' +
+                                'Device Version: '  + device.version  + '<br />';
+        },
 
-    },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);

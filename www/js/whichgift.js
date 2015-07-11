@@ -3,6 +3,15 @@
 $( document ).ready(function() {
 	$("#openStore").hide();
 	$("body").removeClass("ui-mobile-viewport-transitioning");
+
+	// Counting how many times app was launched
+	var appLaunchCount = window.localStorage.getItem('launchCount');
+	if(appLaunchCount){
+			window.localStorage.setItem('launchCount', parseInt(appLaunchCount)+1);
+	}else{
+	    window.localStorage.setItem('launchCount', 1);
+	};
+
 });
 
 

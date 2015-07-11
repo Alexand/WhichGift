@@ -79,23 +79,24 @@ html .ui-content #descricao {
 }
 
 .findGiftsDiv {
-	height: 80px;
-	width: 100%;
-	position:fixed;
+  height: 80px;
 	bottom: 30px;
-	margin: auto auto;
 	z-index: 3;
-
+  position:fixed;
+  display:block;
+  width: 88%;
 }
 
 #findGiftsBt {
-	background: #31609f url(../img/icon_bt.png) no-repeat center center;
+	/*background: #31609f url(../img/icon_bt.png) no-repeat center center;
+  height: 50px;
+  width: 42px;
+  border-radius: 50px;
+  margin: auto auto;*/
+  background: #31609f;
 	border:0px;
 	box-shadow: 0 2px 0 #214071;
-	height: 50px;
-	width: 42px;
-	border-radius: 50px;
-	margin: auto auto;
+
 
 }
 
@@ -167,6 +168,11 @@ html .ui-page-theme-b #ed-lowInfo {
 #loadingGifts{
 	width: 256px;
 	height: 256px;
+}
+
+#swipeGif{
+    background-color: rgba(0,0,0,0.7);
+    box-shadow: 0 0px 0;
 }
 
 #termos{

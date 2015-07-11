@@ -15,7 +15,7 @@
 		setTimeout(function(){
 			window.analytics.trackView('home');
 		}, 5000);
-	</script>
+    </script>
 </head>
 
 
@@ -70,13 +70,16 @@
                 	</div>
                 </fieldset>
 			</form>
+      <!-- Botão Continuar -->
+
+        <div class="findGiftsDiv">
+            <a data-role="button" href="#gift" data-transition="slide" class="ui-shadow ui-btn ui-corner-all" id="findGiftsBt">Encontrar Presentes</a>
+        </div>
     	</div>
+
     </div>
 
-<!-- Botão Continuar -->
-	<div class="findGiftsDiv">
-    	<a data-role="button" href="#gift" data-transition="slide" class="ui-btn ui-corner-all" id="findGiftsBt"></a>
-    </div>
+
 
 <!-- LowInfo -->
 	<div id="ed-lowInfo">
@@ -85,7 +88,7 @@
 	</div>
 
 <!-- ===== TERMOS ===== -->
-	<div id="termos" data-role="popup" class="ui-content">
+	<div id="termos" data-role="popup" class="ui-content popup">
 		<embed src="termos.html">
 	</div>
 </div>
@@ -104,6 +107,11 @@
   <div id="loadingGifts" class="winCentered">
     <img src="img/loading.gif">
 	</div>
+
+<!-- Swipe Gif -->
+  <div id="swipeGif" data-role="popup" class="ui-content popup">
+    <img src="img/swipe.gif">
+  </div>
 
 <!-- Cards -->
 	<div class="tinderWrap">
