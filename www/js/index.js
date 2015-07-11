@@ -40,12 +40,12 @@ var app = {
         FastClick.attach(document.body);
         window.analytics.startTrackerWithId('UA-62972903-2');
         var element = document.getElementById('deviceProperties');
-            element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
-                                'Device PhoneGap: ' + device.phonegap + '<br />' +
-                                'Device Platform: ' + device.platform + '<br />' +
-                                'Device UUID: '     + device.uuid     + '<br />' +
-                                'Device Version: '  + device.version  + '<br />';
-        },
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
+                            'Device PhoneGap: ' + device.phonegap + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+    },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
