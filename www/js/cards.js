@@ -130,11 +130,11 @@ $("#home").on("click", "#findGiftsBt", function(){
 		loadGiftsInHTML: function (howMany, element) {
 			var isLastDBPresent = false;
 
-			if (currentGift < howMany){
+			if ((currentGift + 1) < howMany){
 				howMany = currentGift;
 			}
 
-			if ((currentGift === 0 || currentGift === 1) && allGifts.length > 0) {
+			if ((currentGift === 0 || currentGift === 1) && (allGifts.length > 2 || allGifts.length === 1)) {
 				isLastDBPresent = true;
 			} else {
 				for (var count = 0; count < howMany; count++) {
