@@ -124,7 +124,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 		  panes = $(">ul>li", element);
 		  pane_width = container.width();
 		  $("#loadingGifts").find("img").hide();
-		  if (window.localStorage.getItem('launchCount') == 1){
+		  if (window.localStorage.getItem('launchCount') < 3){
 		    	$("#swipeGif").popup("open");
 		  };
 		},
