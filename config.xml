@@ -22,7 +22,8 @@
     <splash src="res/splash.png" />
     <preference name="Orientation" value="portrait" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="DisallowOverscroll" value="true" />
 
 
 <!-- ANDROID -->
@@ -41,7 +42,16 @@
 
 <!-- IOS -->
     <platform name="ios">
+        <splash src="res/splash.png" />
+        <splash src="res/ios/Default-667h.png" width="750" height="1334"/>
+        <splash src="res/ios/Default-736h.png" width="1242" height="2208"/>
+        <splash src="res/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+        <splash src="res/ios/Default~iphone.png" width="320" height="480"/>
+        <splash src="res/ios/Default@2x~iphone.png" width="640" height="960"/>
+        <splash src="res/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+        <splash src="res/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+
         <preference name="StatusBarOverlaysWebview" value="false" />
-        <preference name="StatusBarBackgroundColor" value="#23c7d2" />
+        <preference name="StatusBarBackgroundColor" value="#16a085" />
     </platform>
 </widget>
