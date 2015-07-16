@@ -34,7 +34,7 @@ ActiveAdmin.register Gift do
   #   column :site
   #   column :description
   #   column "Age Group" do |gift|
-  #     gift.ageGroup.description unless gift.ageGroup.nil?  
+  #     gift.ageGroup.description unless gift.ageGroup.nil?
   #   end
   #   column "Image" do |gift|
   #     link_to(image_tag(gift.photo.url(:thumb), :height => '100'), admin_gift_path(gift))
@@ -55,7 +55,7 @@ ActiveAdmin.register Gift do
       row :site
       row :description
       row "Age Group" do |gift|
-        (gift.ageGroup.map{ |p| p.description }).join(', ').html_safe 
+        (gift.ageGroup.map{ |p| p.description }).join(', ').html_safe
       end
       row :created_at
       row :updated_at
@@ -69,18 +69,18 @@ ActiveAdmin.register Gift do
     f.semantic_errors *f.object.errors.keys
     inputs 'Details', :multipart => true do
       input :name
+      input :site, :input_html => { :rows => 1 }
+      input :price
       input :gender,
         :as => :select,
         :collection => ['M', 'F']
-      input :price
-      input :site, :input_html => { :rows => 1 }
-      input :description
-      input :ageGroup, 
-        :as => :select, 
+      input :description => { :rows => 2 }
+      input :ageGroup,
+        :as => :select,
         :collection => AgeGroup.order(:description).map{|u| [u.description, u.id]}
-      input :categories, 
-        :as => :select, 
-        :collection => Category.order(:name), :input_html => { :size => 50 }
+      #input :categories,
+      #  :as => :select,
+      #  :collection => Category.order(:name), :input_html => { :size => 50 }
       f.input :photo, :as => :file, :hint => f.template.image_tag(f.object.photo.url(:medium))
       li "Created at #{f.object.created_at}" unless f.object.new_record?
       #input :category
@@ -100,7 +100,7 @@ ActiveAdmin.register Gift do
   #          p.has_many :question_selections do |q|
   #            q.input :label
   #            q.input :text
-  #          end  
+  #          end
   #         p.input :question_type, as: :select, collection: Question::QUESTION_TYPES
   #         p.input :obligatory
   #         p.input :is_shown_in_report

@@ -29,7 +29,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
     overflow: hidden;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     font-family: Lato;
     font-weight: bold;
     color: darkslategray;
@@ -50,7 +50,7 @@
 
 
 #tinderslide li h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-family: Lato;
     font-weight: black;
     color: darkslategray;
@@ -81,16 +81,17 @@
 }
 
 #descricao{
-    padding:10px;
+    padding:0px 10px 0px 0px;
     text-align: left;
     position: absolute;
-    bottom:20px;
+    bottom:auto;
+    top: auto;
     background-color: #c5e4df;
 }
 
 .price{
-    color:#87a393;
-    font-size: 18px;
+    color:#8BAC9A;
+    font-size: 14px;
     right: 5px;
     position: absolute;
     bottom: 5px;

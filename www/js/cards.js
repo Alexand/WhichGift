@@ -167,7 +167,7 @@ $("#home").on("click", "#findGiftsBt", function(){
 				"<li class=pane1>" 						+
 				"<h2>Looping</h2>" 						+
 				"<div class='tImg'></div>" 		+
-				"<p id=descricao>Chegamos ao fim... Deslize mais uma vez para começar de novo, ou chegou a hora de comprar um livro.</p>" +
+				"<p id=descricao>Chegamos ao fim... Deslize mais uma vez para começar de novo (ou chegou a hora de dar um vale presentes...)</p>" +
 				"<div class='like'></div>" 		+
 				"<div class='dislike'></div>" +
 				"</li>");
@@ -224,13 +224,13 @@ $("#home").on("click", "#findGiftsBt", function(){
 				"<div class='invisible'>"+allGifts[currentGift].site+"</div>" +
 				"<p id=descricao>"+allGifts[currentGift].description+"</p>" 	+
 				"<div class='price'>"+price+"</div>"													+
-			  //"<div class='like'></div>" 																	+
-			  //"<div class='dislike'></div>" 															+
+			  "<div class='like'></div>" 																	+
+			  "<div class='dislike'></div>" 															+
 			  "</li>");
 
 			$(".pane"+ (currentGift + 2)).find(".tImg").css({
 				"background": "url("+allGifts[currentGift].photo_medium_url+") no-repeat scroll top center",
-				"background-size": "cover"});
+				"background-size": "contain"});
 
 			if (firstLoad == false){
 				panes.splice(1, 0, $("li.pane" + (currentGift + 2))[0]);
