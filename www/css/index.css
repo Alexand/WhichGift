@@ -148,13 +148,17 @@ html .ui-page-theme-b #ed-lowInfo {
 	overflow: auto; /*visible, hidden, scroll or auto */
 }
 
-#feedback.ui-body-b,html #feedback.ui-page-theme-b .ui-body-inherit,html #feedback.ui-bar-b .ui-body-inherit,html #feedback.ui-body-b .ui-body-inherit,html body #feedback.ui-group-theme-b .ui-body-inherit,html #feedback.ui-panel-page-container-b{background:#27c5ad;border:0px;color:#fff; box-shadow: 0 2px 0 darkslategray;}
+#feedback.ui-body-b,html #feedback.ui-page-theme-b .ui-body-inherit,html #feedback.ui-bar-b .ui-body-inherit,html #feedback.ui-body-b .ui-body-inherit,html body #feedback.ui-group-theme-b .ui-body-inherit,html #feedback.ui-panel-page-container-b{background:#27c5ad;border:0px;color:#fff; box-shadow: 0 2px 0 darkslategray;p}
 #feedback .ui-input-text {border:2px solid #16a085 !important;}
 #feedback textarea {height: 100% !important;}
 ::-webkit-input-placeholder {color: #12856D;}
 :-moz-placeholder {color: #12856D;}
 ::-moz-placeholder {color: #12856D;}
 :-ms-input-placeholder {color: #12856D;}
+
+html #feedback.ui-page-theme-b .ui-body-inherit p{
+  padding: 10px;
+}
 
 .winCentered{
 	position: absolute;
@@ -177,11 +181,13 @@ html .ui-page-theme-b #ed-lowInfo {
 }
 
 #termos{
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(20,50,70,0.9);
+    overflow: hidden;
 }
 
 #termos embed{
-    height: 400px;
+    height: 360px;
+    width: 100%;
 }
 
 html .ui-page-theme-b .longBtn, html .ui-page-theme-b .longBtn:focus, html .ui-page-theme-b .longBtn:active, html .ui-page-theme-b .longBtn:visited, html .ui-page-theme-b .longBtn:hover {

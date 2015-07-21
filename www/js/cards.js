@@ -78,7 +78,8 @@ $("#home").on("click", "#findGiftsBt", function(){
 				$that.checkingResponse(responseGifts, element);
 			})
 			.fail( function() {
-				alert( "Opa! WhichGift não conseguiu acessar os Presentes" );
+				function alertDismissed(){};
+				navigator.notification.alert("Opa! WhichGift não conseguiu acessar os Presentes",alertDismissed,"Deu Xabu" );
 			})
 			.always( function() {
 			  	//alert( "finished" )

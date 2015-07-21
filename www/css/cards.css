@@ -1,12 +1,12 @@
 .tinderWrap  {
-    height: 95%;
+    height: 80%;
     padding: 5%;
     overflow: hidden;
 }
 
 #tinderslide {
     width: 95%;
-    height: 85%;
+    height: 95%;
     display:block;
 }
 
@@ -81,11 +81,10 @@
 }
 
 #descricao{
-    padding:0px 10px 0px 0px;
+    padding:10px 0px 5px 0px;
     text-align: left;
-    position: absolute;
-    bottom:auto;
-    top: auto;
+    display: table-cell;
+    vertical-align: bottom;
     background-color: #c5e4df;
 }
 
@@ -101,8 +100,11 @@
 
 #openStore{
     text-align: center;
-    display: block;
-    margin-top: 30px !important;
+    position: absolute;
+    bottom: 0px;
+    padding: 5% 5% 1%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 

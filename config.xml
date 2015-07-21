@@ -1,27 +1,24 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-    id="com.example.whichgift"
+    id="br.com.whichgift"
     version="0.0.1"
+    android-versionCode="3"
+    ios-CFBundleVersion="3"
     xmlns="http://www.w3.org/ns/widgets"
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
     <name>WhichGift</name>
-    <description>
-        The Best solution for the Perfect Gift.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
+    <description>The Best solution for the Perfect Gift.</description>
+    <author email="contato@edschiffer.com" href="http://www.whichgift.com.br">WhichGift Team</author>
     <content src="index.html" />
     <access origin="*" />
 
 
 
 <!-- ALL PLATFORMS -->
-    <icon src="res/icon.png" />
-    <splash src="res/splash.png" />
+    <splash src="res/splash_hdpi.png" />
     <preference name="Orientation" value="portrait" />
-    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreen" value="splash_hdpi" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="DisallowOverscroll" value="true" />
@@ -33,21 +30,59 @@
         <feature name="GAPlugin" >
             <param name="android-package" value="com.adobe.plugins.GAPlugin"/>
         </feature>
-        <icon src="res/android/ldpi.png" density="ldpi" />
-        <icon src="res/android/mdpi.png" density="mdpi" />
-        <icon src="res/android/hdpi.png" density="hdpi" />
-        <icon src="res/android/xhdpi.png" density="xhdpi" />
+    <!-- Icons -->
+        <icon src="res/android/32.png" density="ldpi" />
+        <icon src="res/android/48.png" density="mdpi" />
+        <icon src="res/android/72.png" density="hdpi" />
+        <icon src="res/android/96.png" density="xhdpi" />
+        <icon src="res/android/144.png" density="xxhdpi" />
+        <icon src="res/android/192.png" density="xxxhdpi" />
+    <!-- Splashscreens -->
+        <splash src="res/android/splash_ldpi.png" density="port-ldpi"/>
+        <splash src="res/android/splash_mdpi.png" density="port-mdpi"/>
+        <splash src="res/android/splash_hdpi.png" density="port-hdpi"/>
+        <splash src="res/android/splash_xhdpi.png" density="port-xhdpi"/>
+
+        <preference name="android-minSdkVersion" value="15" />
+        <preference name="android:targetSdkVersion" value="19" />
     </platform>
 
 
 
 <!-- IOS -->
     <platform name="ios">
-        <splash src="res/ios/Default-667h.png" width="750" height="1334"/>
-        <splash src="res/ios/Default-736h.png" width="1242" height="2208"/>
-        <splash src="res/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
-        <splash src="res/ios/Default~iphone.png" width="320" height="480"/>
-        <splash src="res/ios/Default@2x~iphone.png" width="640" height="960"/>
+    <!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="res/ios/Icon-60@3x.png"              width="180" height="180" />
+    <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="res/ios/Icon-60.png"                 width="60" height="60" />
+        <icon src="res/ios/Icon-60@2x.png"              width="120" height="120" />
+        <!-- iPad -->
+        <icon src="res/ios/Icon-76.png"                 width="76" height="76" />
+        <icon src="res/ios/Icon-76@2x.png"              width="152" height="152" />
+    <!-- iOS 6.1 -->
+        <!-- Spotlight Icon -->
+        <icon src="res/ios/Icon-Small-40.png"           width="40" height="40" />
+        <icon src="res/ios/Icon-Small-40@2x.png"        width="80" height="80" />
+        <!-- iPhone / iPod Touch -->
+        <icon src="res/ios/Icon.png"                    width="57" height="57" />
+        <icon src="res/ios/Icon@2x.png"                 width="114" height="114" />
+        <!-- iPad -->
+        <icon src="res/ios/Icon-72.png"                 width="72" height="72" />
+        <icon src="res/ios/Icon-72@2x.png"              width="144" height="144" />
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="res/ios/Icon-Small.png"              width="29" height="29" />
+        <icon src="res/ios/Icon-Small@2x.png"           width="58" height="58" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <icon src="res/ios/Icon-Small-50.png"           width="50" height="50" />
+        <icon src="res/ios/Icon-Small-50@2x.png"        width="100" height="100" />
+    <!-- Splashscreens -->
+        <splash src="res/ios/Screenshot-1242x2208.png"  width="1242" height="2208"/>
+        <splash src="res/ios/Screenshot-750x1334.png"   width="750" height="1334"/>
+        <splash src="res/ios/Screenshot-640x1136.png"   width="640" height="1136"/>
+        <splash src="res/ios/Screenshot-640x960.png"    width="640" height="960"/>
+
         <preference name="StatusBarOverlaysWebview" value="false"/>
         <preference name="StatusBarBackgroundColor" value="#16a085"/>
         <!-- <preference name="AutoHideSplashScreen" value="false"/> -->
