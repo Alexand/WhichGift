@@ -42,6 +42,17 @@ $("#feedbackForm").on("click", "#sendFeedback", function(){
 
 
 
+//
+//
+//     TERMOS DE USO
+//
+//
+
+//$('#termos embed').css({"overflow-y": "visible",});
+$('#termos').scrollview();
+$('#termos embed').scrollview();
+
+
 
 //
 //

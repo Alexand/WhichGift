@@ -180,13 +180,9 @@ html #feedback.ui-page-theme-b .ui-body-inherit p{
     width:80%;
 }
 
-#termos{
-    background-color: rgba(20,50,70,0.9);
-    overflow: hidden;
-}
-
 #termos embed{
-    height: 360px;
+	background-color: rgba(20,50,70,0.9);
+    height: 400px;
     width: 100%;
 }
 

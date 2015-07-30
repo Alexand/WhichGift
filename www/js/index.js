@@ -38,6 +38,9 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         FastClick.attach(document.body);
+        setTimeout(function(){
+            var a = window.analytics.startTrackerWithId('UA-62972903-2');
+        }, 3000);
         var element = document.getElementById('deviceProperties');
         element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
                             'Device PhoneGap: ' + device.phonegap + '<br />' +

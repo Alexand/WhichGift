@@ -24,12 +24,8 @@
     <preference name="DisallowOverscroll" value="true" />
 
 
-
 <!-- ANDROID -->
     <platform name="android">
-        <feature name="GAPlugin" >
-            <param name="android-package" value="com.adobe.plugins.GAPlugin"/>
-        </feature>
     <!-- Icons -->
         <icon src="res/android/32.png" density="ldpi" />
         <icon src="res/android/48.png" density="mdpi" />
@@ -87,5 +83,6 @@
         <preference name="StatusBarBackgroundColor" value="#16a085"/>
         <!-- <preference name="AutoHideSplashScreen" value="false"/> -->
         <preference name="SuppressesIncrementalRendering" value="false"/> <!-- Set to true to wait until all content has been received before it renders to the screen. -->
+        <preference name="BackupWebStorage" value="local"/>
     </platform>
 </widget>

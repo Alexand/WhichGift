@@ -4,7 +4,7 @@
 <!-- Metas -->
 	<meta charset="utf-8">
 	<meta name="format-detection" content="telephone=no" />
-	<meta name="viewport" content="width=device-width user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+	<meta name="viewport" content="width=device-width user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, target-densitydpi=device-dpi" />
 <!-- Title -->
 	<title>WhichGift</title>
 <!-- Links -->
@@ -13,9 +13,8 @@
 	<link rel="stylesheet" href="css/index.css">
 	<script>
 		setTimeout(function(){
-			window.analytics.startTrackerWithId('UA-62972903-2');
 			window.analytics.trackView('home');
-		}, 5000);
+		}, 3000);
     </script>
 </head>
 
@@ -62,7 +61,7 @@
                 		<legend>Gênero:</legend>
                 	</div>
                 	<div class="ui-controlgroup-controls">
-                		<label for="gender-a" class="ui-btn ui-corner-all ui-btn-inherit ui-first-child ui-radio-off">Misto</label>
+                		<label for="gender-a" class="ui-btn ui-corner-all ui-btn-inherit ui-first-child ui-radio-off">Unissex</label>
                 		<input type="radio" name="gender" id="gender-a" value="U" checked="checked" data-cacheval="true">
                 		<label for="gender-b" class="ui-btn ui-corner-all ui-btn-inherit ui-radio-off">Feminino</label>
                 		<input type="radio" name="gender" id="gender-b" value="F" data-cacheval="false">
@@ -85,15 +84,25 @@
 <!-- LowInfo -->
 	<div id="ed-lowInfo">
 		<a href="#feedback" data-transition="slide" data-direction="reverse" class="ui-btn-left">Feedback</a>
-		<a href="#termos" class="ui-btn-right" data-transition="pop" data-rel="popup" data-position-to="window">Termos e Condições</a>
-	</div>
-
-<!-- ===== TERMOS ===== -->
-	<div id="termos" data-role="popup" class="ui-content popup">
-		<embed src="termos.html">
+		<a href="#termos" data-transition="slide" data-direction="reverse" class="ui-btn-right">Termos de Uso</a>
 	</div>
 </div>
 
+<!-- ===== TERMOS===== -->
+<div data-role="page" id="termos" class="ui-page ui-page-theme-b" data-scroll="true">
+
+<!-- Header -->
+	<div data-role="header" data-position="fixed">
+		<h1>Termos de Uso</h1>
+		<a href="#home" data-transition="slide" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right">Voltar</a>
+	</div>
+
+	<div data-role="main" class="ui-content" id="home-content" data-scroll="true">
+		<div>
+		<embed src="termos.html">
+    	</div>
+    </div>
+</div>
 
 
 <!-- ===== PRESENTE ===== -->
@@ -105,8 +114,8 @@
 	</div>
 
 <!-- Loading -->
-  <div id="loadingGifts" class="winCentered">
-    <img src="img/loading.gif">
+	<div id="loadingGifts" class="winCentered">
+    	<img src="img/loading.gif">
 	</div>
 
 <!-- Cards -->
@@ -115,22 +124,21 @@
 	        <ul>
 	        </ul>
 	    </div>
-  </div>
-  <div id='openStore'>
-    <a href="#" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn ui-corner-all longBtn" id="openStoreBtn">Ir Para Loja</a>
-  </div>
+  	</div>
+	<div id='openStore'>
+  		<a href="#" data-rel="popup" data-position-to="window" class="ui-shadow ui-btn ui-corner-all longBtn" id="openStoreBtn">Ir Para Loja</a>
+  	</div>
 </div>
 
 
 <!-- ===== FEEDBACK ===== -->
 <div data-role="page" id="feedback" class="ui-page ui-page-theme-b">
 	<div data-role="header" data-position="fixed">
-		<h1></h1>
+		<h1>Feedback</h1>
 		<a href="#home" data-transition="slide" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right">Voltar</a>
 	</div>
 
 	<div data-role="main" class="ui-content">
-	    <h2>Feedback</h2>
 	    <div >
 			<form id="feedbackForm">
 				<div class="ui-field-contain">
@@ -152,6 +160,7 @@
 					<p>Formulário enviado, muito obrigado</p>
 				</div>
 			</form>
+		</div>
 	</div>
 </div>
 
