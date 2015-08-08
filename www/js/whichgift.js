@@ -94,3 +94,10 @@ $("#giftsHeader").on("click", "#resetButton", function(){
 	$("#openStore").hide();
 });
 
+
+//
+//
+//     TERMOS
+//
+//
+

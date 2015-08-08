@@ -9,12 +9,11 @@
 	<title>WhichGift</title>
 <!-- Links -->
 	<link rel="stylesheet" href="lib/jquery-mobile-flatui/jquery.mobile.flatui.min.css">
+	<link rel="stylesheet" href="lib/iscrollview/jquery.mobile.iscrollview.css">
+	<link rel="stylesheet" href="lib/iscrollview/jquery.mobile.iscrollview-pull.css">
 	<link rel="stylesheet" href="css/cards.css">
 	<link rel="stylesheet" href="css/index.css">
 	<script>
-		setTimeout(function(){
-			window.analytics.trackView('home');
-		}, 3000);
     </script>
 </head>
 
@@ -45,7 +44,7 @@
                 <div class="ui-field-contain ui-shadow" >
                 	<label for="ageGroupId">Faixa de Idade:</label>
                 	<select name="ageGroupId" id="ageGroupId">
-                		<option value="1">De Bebê à Highlander</option>
+                		<option value="1">De Bebê à Vovô</option>
                 	    <option value="2">Primeira Infância (<3)</option>
                 	    <option value="3">Segunda Infância (4-7)</option>
                 	    <option value="4">Crianças (8-12)</option>
@@ -86,22 +85,6 @@
 		<a href="#feedback" data-transition="slide" data-direction="reverse" class="ui-btn-left">Feedback</a>
 		<a href="#termos" data-transition="slide" data-direction="reverse" class="ui-btn-right">Termos de Uso</a>
 	</div>
-</div>
-
-<!-- ===== TERMOS===== -->
-<div data-role="page" id="termos" class="ui-page ui-page-theme-b" data-scroll="true">
-
-<!-- Header -->
-	<div data-role="header" data-position="fixed">
-		<h1>Termos de Uso</h1>
-		<a href="#home" data-transition="slide" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right">Voltar</a>
-	</div>
-
-	<div data-role="main" class="ui-content" id="home-content" data-scroll="true">
-		<div>
-		<embed src="termos.html">
-    	</div>
-    </div>
 </div>
 
 
@@ -166,16 +149,91 @@
 
 
 
+<!-- ===== TERMOS===== -->
+<div data-role="page" id="termos" class="ui-page ui-page-theme-b">
+
+<!-- Header -->
+	<div data-role="header" data-position="fixed">
+		<h1>Termos de Uso</h1>
+		<a href="#home" data-transition="slide" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right">Voltar</a>
+	</div>
+
+	<div data-role="content" id="termos">
+		<div class="example-wrapper" data-iscroll>
+			<p>Por este <span>TERMO DE USO</span>, o <span>USUÁRIO</span> do <span>WHICHGIFT</span> fica ciente e concorda que o este app serve exclusivamente como um buscador de presentes e direcionador para seus devidos sites de venda, não se responsabilizando pela venda em si, pelo preço, pela imagem ilustrativa, pelos aspectos técnicos, pela qualidade ou quantidade, pela origem, por defeitos, danos ou prejuízos, por trocas, por anúncios, pela entrega, pelo frete ou por taxas extras dos produtos e serviços oferecidos.</p>
+
+			<p>Fica, portanto, a cargo do <span>USUÁRIO</span> a verificação com cautela das informações obtidas e a tomar todas as medidas necessárias para se proteger de danos, fraudes ou estelionatos, online ou offline. O <span>APP WHICHGIFT</span> não assume qualquer responsabilidade que advenha das relações existentes entre <span>USUÁRIO</span> e os <span>ANUNCIANTES</span> indicados, cabendo então a este que prosiga por sua única conta e risco.</p>
+
+			<p>O <span>APP WHICHGIFT</span> entretanto fará seus melhores esforços para manter-se sempre atualizado, completo e preciso. Não obtemos nenhuma informção pessoal do <span>USUÁRIO</span> como nome, cartão de crédito, cartão de débito ou endereço, direta ou indiretamente.</p>
+
+			<p>Também não serão de responsabilidade do <span>APP WHICHGIFT</span> as obrigações tributárias que recaiam nas atividades entre <span>USUÁRIO</span> e <span>ANUNCIANTES</span>. Assim, ao adquirir algum bem ou serviço, o <span>USUÁRIO</span> consumidor deverá exigir documento fiscal dos <span>ANUNCIANTES</span>, a menos que este esteja legalmente dispensado de fornecê-la.</p>
+
+			<p>Todos os materiais do <span>APP WHICHGIFT</span>, incluindo, mas não se limitando a apresentação, "layout", marcas, logotipos, sistemas, produtos, denominações de serviços e quaisquer outros materiais, inclusive bases de dados, programas, arquivos, imagens, vídeos ou materiais de qualquer outra natureza e que tenham contratualmente autorizadas suas veiculações no <span>APP WHICHGIFT</span> são protegidas pela legislação de Propriedade Intelectual.</p>
+
+			<p>São de titularidade do <span>APP WHICHGIFT</span> e de suas afiliadas, clientes ou fornecedores os direitos de uso e propriedade delimitando que sua reprodução, transmissão e distribuição de tais materiais, não são permitidas sem o expresso consentimento por escrito do <span>APP WHICHGIFT</span> ou do respectivo titular, sobretudo para o fim econômico ou comercial.</p>
+
+			<p>Os riscos derivados da utilização do <span>APP WHICHGIFT</span> são do <span>USUÁRIO</span>, logo, se seu uso resultar na necessidade de serviços e/ou reposição de material, equipamento, propriedade ou informação do <span>USUÁRIO</span> o <span>APP WHICHGIFT</span> e suas afiliadas não serão responsáveis por tais custos.</p>
+
+			<p>Os produtos, informações, valores, serviços sistemas e/ou "software", publicados no <span>APP WHICHGIFT</span> podem conter imprecisões e/ou erros de grafia, razão pela qual o <span>WHICHGIFT</span> envidará seus melhores esforços para manter o app atualizado periodicamente.</p>
+
+			<p>De nenhum modo o <span>WHICHGIFT</span> será responsabilizado por qualquer dano direto, indireto, especial, incidental ou de qualquer fato resultante do uso do <span>APP WHICHGIFT</span>, inclusive por quaisquer informações, produtos e/ou serviços obtidos através dele ou em decorrência do seu uso.</p>
+
+			<p>O <span>APP WHICHGIFT</span> contém LINKS para outros SITES operados por terceiros que não o <span>WHICHGIFT</span> e/ou suas afiliadas. Esses LINKS são fornecidos somente para sua referência, razão pela qual, o <span>WHICHGIFT</span> não tem controle sobre esses outros SITES e não se responsabiliza pelo CONTEÚDO dos mesmos, sendo que a inclusão desses LINKS no <span>APP WHICHGIFT</span> não implica na aprovação do material ou qualquer associação com seus proprietários. Assim, ao acessar e usar esses SITES, suas informações, materiais, produtos e/ou serviços, o <span>USUÁRIO</span> estará fazendo por sua conta e risco.</p>
+
+			<p>O <span>WHICHGIFT</span>, suas afiliadas e seus fornecedores poderão fazer mudanças nos serviços, produtos, informações e quaisquer outros materiais do <span>APP WHICHGIFT</span>, inclusive encerrar suas atividades a qualquer momento sem a necessidade de enviar qualquer notificação prévia ao <span>USUÁRIO</span> e sem o direito de indenização a qualquer <span>USUÁRIO</span> ou <span>ANUNCIANTES</span>.</p>
+
+			<p>O <span>WHICHGIFT</span> poderá alterar, modificar e/ou ajustar este <span>TERMO DE USO</span> a qualquer tempo, sendo que essas alterações, modificações e/ou ajustes terão efeito somente após se tornarem públicos. Desse modo, o <span>USUÁRIO</span> obriga-se a rever o <span>TERMO DE USO</span> do <span>WHICHGIFT</span> de tempos em tempos, restando claro que o <span>USUÁRIO</span> subordina-se à aceitação do <span>TERMO DE USO</span> vigente no momento de seu acesso ou faz uso dos serviços prestados pelo <span>WHICHGIFT</span>.</p>
+
+			<p>O <span>USUÁRIO</span> e/ou <span>ANUNCIANTES</span> indenizará o <span>WHICHGIFT</span>, suas filiais, empresas controladas, controladoras, colaboradores, representantes, administradores e empregados por qualquer ação promovida por outros <span>USUÁRIO</span>, <span>ANUNCIANTES</span> ou terceiros decorrentes de atividades ilegais no <span>WHICHGIFT</span> em razão do descumprimento do <span>TERMO DE USO</span> e/ou demais políticas do <span>WHICHGIFT</span>; ou ainda pela violação de qualquer lei, direito de terceiros, responsabilizando-se por eventuais perdas e danos, além de honorários advocatícios.</p>
+
+			<p>O <span>USUÁRIO</span> e o(s) <span>ANUNCIANTES</span> detêm de todos os direitos de propriedade sobre a informação, texto, gráfico ou outros materiais que publicar no <span>WHICHGIFT</span>, no entanto, o SITE pode reproduzir publicar e distribuir todos os arquivos, textos, gráficos integral ou em partes do seu CONTEÚDO "on-line" e "off-line".</p>
+
+			<p>Desta forma, nenhum dos materiais deve ser sujeito/submetido a qualquer obrigação de confiança por parte do <span>WHICHGIFT</span>, seus funcionários, agentes, colaboradores e representantes sem os direitos ou licenças disponíveis para isso.</p>
+
+			<p>O <span>APP WHICHGIFT</span> reserva-se ao direito de alterar, condensar ou excluir qualquer CONTEÚDO do APP <span>WHICHGIFT</span> que considere, a seu exclusivo critério, violar as diretrizes de CONTEÚDO, a legislação brasileira ou de qualquer outra disposição do presente TERMO DE USO.</p>
+
+			<p>O <span>USUÁRIO</span> pode enviar vídeos e comentários, todavia, o <span>WHICHGIFT</span> não garante a confidencialidade em relação a qualquer CONTEÚDO enviado, sendo importante mencionar que o <span>USUÁRIO</span> é o único responsável por seu CONTEÚDO e pelas conseqüências de enviá-lo ou publicá-lo, garantindo que possui ou tem as licenças necessárias, direitos, autorizações e permissões para publicá-lo.</p>
+
+			<p>O <span>USUÁRIO</span> autoriza o <span>WHICHGIFT</span> a usar todas as patentes, marcas registradas, segredos de negócio, direitos autorais ou outros direitos de propriedade e tais CONTEÚDOS para a publicação de acordo com este TERMO DE USO. Assim, cumpre esclarecer que o <span>USUÁRIO</span> mantém todos os direitos de propriedade sobre seu CONTEÚDO, entretanto, ao enviar o CONTEÚDO ao <span>WHICHGIFT</span>, o <span>USUÁRIO</span> pelo presente, cede ao <span>WHICHGIFT</span> licença mundial, não exclusiva, isenta de royalties, passível de ser sublicenciada e transferida, para usar, reproduzir, distribuir, preparar trabalhos derivados, exibir e executar o CONTEÚDO em conexão com o <span>WHICHGIFT</span> (e de seus sucessores e afiliados), inclusive, mas sem se limitar a atividades de promoção e redistribuição parcial ou total do Serviço (e trabalhos derivados) em qualquer formato de mídia e através de qualquer canal de mídia.</p>
+
+			<p>O <span>USUÁRIO</span> também cede a todos os <span>USUÁRIO</span> do <span>WHICHGIFT</span> uma licença não-exclusiva para acessar o seu CONTEÚDO por meio do <span>WHICHGIFT</span> (e de seus sucessores e afiliados), e para usar, reproduzir, distribuir, exibir e executar tal CONTEÚDO conforme permitido pela funcionalidade do APP <span>WHICHGIFT</span> e de acordo com o TERMO DE USO. As licenças acima cedidas pelo <span>USUÁRIO</span> para o APP <span>WHICHGIFT</span>, irão encerrar dentro de um tempo comercialmente razoável após a remoção ou exclusão pelo <span>USUÁRIO</span>. As licenças acima, cedidas pelo <span>USUÁRIO</span> em relação aos comentários são permanentes e irrevogáveis.</p>
+
+			<p>O <span>USUÁRIO</span> afirma que não enviará material protegido por direitos autorais, por segredo de negócio ou de qualquer outra forma protegido por direitos de terceiros, a menos que tenha permissão do legítimo proprietário do material ou caso esteja legalmente autorizado a publicar o material e ceder ao SITE do <span>WHICHGIFT</span> todos os direitos de licença aqui concedidos.</p>
+
+			<p>O <span>WHICHGIFT</span> não endossa qualquer CONTEÚDO enviado por qualquer <span>USUÁRIO</span> ou licenciante ou qualquer opinião, recomendação ou conselho ali expresso. O <span>WHICHGIFT</span> renuncia expressamente toda e qualquer responsabilidade ligada ao CONTEÚDO.</p>
+
+			<p>O <span>WHICHGIFT</span> não permite atividades que violem os direitos autorais, nem os direitos de propriedade intelectual em seu SITE, assim, o SITE do <span>WHICHGIFT</span> removerá todo o CONTEÚDO quando devidamente notificado de que tal CONTEÚDO infringe o direito de propriedade intelectual de qualquer outra pessoa. O APP <span>WHICHGIFT</span> se reserva no direito de remover o CONTEÚDO sem prévio aviso.</p>
+
+			<p>Quaisquer avisos ou comunicações, que uma das partes tenha de fazer a outra parte, em relação a quaisquer direitos ou obrigações contidas no presente instrumento, deverão adotar a forma escrita e serão tidas como eficazmente entregues no endereço constante do preâmbulo deste termo, se:</p>
+
+			<p>Entregues em mãos mediante protocolo escrito por quem de direito possa representar a parte remetida;</p>
+			<p>Enviadas por serviço de "courier" mediante protocolo escrito ou se pelo correio, na forma de carta registrada ("AR"); ou</p>
+			<p>Enviadas por e-mail, ou outro meio eletrônico hábil para tais comunicações.</p>
+			<p>As partes convencionam o recebimento de mensagens e arquivos eletrônicos como prova documental para todos os efeitos, desde que com aviso de confirmação de recebimento ou outro tipo de protocolo que certifique o recebimento da comunicação.</p>
+			<p>Fica eleito o foro da Comarca do Rio de Janeiro, Estado do Rio de Janeiro, como competente para dirimir quaisquer controvérsias decorrentes deste <span>TERMO DE USO</span>independentemente de qualquer outro, por mais privilegiado que seja ou venha a ser.</p>
+    	</div>
+    </div>
+</div>
+
+
+
 
 	<script src="cordova.js"></script>
 	<script src="js/index.js"></script>
-  <script src="lib/jquery-mobile/js/jquery-1.11.3.min.js"></script>
+    <script src="lib/jquery-mobile/js/jquery-1.11.3.min.js"></script>
 	<script src="lib/jquery-mobile/js/jquery.mobile-1.4.5.min.js"></script>
-  <script src="lib/jquery-mobile/js/jquery.transform2d.js"></script>
+	<script src="lib/iscrollview/iscroll.js"></script>
+    <script src="lib/jquery-mobile/js/jquery.transform2d.js"></script>
 	<script src="lib/fastclick/js/fastclick.js"></script>
 	<script src="lib/handlebars/js/handlebars-v1.3.0.js"></script>
 	<script src="lib/jquery-mobile-router/js/jquery.mobile.router.min.js"></script>
-  <script src="js/cards.js"></script>
+	<script src="lib/iscrollview/jquery.mobile.iscrollview.js"></script>
+	<script src="lib/iscrollview/jquery.mobile.iscrollview-yui-min.js"></script>
+	<script src="lib/iscrollview/jquery.mobile.iscrollview-closure-min.js"></script>
+
+    <script src="js/cards.js"></script>
 	<script src="js/whichgift.js"></script>
 
+
+	
 </body></html>

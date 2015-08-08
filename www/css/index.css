@@ -180,11 +180,24 @@ html #feedback.ui-page-theme-b .ui-body-inherit p{
     width:80%;
 }
 
-#termos embed{
+#termos{
 	background-color: rgba(20,50,70,0.9);
-    height: 400px;
-    width: 100%;
+  padding: 0px;
 }
+
+#termos p{
+  color:#89dbd7;
+  font-family: "Lato";
+  font-weight: 400;
+  font-size: 11px;
+  padding: 0px 10px;
+}
+
+#termos span{
+  color:#16a085;
+  font-weight: 700;
+}
+
 
 html .ui-page-theme-b .longBtn, html .ui-page-theme-b .longBtn:focus, html .ui-page-theme-b .longBtn:active, html .ui-page-theme-b .longBtn:visited, html .ui-page-theme-b .longBtn:hover {
   background-color: #31609f;
